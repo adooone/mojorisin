@@ -1,0 +1,60 @@
+// ****************************
+// Main Colors
+// ****************************
+$colorBlue: #3ba2ca;
+$colorLight: #FAF8F5;
+$colorText: #dadada;
+$colorDark: #131414;
+$colorGreen: rgb(40, 156, 112);
+$colorSun: #fff9e1;
+
+$defaultColor: #182228;
+$primaryColor: #656B4A;
+$secondaryColor: #C99A41;
+
+$sun: #fff9e1;
+$blue: #1ab1c5;
+$light: #FAF8F5;
+$text: #FBF9EA;
+$dark: #131414;
+$green: #38cf6a;
+$red: #ff0040;
+$neptune: #2085c0;
+//*****************************
+//
+//*****************************
+// blue fore- and background
+.art-bg-blue {
+    background: $colorBlue;
+}
+
+.art-fg-blue {
+    color: $colorBlue;
+}
+
+// green fore- and background
+.art-bg-green {
+    background: $colorBlue;
+}
+
+.art-fg-green {
+    color: $colorBlue;
+}
+
+// light fore- and background
+.art-bg-light {
+    background: $colorLight;
+}
+
+.art-fg-light {
+    color: $colorLight;
+}
+
+// dark fore- and background
+.art-bg-dark {
+    background: $colorDark;
+}
+
+.art-fg-dark {
+    color: $colorDark;
+}
