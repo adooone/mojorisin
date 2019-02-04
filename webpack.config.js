@@ -62,5 +62,10 @@ module.exports = {
             filename: './index.html',
         }),
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+            _: 'lodash',
+            React: 'react',
+            ReactDOM: 'react-dom',
+        }),
     ],
 };
