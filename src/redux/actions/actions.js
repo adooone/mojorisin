@@ -9,3 +9,10 @@ export const OPEN = (params) => {
         params,
     };
 };
+
+export const OPEN_MENU = () => {
+    return { type: ActionTypes.OPEN_MENU };
+};
+export const CLOSE_MENU = () => {
+    return { type: ActionTypes.CLOSE_MENU };
+};

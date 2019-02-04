@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import Menu from './Menu/Menu';
 import { OPEN } from '../redux/actions/actions';
-import Galary from './Galary';
+// import Galary from './Galary';
+import AppToolbar from './AppToolbar/index';
 
 class App extends PureComponent {
     componentDidMount() {
@@ -12,8 +13,8 @@ class App extends PureComponent {
     render() {
         return (
             <div>
+                <AppToolbar />
                 <Menu />
-                <Galary />
             </div>
         );
     }
