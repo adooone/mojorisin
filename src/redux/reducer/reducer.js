@@ -5,6 +5,7 @@ import * as ActionTypes from '../../consts/actionTypes';
 
 const initialState = Immutable({
     isMenuOpened: true,
+    selectedModule: '',
     blocked: true,
     container: [],
 });
@@ -21,6 +22,9 @@ const viewReducer = createReducer(initialState, {
     },
     [ActionTypes.CLOSE_MENU](state) {
         return state.set('isMenuOpened', false);
+    },
+    [ActionTypes.OPEN_MODULE](state, action) {
+        return state.set('selectedModule', action.module);
     },
 });
 

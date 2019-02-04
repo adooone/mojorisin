@@ -56,7 +56,7 @@ module.exports = {
         ],
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(['docs']),
         new HtmlWebPackPlugin({
             template: './src/public/index.html',
             filename: './index.html',

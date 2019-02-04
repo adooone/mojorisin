@@ -10,7 +10,10 @@ import {
 // import Logo from '../Logo/Logo';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { CLOSE_MENU } from '../../redux/actions/actions';
+import {
+    CLOSE_MENU,
+    OPEN_MODULE,
+} from '../../redux/actions/actions';
 
 class Menu extends Component {
     constructor(props) {
@@ -35,16 +38,17 @@ class Menu extends Component {
                 <IconButton
                     onClick={ this.handleCloseMenu }
                 >
-                    <Icon>menu</Icon>
+                    <Icon>arrow_left</Icon>
                 </IconButton>
                 {/* <Logo /> */}
                 <List>
-                    {['Prices', 'Portfolio', 'About', 'Contact us'].map((text) => (
+                    {['Фотоуслуги', 'Видеоуслуги', 'Контакты', 'Обо мне'].map((module) => (
                         <ListItem
+                            onClick={ () => { this.props.dispatch(OPEN_MODULE(module)); } }
                             button
-                            key={ text }
+                            key={ module }
                         >
-                            <ListItemText primary={ text } />
+                            <ListItemText primary={ module } />
                         </ListItem>
                     ))}
                 </List>

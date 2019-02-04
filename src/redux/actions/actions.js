@@ -16,3 +16,9 @@ export const OPEN_MENU = () => {
 export const CLOSE_MENU = () => {
     return { type: ActionTypes.CLOSE_MENU };
 };
+export const OPEN_MODULE = (module) => {
+    return {
+        type: ActionTypes.OPEN_MODULE,
+        module,
+    };
+};

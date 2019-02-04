@@ -23,9 +23,13 @@ class AppToolbar extends Component {
                 <Toolbar>
                     <IconButton
                         onClick={ this.handleOpenMenu }
+                        color='default'
                     >
                         <Icon>menu</Icon>
                     </IconButton>
+                    <div className='appBarCaption'>
+                        { this.props.selectedModule }
+                    </div>
                 </Toolbar>
             </AppBar>
         );
@@ -34,12 +38,14 @@ class AppToolbar extends Component {
 
 AppToolbar.propTypes = {
     dispatch: PropTypes.func.isRequired,
+    selectedModule: PropTypes.string.isRequired,
     //
 };
 
 function select(store) {
     return {
         opened: store.viewReducer.isMenuOpened,
+        selectedModule: store.viewReducer.selectedModule,
         //
     };
 }

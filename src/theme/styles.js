@@ -1,8 +1,8 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const colors = {
-    default: '#182228',
-    primary: '#656B4A',
+    default: '#131414',
+    primary: '#d8d1d1',
     secondary: '#C99A41',
     text: '#FBF9EA',
 };
@@ -13,6 +13,7 @@ export const theme = createMuiTheme({
         fontFamily: [
             '"Poiret One"',
         ].join(','),
+        fontSize: 17,
     },
     palette: {
         type: 'dark',
@@ -23,9 +24,17 @@ export const theme = createMuiTheme({
     overrides: {
         MuiDrawer: {
             paper: {
-                width: 220,
+                width: 380,
                 background: colors.default,
+                border: 'none',
                 // color: colors.text,
+                //
+            },
+        },
+        MuiListItemText: {
+            root: {
+                textAlign: 'center',
+                fontSize: 24,
                 //
             },
         },
