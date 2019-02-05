@@ -1,8 +1,8 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const colors = {
-    default: '#131414',
-    primary: '#d8d1d1',
+    default: '#232323',
+    primary: '#D8CECE',
     secondary: '#C99A41',
     text: '#FBF9EA',
 };
@@ -22,11 +22,25 @@ export const theme = createMuiTheme({
         secondary: { main: colors.secondary },
     },
     overrides: {
+        MuiAppBar: {
+            root: {
+                boxShadow: '0px 0px 35px -2px rgba(0,0,0,0.3)',
+                height: 80,
+                //
+            },
+        },
+        MuiToolbar: {
+            root: {
+                minHeight: 80,
+                //
+            },
+        },
         MuiDrawer: {
             paper: {
                 width: 380,
                 background: colors.default,
                 border: 'none',
+                boxShadow: '0px 0px 48px -7px rgba(0,0,0,0.55)',
                 // color: colors.text,
                 //
             },

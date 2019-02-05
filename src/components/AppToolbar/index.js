@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-    IconButton,
-    Icon,
+    // IconButton,
+    // Icon,
     AppBar,
-    Toolbar,
+    // Toolbar,
 } from '@material-ui/core';
 import { OPEN_MENU } from '../../redux/actions/actions';
 
@@ -20,17 +20,15 @@ class AppToolbar extends Component {
     render() {
         return (
             <AppBar position='fixed'>
-                <Toolbar>
-                    <IconButton
-                        onClick={ this.handleOpenMenu }
-                        color='default'
-                    >
-                        <Icon>menu</Icon>
-                    </IconButton>
-                    <div className='appBarCaption'>
-                        { this.props.selectedModule }
-                    </div>
-                </Toolbar>
+                {/* <IconButton
+                    onClick={ this.handleOpenMenu }
+                    color='default'
+                >
+                    <Icon>menu</Icon>
+                </IconButton> */}
+                <div className='appBarCaption'>
+                    { this.props.selectedModule }
+                </div>
             </AppBar>
         );
     }

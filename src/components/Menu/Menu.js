@@ -4,12 +4,12 @@ import {
     List,
     ListItem,
     ListItemText,
-    IconButton,
-    Icon,
+    // IconButton,
+    // Icon,
 } from '@material-ui/core';
-// import Logo from '../Logo/Logo';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import Logo from '../Logo/Logo';
 import {
     CLOSE_MENU,
     OPEN_MODULE,
@@ -35,12 +35,12 @@ class Menu extends Component {
                 anchor='left'
                 open={ this.props.opened }
             >
-                <IconButton
+                {/* <IconButton
                     onClick={ this.handleCloseMenu }
                 >
                     <Icon>arrow_left</Icon>
-                </IconButton>
-                {/* <Logo /> */}
+                </IconButton> */}
+                <Logo />
                 <List>
                     {['Фотоуслуги', 'Видеоуслуги', 'Контакты', 'Обо мне'].map((module) => (
                         <ListItem
