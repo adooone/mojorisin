@@ -8,6 +8,7 @@ import {
     // Toolbar,
 } from '@material-ui/core';
 import { OPEN_MENU } from '../../redux/actions/actions';
+// import Modules from '../../description/modules';
 
 class AppToolbar extends Component {
     constructor(props) {
@@ -18,6 +19,10 @@ class AppToolbar extends Component {
         this.props.dispatch(OPEN_MENU());
     }
     render() {
+        // const { dict } = this.props;
+        // const caption = dict.translate(_.find(Modules, (obj) => {
+        //     return obj.name === this.props.selectedModule;
+        // }).caption);
         return (
             <AppBar position='fixed'>
                 {/* <IconButton
@@ -35,6 +40,7 @@ class AppToolbar extends Component {
 }
 
 AppToolbar.propTypes = {
+    // dict: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
     selectedModule: PropTypes.string.isRequired,
     //
@@ -44,6 +50,7 @@ function select(store) {
     return {
         opened: store.viewReducer.isMenuOpened,
         selectedModule: store.viewReducer.selectedModule,
+        dict: store.viewReducer.dict,
         //
     };
 }

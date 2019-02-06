@@ -22,3 +22,9 @@ export const OPEN_MODULE = (module) => {
         module,
     };
 };
+export const CHANGE_LANG = (lang) => {
+    return {
+        type: ActionTypes.CHANGE_LANG,
+        lang,
+    };
+};

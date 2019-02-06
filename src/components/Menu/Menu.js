@@ -4,7 +4,7 @@ import {
     List,
     ListItem,
     ListItemText,
-    // IconButton,
+    Button,
     // Icon,
 } from '@material-ui/core';
 import { connect } from 'react-redux';
@@ -13,7 +13,10 @@ import Logo from '../Logo/Logo';
 import {
     CLOSE_MENU,
     OPEN_MODULE,
+    CHANGE_LANG,
 } from '../../redux/actions/actions';
+import Modules from '../../description/modules';
+import { LANG_RU, LANG_EN } from '../../consts/generalConsts';
 
 class Menu extends Component {
     constructor(props) {
@@ -29,8 +32,11 @@ class Menu extends Component {
         this.props.dispatch(CLOSE_MENU());
     }
     render() {
+        const { dict } = this.props;
+        console.log(this.props);
         return (
             <Drawer
+                PaperProps={ { className: 'menu' } }
                 variant='persistent'
                 anchor='left'
                 open={ this.props.opened }
@@ -42,16 +48,34 @@ class Menu extends Component {
                 </IconButton> */}
                 <Logo />
                 <List>
-                    {['Фотоуслуги', 'Видеоуслуги', 'Контакты', 'Обо мне'].map((module) => (
+                    {Modules.map((module) => (
                         <ListItem
-                            onClick={ () => { this.props.dispatch(OPEN_MODULE(module)); } }
+                            onClick={ () => { this.props.dispatch(OPEN_MODULE(module.name)); } }
                             button
-                            key={ module }
+                            key={ module.name }
                         >
-                            <ListItemText primary={ module } />
+                            <ListItemText primary={ dict.translate(module.caption) } />
                         </ListItem>
                     ))}
                 </List>
+                <div className='langContainer'>
+                    <Button
+                        // variant={ this.props.lang === LANG_RU ? 'outlined' : '' }
+                        color={ this.props.lang === LANG_RU ? 'secondary' : '' }
+                        className='langBtn'
+                        onClick={ () => { this.props.dispatch(CHANGE_LANG(LANG_RU)); } }
+                    >
+                        {LANG_RU}
+                    </Button>
+                    <Button
+                        // variant={ this.props.lang === LANG_EN ? 'outlined' : '' }
+                        color={ this.props.lang === LANG_EN ? 'secondary' : '' }
+                        className='langBtn'
+                        onClick={ () => { this.props.dispatch(CHANGE_LANG(LANG_EN)); } }
+                    >
+                        {LANG_EN}
+                    </Button>
+                </div>
             </Drawer>
         );
     }
@@ -59,6 +83,8 @@ class Menu extends Component {
 
 Menu.propTypes = {
     opened: PropTypes.bool.isRequired,
+    lang: PropTypes.string.isRequired,
+    dict: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
     //
 };
@@ -66,7 +92,8 @@ Menu.propTypes = {
 function select(store) {
     return {
         opened: store.viewReducer.isMenuOpened,
-        //
+        dict: store.viewReducer.dict,
+        lang: store.viewReducer.userParams.lang,
     };
 }
 
