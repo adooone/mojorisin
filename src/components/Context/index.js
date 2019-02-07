@@ -7,6 +7,3 @@ const Context = React.createContext({
 });
 
 export default Context;
-
-export const ContextProvider = Context.Provider;
-export const ContextConsumer = Context.Consumer;

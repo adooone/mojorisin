@@ -7,7 +7,7 @@
     flex-direction: column
     // justify-content: space-between
     height: $header-h
-    width: 400px
+    width: $menuWidth
     @media #{$media-phones}
         width: 100%
     height: 100%
@@ -26,7 +26,10 @@
     height: 100%
 
 .appBarCaption
-    margin-left: 460px
+    display: inline-flex
+    margin-left: $menuWidth
+    @media #{$media-phones}
+        margin-left: 16px
     font-family: Poiret One
     font-size: 25px
     height: 80px

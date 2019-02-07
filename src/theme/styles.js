@@ -24,7 +24,8 @@ export const theme = createMuiTheme({
     overrides: {
         MuiAppBar: {
             root: {
-                boxShadow: '0px 0px 35px -2px rgba(0,0,0,0.3)',
+                boxShadow: 'none',
+                // boxShadow: '0px 0px 35px -2px rgba(0,0,0,0)',
                 height: 80,
                 //
             },

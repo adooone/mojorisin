@@ -50,7 +50,10 @@ class Menu extends Component {
                 <List>
                     {Modules.map((module) => (
                         <ListItem
-                            onClick={ () => { this.props.dispatch(OPEN_MODULE(module.name)); } }
+                            onClick={ () => {
+                                this.props.dispatch(OPEN_MODULE(module));
+                                if (window.screen.width < 600) this.props.dispatch(CLOSE_MENU());
+                            } }
                             button
                             key={ module.name }
                         >
@@ -61,7 +64,7 @@ class Menu extends Component {
                 <div className='langContainer'>
                     <Button
                         // variant={ this.props.lang === LANG_RU ? 'outlined' : '' }
-                        color={ this.props.lang === LANG_RU ? 'secondary' : '' }
+                        color={ this.props.lang === LANG_RU ? 'secondary' : 'default' }
                         className='langBtn'
                         onClick={ () => { this.props.dispatch(CHANGE_LANG(LANG_RU)); } }
                     >
@@ -69,7 +72,7 @@ class Menu extends Component {
                     </Button>
                     <Button
                         // variant={ this.props.lang === LANG_EN ? 'outlined' : '' }
-                        color={ this.props.lang === LANG_EN ? 'secondary' : '' }
+                        color={ this.props.lang === LANG_EN ? 'secondary' : 'default' }
                         className='langBtn'
                         onClick={ () => { this.props.dispatch(CHANGE_LANG(LANG_EN)); } }
                     >
