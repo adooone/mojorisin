@@ -47,7 +47,7 @@ AppToolbar.propTypes = {
     dict: PropTypes.object.isRequired,
     opened: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired,
-    selectedModule: PropTypes.string.isRequired,
+    selectedModule: PropTypes.object.isRequired,
     //
 };
 

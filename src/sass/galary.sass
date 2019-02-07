@@ -1,5 +1,9 @@
+@import 'colors'
+
 .galary
     width: 100%
     height: 100vh
-    .galaryMenuOpened
-        margin-left: 220px
+    padding-top: $appBarHeight
+    margin-left: $menuWidth
+    @media #{$media-phones}
+        margin-left: 0

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
     Drawer,
+    // SwipeableDrawer,
     List,
     ListItem,
     ListItemText,
@@ -9,6 +10,7 @@ import {
 } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+// import { Scrollbars } from 'react-custom-scrollbars';
 import Logo from '../Logo/Logo';
 import {
     CLOSE_MENU,
@@ -41,18 +43,14 @@ class Menu extends Component {
                 anchor='left'
                 open={ this.props.opened }
             >
-                {/* <IconButton
-                    onClick={ this.handleCloseMenu }
-                >
-                    <Icon>arrow_left</Icon>
-                </IconButton> */}
+                {/* <Scrollbars style={ { height: 500, width: 400 } }> */}
                 <Logo />
                 <List>
                     {Modules.map((module) => (
                         <ListItem
                             onClick={ () => {
                                 this.props.dispatch(OPEN_MODULE(module));
-                                if (window.screen.width < 600) this.props.dispatch(CLOSE_MENU());
+                                if (window.visualViewport.width < 600) this.props.dispatch(CLOSE_MENU());
                             } }
                             button
                             key={ module.name }
@@ -79,6 +77,7 @@ class Menu extends Component {
                         {LANG_EN}
                     </Button>
                 </div>
+                {/* </Scrollbars> */}
             </Drawer>
         );
     }

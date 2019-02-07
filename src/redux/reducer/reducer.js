@@ -4,10 +4,11 @@ import Immutable from 'seamless-immutable';
 import * as ActionTypes from '../../consts/actionTypes';
 import { getDict } from '../../dictionary';
 import { LANG_EN } from '../../consts/generalConsts';
+import Modules from '../../description/modules';
 
 const initialState = Immutable({
     isMenuOpened: true,
-    selectedModule: '',
+    selectedModule: Modules[0],
     userParams: {
         lang: LANG_EN,
         //
