@@ -53,5 +53,11 @@ export const theme = createMuiTheme({
                 //
             },
         },
+        MuiIconButton: {
+            colorPrimary: {
+                color: '#636363',
+                //
+            },
+        },
     },
 });

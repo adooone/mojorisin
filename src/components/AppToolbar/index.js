@@ -30,7 +30,7 @@ class AppToolbar extends Component {
                 <Toolbar>
                     <IconButton
                         onClick={ this.handleOpenMenu }
-                        color='secondary'
+                        color='primary'
                     >
                         <Icon>menu</Icon>
                     </IconButton>
