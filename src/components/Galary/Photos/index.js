@@ -30,11 +30,11 @@ class Photos extends Component {
                         return (
                             <Grid
                                 item
-                                xs={ obj.portrait ? 6 : 12 }
+                                xs={ 12 }
                                 sm={ obj.portrait ? 2 : 4 }
                             >
                                 <Paper className='photo'>
-                                    { obj.name }
+                                    <div style={ { background: `url(${ obj.src })` } } />
                                 </Paper>
                             </Grid>
                         );

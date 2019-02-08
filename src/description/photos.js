@@ -5,7 +5,7 @@ const photos = {
             images: [
                 {
                     caption: 'photo',
-                    src: './path',
+                    src: 'https://cdn.mos.cms.futurecdn.net/gvQ9NhQP8wbbM32jXy4V3j-320-80.jpg',
                     portrait: true,
                 },
                 {

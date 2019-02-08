@@ -5,19 +5,24 @@
     position: relative
     width:  calc(100% - #{$menuWidth})
     height: calc(100% - #{$headerHeight})
-    padding: 0px 88px
+    // padding: 0px 88px
     // margin-top: $headerHeight
     margin-left: $menuWidth
     font-size: 25px
     @media #{$media-phones}
         margin-left: 0
-        padding: 0px 26px
         width: 100%
-    .galaryContainer
+    .galaryScroller
         width: 100%
-        .photosContainer
-            padding: 26px 0px
-            .photo
-                height: 300px
-                @media #{$media-phones}
-                    height: 250px
+        height: 100%
+        .galaryContainer
+            width: 100%
+            padding: 0px 88px
+            @media #{$media-phones}
+                padding: 0px 26px
+            .photosContainer
+                padding: 26px 0px
+                .photo
+                    height: 300px
+                    @media #{$media-phones}
+                        height: 250px

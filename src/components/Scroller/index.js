@@ -170,6 +170,7 @@ class Scroller extends PureComponent {
                 <div
                     ref={ this.containedRefCallBack }
                     onWheel={ this.onWheel }
+                    onTouchMove={ (e) => { console.log(e.changedTouches); } }
                     className={ classes.contained }
                     style={ this.state.styles.containedStyle }
                 >

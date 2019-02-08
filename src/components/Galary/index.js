@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { Scrollbars } from 'react-custom-scrollbars';
 import { MODULE_PHOTOS, MODULE_VIDEOS } from '../../consts/generalConsts';
 import Photos from './Photos';
 import Videos from './Videos/index';
-import Scroller from '../Scroller/index';
+// import Scroller from '../Scroller/index';
 
 class Galary extends Component {
     constructor(props) {
@@ -24,11 +25,12 @@ class Galary extends Component {
     }
     render() {
         return (
-            // <Paper />
             <div className='galary'>
-                <Scroller vertical>
+                {/* <Scroller vertical> */}
+                <Scrollbars className='galaryScroller'>
                     { this.getContent() }
-                </Scroller>
+                </Scrollbars>
+                {/* </Scroller> */}
             </div>
         );
     }
