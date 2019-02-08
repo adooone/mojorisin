@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import classnames from 'classnames';
-// import {
-//     IconButton,
-//     Icon,
-//     AppBar,
-//     Toolbar,
-// } from '@material-ui/core';
+import {
+    Grid,
+    Paper,
+    Toolbar,
+    //
+} from '@material-ui/core';
+import photos from '../../../description/photos';
 
 class Photos extends Component {
     // constructor(props) {
@@ -16,7 +17,30 @@ class Photos extends Component {
     render() {
         // const { dict } = this.props;
         return (
-            <div>Photos</div>
+            <div className='galaryContainer'>
+                <Toolbar>
+                    <p>Album 1</p>
+                </Toolbar>
+                <Grid
+                    className='photosContainer'
+                    container
+                    spacing={ 16 }
+                >
+                    {_.map(photos.albums[0].images, (obj) => {
+                        return (
+                            <Grid
+                                item
+                                xs={ obj.portrait ? 6 : 12 }
+                                sm={ obj.portrait ? 2 : 4 }
+                            >
+                                <Paper className='photo'>
+                                    { obj.name }
+                                </Paper>
+                            </Grid>
+                        );
+                    })}
+                </Grid>
+            </div>
         );
     }
 }

@@ -18,7 +18,7 @@ class App extends Component {
     }
     render() {
         return (
-            <div>
+            <div className='AppContainer'>
                 {/* <Context.Provider value={ { lang: LANG_RU } }> */}
                 <AppToolbar />
                 <Menu />

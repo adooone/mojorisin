@@ -26,10 +26,25 @@ module.exports = {
                 test: [/\.sass$/, /\.scss$/],
                 use: [{ loader: 'style-loader' }, { loader: 'css-loader' }, { loader: 'sass-loader' }],
             },
+            // {
+            //     test: [/\.js$/, /\.jsx$/],
+            //     exclude: /(node_modules|bower_components)/,
+            //     use: { loader: 'babel-loader' },
+            // },
             {
-                test: [/\.js$/, /\.jsx$/],
-                exclude: /(node_modules|bower_components)/,
-                use: { loader: 'babel-loader' },
+                test: /\.(js|jsx|mjs)$/,
+                loader: require.resolve('babel-loader'),
+                options: {
+                    plugins: [
+                        'react-hot-loader/babel',
+                        // Enables React code to work with HMR.
+                        ['@babel/plugin-transform-runtime', {}],
+                    ],
+                    // This is a feature of `babel-loader` for webpack (not Babel itself).
+                    // It enables caching results in ./node_modules/.cache/babel-loader/
+                    // directory for faster rebuilds.
+                    cacheDirectory: true,
+                },
             },
             {
                 test: /\.html$/,

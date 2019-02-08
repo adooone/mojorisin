@@ -3,6 +3,7 @@
 
 .menu
     position: absolute
+    top: 0
     display: flex
     flex-direction: column
     // justify-content: space-between
@@ -27,10 +28,10 @@
 
 .appBarCaption
     display: inline-flex
-    margin-left: $menuWidth
+    margin-left: $menuWidth + 16px
     @media #{$media-phones}
         margin-left: 16px
-    font-family: Poiret One
+    // font-family: Poiret One
     font-size: 25px
     height: 80px
     line-height: 80px
@@ -42,5 +43,5 @@
     justify-content: center
     width: 100%
     .langBtn
-        font-family: Poiret One
+        // font-family: Poiret One
         font-size: 16px

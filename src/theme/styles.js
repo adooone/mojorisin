@@ -12,8 +12,10 @@ export const theme = createMuiTheme({
         // Use the system font instead of the default Roboto font.
         fontFamily: [
             '"Poiret One"',
+            // '"Comfortaa"',
         ].join(','),
         fontSize: 17,
+        fontWeight: 100,
     },
     palette: {
         type: 'dark',
@@ -22,14 +24,14 @@ export const theme = createMuiTheme({
         secondary: { main: colors.secondary },
     },
     overrides: {
-        MuiAppBar: {
-            root: {
-                boxShadow: 'none',
-                // boxShadow: '0px 0px 35px -2px rgba(0,0,0,0)',
-                height: 80,
-                //
-            },
-        },
+        // MuiAppBar: {
+        //     root: {
+        //         boxShadow: 'none',
+        //         // boxShadow: '0px 0px 35px -2px rgba(0,0,0,0)',
+        //         height: 80,
+        //         //
+        //     },
+        // },
         MuiToolbar: {
             root: {
                 minHeight: 80,

@@ -6,22 +6,37 @@ const photos = {
                 {
                     caption: 'photo',
                     src: './path',
+                    portrait: true,
                 },
                 {
                     caption: 'photo',
                     src: './path',
+                    portrait: false,
                 },
                 {
                     caption: 'photo',
                     src: './path',
+                    portrait: true,
                 },
                 {
                     caption: 'photo',
                     src: './path',
+                    portrait: true,
                 },
                 {
                     caption: 'photo',
                     src: './path',
+                    portrait: false,
+                },
+                {
+                    caption: 'photo',
+                    src: './path',
+                    portrait: true,
+                },
+                {
+                    caption: 'photo',
+                    src: './path',
+                    portrait: false,
                 },
             ],
         },

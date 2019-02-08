@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import {
     IconButton,
     Icon,
-    AppBar,
+    // AppBar,
     Toolbar,
 } from '@material-ui/core';
 import { OPEN_MENU } from '../../redux/actions/actions';
@@ -26,19 +26,22 @@ class AppToolbar extends Component {
         // }).caption);
         const ifMenuOpened = this.props.opened ? 'appBarMenuOpened' : '';
         return (
-            <AppBar position='fixed'>
-                <Toolbar>
-                    <IconButton
-                        onClick={ this.handleOpenMenu }
-                        color='primary'
-                    >
-                        <Icon>menu</Icon>
-                    </IconButton>
-                    <div className={ classnames('appBarCaption', ifMenuOpened) }>
-                        { dict.translate(this.props.selectedModule.caption) }
-                    </div>
-                </Toolbar>
-            </AppBar>
+            <>
+                <header>
+                    <Toolbar>
+                        <IconButton
+                            onClick={ this.handleOpenMenu }
+                            color='primary'
+                        >
+                            <Icon>menu</Icon>
+                        </IconButton>
+                        <div className={ classnames('appBarCaption', ifMenuOpened) }>
+                            { dict.translate(this.props.selectedModule.caption) }
+                        </div>
+                    </Toolbar>
+                </header>
+                <div className='headerWrap' />
+            </>
         );
     }
 }

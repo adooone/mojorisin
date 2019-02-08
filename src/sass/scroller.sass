@@ -1,0 +1,35 @@
+@import 'colors'
+
+.barVerticalHolder
+    position: relative
+    right: 0px
+    top: 0px
+    height: 100%
+    width: 7px
+
+.barHorizontalHolder
+    position: relative
+    bottom: 0
+    left: 0
+    width: 100%
+    height: 7px
+
+.barVerticalStick
+    position: absolute
+    width: 7px
+    background: $secondaryColor
+    opacity: 0.6
+    &:hover
+        opacity: 1
+        transform: scaleX(1.3)
+    transition: all .2s ease
+
+.barHorizontalStick
+    position: absolute
+    height: 7px
+    background: $secondaryColor
+    opacity: 0.6
+    &:hover
+        opacity: 1
+        transform: scaleY(1.3)
+    transition: all .2s ease

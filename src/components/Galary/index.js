@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import { MODULE_PHOTOS, MODULE_VIDEOS } from '../../consts/generalConsts';
 import Photos from './Photos';
 import Videos from './Videos/index';
+import Scroller from '../Scroller/index';
 
 class Galary extends Component {
     constructor(props) {
@@ -25,7 +26,9 @@ class Galary extends Component {
         return (
             // <Paper />
             <div className='galary'>
-                { this.getContent() }
+                <Scroller vertical>
+                    { this.getContent() }
+                </Scroller>
             </div>
         );
     }
