@@ -61,5 +61,18 @@ export const theme = createMuiTheme({
                 //
             },
         },
+        MuiGrid: {
+            item: {
+                borderRadius: 0,
+                overflow: 'hidden',
+                //
+            },
+        },
+        MuiPaper: {
+            elevation0: {
+                boxShadow: 'none',
+                //
+            },
+        },
     },
 });
