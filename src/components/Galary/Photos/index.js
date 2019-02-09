@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 // import classnames from 'classnames';
 import {
     Grid,
-    Paper,
-    Toolbar,
+    // Paper,
+    // Toolbar,
     //
 } from '@material-ui/core';
 import photos from '../../../description/photos';
@@ -18,24 +18,30 @@ class Photos extends Component {
         // const { dict } = this.props;
         return (
             <div className='galaryContainer'>
-                <Toolbar>
+                {/* <Toolbar>
                     <p>Album 1</p>
-                </Toolbar>
+                </Toolbar> */}
                 <Grid
                     className='photosContainer'
                     container
-                    spacing={ 16 }
+                    spacing={ 0 }
                 >
                     {_.map(photos.albums[0].images, (obj) => {
                         return (
                             <Grid
                                 item
                                 xs={ 12 }
-                                sm={ obj.portrait ? 2 : 4 }
+                                sm={ obj.portrait ? 3 : 3 }
                             >
-                                <Paper className='photo'>
-                                    <div style={ { background: `url(${ obj.src })` } } />
-                                </Paper>
+                                <div className='photo'>
+                                    <div className='photoHoverEffect' />
+                                    <img
+                                        className='image'
+                                        src={ obj.src }
+                                        alt={ obj.name }
+                                        // style={ { height: '100%' } }
+                                    />
+                                </div>
                             </Grid>
                         );
                     })}

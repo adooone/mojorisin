@@ -1,3 +1,6 @@
+const path = 'https://www.wonderplugin.com/videos/demo-image0.jpg';
+// const path = 'https://cdn.mos.cms.futurecdn.net/gvQ9NhQP8wbbM32jXy4V3j-320-80.jpg';
+
 const photos = {
     albums: [
         {
@@ -5,37 +8,52 @@ const photos = {
             images: [
                 {
                     caption: 'photo',
-                    src: 'https://cdn.mos.cms.futurecdn.net/gvQ9NhQP8wbbM32jXy4V3j-320-80.jpg',
+                    src: path,
                     portrait: true,
                 },
                 {
                     caption: 'photo',
-                    src: './path',
+                    src: path,
                     portrait: false,
                 },
                 {
                     caption: 'photo',
-                    src: './path',
+                    src: path,
                     portrait: true,
                 },
                 {
                     caption: 'photo',
-                    src: './path',
+                    src: path,
                     portrait: true,
                 },
                 {
                     caption: 'photo',
-                    src: './path',
+                    src: path,
                     portrait: false,
                 },
                 {
                     caption: 'photo',
-                    src: './path',
+                    src: path,
                     portrait: true,
                 },
                 {
                     caption: 'photo',
-                    src: './path',
+                    src: path,
+                    portrait: false,
+                },
+                {
+                    caption: 'photo',
+                    src: path,
+                    portrait: false,
+                },
+                {
+                    caption: 'photo',
+                    src: path,
+                    portrait: false,
+                },
+                {
+                    caption: 'photo',
+                    src: path,
                     portrait: false,
                 },
             ],
