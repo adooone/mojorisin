@@ -32,17 +32,22 @@
                     @media #{$media-phones}
                         height: 300px
                     .photoHoverEffect
-                        background: rgba(0,0,0,0.4)
+                        background: rgba(0,0,0,0.3)
                         position: relative
                         width: 100%
                         height: 100%
-                        border: 40px solid rgba(0,0,0,0)
-                        transition: all 0.6s ease
+                        // border: 20px solid rgba(0,0,0,0)
+                        transition: all .3s ease
                         z-index: 2
+                        @media #{$media-phones}
+                            background: none
+                            border-radius: 0
                         &:hover
-                            border: 1px solid darken($primaryColor, 25)
+                            // border: 1px solid $primaryColor
                             background: rgba(0,0,0,0)
-                            opacity: 0.5
+                            opacity: .2
+                            // box-shadow: 0 0 20px 0 $primaryColor inset
+                            // box-shadow: 0 0 40px 0 #000 inset
                     .image
                         position: absolute
                         margin-top: -400px

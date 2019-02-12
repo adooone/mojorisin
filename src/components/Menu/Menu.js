@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    SwipeableDrawer,
+    Drawer,
     // SwipeableDrawer,
     List,
     ListItem,
@@ -37,7 +37,7 @@ class Menu extends Component {
         const { dict } = this.props;
         console.log(this.props);
         return (
-            <SwipeableDrawer
+            <Drawer
                 PaperProps={ { className: 'menu' } }
                 variant='persistent'
                 anchor='left'
@@ -78,7 +78,7 @@ class Menu extends Component {
                     </Button>
                 </div>
                 {/* </Scrollbars> */}
-            </SwipeableDrawer>
+            </Drawer>
         );
     }
 }

@@ -6,10 +6,17 @@ import {
     IconButton,
     Icon,
     // AppBar,
-    Toolbar,
+    // Toolbar,
+    Button,
 } from '@material-ui/core';
-import { OPEN_MENU } from '../../redux/actions/actions';
-// import Modules from '../../description/modules';
+import {
+    OPEN_MENU,
+    OPEN_MODULE,
+    CLOSE_MENU,
+} from '../../redux/actions/actions';
+import Modules from '../../description/modules';
+// import Logo from '../Logo/Logo';
+import LogoSVG from '../Logo/LogoSVG';
 
 class AppToolbar extends Component {
     constructor(props) {
@@ -28,17 +35,41 @@ class AppToolbar extends Component {
         return (
             <>
                 <header>
-                    <Toolbar>
-                        <IconButton
-                            onClick={ this.handleOpenMenu }
-                            color='primary'
-                        >
-                            <Icon>menu</Icon>
-                        </IconButton>
-                        <div className={ classnames('appBarCaption', ifMenuOpened) }>
-                            { dict.translate(this.props.selectedModule.caption) }
+                    <div className='toolbar'>
+                        <div className='mobileVersionBlock'>
+                            <div className='mobileAppBar'>
+                                <IconButton
+                                    onClick={ this.handleOpenMenu }
+                                    color='primary'
+                                >
+                                    <Icon>menu</Icon>
+                                </IconButton>
+                                <div className={ classnames('appBarCaption', ifMenuOpened) }>
+                                    {dict.translate(this.props.selectedModule.caption)}
+                                </div>
+                            </div>
                         </div>
-                    </Toolbar>
+                        <div className='desktopVersionBlock'>
+                            <div className='desktopAppBar'>
+                                <div className='desktopLogo'>
+                                    <LogoSVG />
+                                </div>
+                                <div className='desktopTopMenu'>
+                                    {Modules.map((module) => (
+                                        <Button
+                                            onClick={ () => {
+                                                this.props.dispatch(OPEN_MODULE(module));
+                                                if (window.visualViewport.width < 600) this.props.dispatch(CLOSE_MENU());
+                                            } }
+                                            key={ module.name }
+                                        >
+                                            {dict.translate(module.caption)}
+                                        </Button>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </header>
                 <div className='headerWrap' />
             </>

@@ -7,7 +7,7 @@ import { LANG_EN } from '../../consts/generalConsts';
 import Modules from '../../description/modules';
 
 const initialState = Immutable({
-    isMenuOpened: true,
+    isMenuOpened: false,
     selectedModule: Modules[0],
     userParams: {
         lang: LANG_EN,

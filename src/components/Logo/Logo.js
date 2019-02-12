@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
+import LogoPNG from '../../img/logo.png';
+// import ReactSVG from 'react-svg';
 
 class Logo extends Component {
     render() {
         return (
             <div className='Logo'>
-                {/* <div style={ { fontSize: 35, display: 'inline' } }>JO.</div>
-                <div className='main'>
-                    {'RISIN'}
-                </div>
-                <div className='add'>PRODUCTION</div> */}
+                <img src={ LogoPNG } alt='logoPNG' />
             </div>
         );
     }

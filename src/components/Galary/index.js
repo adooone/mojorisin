@@ -25,6 +25,7 @@ class Galary extends Component {
     }
     render() {
         return (
+            // <Paper />
             <div className='galary'>
                 {/* <Scroller vertical> */}
                 <Scrollbars className='galaryScroller'>
