@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { MODULE_PHOTOS, MODULE_VIDEOS, MODULE_ABOUT, MODULE_CONTACTS } from '../../consts/generalConsts';
@@ -9,6 +9,8 @@ import Videos from './Videos/index';
 // import Scroller from '../Scroller/index';
 import About from './About/index';
 import Contacts from './Contacts';
+import Home from './Home';
+// import LogoSVG from '../Logo/LogoSVG';
 
 class Galary extends Component {
     constructor(props) {
@@ -32,15 +34,16 @@ class Galary extends Component {
         return (
             // <Paper />
             <div className='galary'>
-                {/* <Scroller vertical> */}
                 <Scrollbars className='galaryScroller'>
                     {/* { this.getContent() } */}
-                    <Route path='/photos' render={ () => <Photos /> } />
-                    <Route path='/videos' render={ () => <Videos /> } />
-                    <Route path='/contacts' render={ () => <Contacts /> } />
-                    <Route path='/about' render={ () => <About /> } />
+                    <Switch>
+                        <Route exact path='/photos' render={ () => <Photos /> } />
+                        <Route exact path='/videos' render={ () => <Videos /> } />
+                        <Route exact path='/contacts' render={ () => <Contacts /> } />
+                        <Route exact path='/about' render={ () => <About /> } />
+                        <Route exact path='/' render={ () => <Home /> } />
+                    </Switch>
                 </Scrollbars>
-                {/* </Scroller> */}
             </div>
         );
     }
@@ -64,4 +67,4 @@ function select(store) {
     };
 }
 
-export default connect(select)(Galary);
+export default withRouter(connect(select)(Galary));

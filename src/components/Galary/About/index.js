@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ModuleWrapper from '../wrapper';
@@ -24,4 +25,4 @@ function select(/* store */) {
     return { };
 }
 
-export default connect(select)(About);
+export default withRouter(connect(select)(About));

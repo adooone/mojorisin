@@ -6,7 +6,7 @@ import {
     MuiThemeProvider,
     //
 } from '@material-ui/core/styles';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import './sass/main.sass';
@@ -19,11 +19,11 @@ const history = createBrowserHistory();
 const render = (MyApp) => {
     ReactDOM.render(
         <Provider store={ store }>
-            <MuiThemeProvider theme={ theme }>
-                <Router history={ history }>
+            <Router history={ history }>
+                <MuiThemeProvider theme={ theme }>
                     <MyApp />
-                </Router>
-            </MuiThemeProvider>
+                </MuiThemeProvider>
+            </Router>
         </Provider>,
         document.getElementById('root')
     );

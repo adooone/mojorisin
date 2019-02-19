@@ -61,13 +61,12 @@ class AppToolbar extends Component {
                                 </div>
                                 <div className='desktopTopMenu'>
                                     {Modules.map((module) => (
-                                        <Link to={ module.path }>
+                                        <Link to={ module.path } key={ module.name }>
                                             <Button
                                                 onClick={ () => {
                                                     this.props.dispatch(OPEN_MODULE(module));
                                                     if (window.visualViewport.width < 600) this.props.dispatch(CLOSE_MENU());
                                                 } }
-                                                key={ module.name }
                                             >
                                                 {dict.translate(module.caption)}
                                             </Button>

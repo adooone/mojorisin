@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 // import classnames from 'classnames';
 import {
     Grid,
@@ -26,9 +27,10 @@ class Photos extends Component {
                     container
                     spacing={ 0 }
                 >
-                    {_.map(photos.albums[0].images, (obj) => {
+                    {_.map(photos.albums[0].images, (obj, i) => {
                         return (
                             <Grid
+                                key={ i }
                                 item
                                 xs={ 12 }
                                 sm={ obj.portrait ? 3 : 3 }
@@ -68,4 +70,4 @@ function select(store) {
     };
 }
 
-export default connect(select)(Photos);
+export default withRouter(connect(select)(Photos));

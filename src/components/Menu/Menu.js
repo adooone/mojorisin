@@ -8,6 +8,7 @@ import {
     Button,
     // Icon,
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 // import { Scrollbars } from 'react-custom-scrollbars';
@@ -50,16 +51,18 @@ class Menu extends Component {
                 </div>
                 <List>
                     {Modules.map((module) => (
-                        <ListItem
-                            onClick={ () => {
-                                this.props.dispatch(OPEN_MODULE(module));
-                                if (window.visualViewport.width < 600) this.props.dispatch(CLOSE_MENU());
-                            } }
-                            button
-                            key={ module.name }
-                        >
-                            <ListItemText primary={ dict.translate(module.caption) } />
-                        </ListItem>
+                        <Link to={ module.path } key={ module.name }>
+                            <ListItem
+                                onClick={ () => {
+                                    this.props.dispatch(OPEN_MODULE(module));
+                                    if (window.visualViewport.width < 600) this.props.dispatch(CLOSE_MENU());
+                                } }
+                                button
+                                key={ module.name }
+                            >
+                                <ListItemText primary={ dict.translate(module.caption) } />
+                            </ListItem>
+                        </Link>
                     ))}
                 </List>
                 <div className='langContainer'>
