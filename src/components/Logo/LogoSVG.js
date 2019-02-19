@@ -6,17 +6,24 @@ import Logo from '../../img/logodarkf.svg';
 class LogoSVG extends Component {
     render() {
         return (
-            <img height={ this.props.size } src={ Logo } alt='logo' />
+            <img
+                height={ !this.props.width ? this.props.size : null }
+                width={ this.props.width }
+                src={ Logo }
+                alt='logo'
+            />
         );
     }
 }
 
 LogoSVG.propTypes = {
     size: PropTypes.number,
+    width: PropTypes.number,
     //
 };
 LogoSVG.defaultProps = {
     size: 48,
+    width: null,
     //
 };
 

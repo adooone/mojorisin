@@ -10,6 +10,7 @@ module.exports = {
     devServer: {
         contentBase: './docs',
         hot: true,
+        historyApiFallback: true,
     },
     output: {
         filename: 'bundle.js',

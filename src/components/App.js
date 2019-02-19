@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { Route } from 'react-router-dom';
 import { OPEN } from '../redux/actions/actions';
 // import Galary from './Galary';
 import AppToolbar from './AppToolbar/index';
@@ -8,6 +9,7 @@ import Menu from './Menu/Menu';
 // import { LANG_RU } from '../consts/generalConsts';
 // import Context from './Context/index';
 import Galary from './Galary/index';
+import LogoSVG from './Logo/LogoSVG';
 
 class App extends Component {
     componentDidMount() {
@@ -23,6 +25,7 @@ class App extends Component {
                 {/* <Context.Provider value={ { lang: LANG_RU } }> */}
                 <AppToolbar />
                 <Menu />
+                <Route exact path='/' render={ () => <LogoSVG width='100%' /> } />
                 <Galary />
                 {/* </Context.Provider> */}
             </div>

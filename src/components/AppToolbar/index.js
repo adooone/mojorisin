@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import {
     IconButton,
@@ -60,15 +61,17 @@ class AppToolbar extends Component {
                                 </div>
                                 <div className='desktopTopMenu'>
                                     {Modules.map((module) => (
-                                        <Button
-                                            onClick={ () => {
-                                                this.props.dispatch(OPEN_MODULE(module));
-                                                if (window.visualViewport.width < 600) this.props.dispatch(CLOSE_MENU());
-                                            } }
-                                            key={ module.name }
-                                        >
-                                            {dict.translate(module.caption)}
-                                        </Button>
+                                        <Link to={ module.path }>
+                                            <Button
+                                                onClick={ () => {
+                                                    this.props.dispatch(OPEN_MODULE(module));
+                                                    if (window.visualViewport.width < 600) this.props.dispatch(CLOSE_MENU());
+                                                } }
+                                                key={ module.name }
+                                            >
+                                                {dict.translate(module.caption)}
+                                            </Button>
+                                        </Link>
                                     ))}
                                 </div>
                             </div>

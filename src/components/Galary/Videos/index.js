@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import classnames from 'classnames';
-import {
-    Toolbar,
-    // IconButton,
-    // Icon,
-} from '@material-ui/core';
+// import {
+//     Toolbar,
+//     // IconButton,
+//     // Icon,
+// } from '@material-ui/core';
+import ModuleWrapper from '../wrapper';
 
 class Videos extends Component {
     text() {
@@ -22,17 +23,17 @@ class Videos extends Component {
     }
     render() {
         return (
-            <div className='videoGallary'>
-                <Toolbar>
-                    <p className='effect'>
-                        {
-                            _.map(this.text(), (item) => {
-                                return `${ item } `;
-                            })
-                        }
-                    </p>
-                </Toolbar>
-            </div>
+            <ModuleWrapper className='videoGallary'>
+                {/* <Toolbar> */}
+                <p className='effect'>
+                    {
+                        _.map(this.text(), (item) => {
+                            return `${ item } `;
+                        })
+                    }
+                </p>
+                {/* </Toolbar> */}
+            </ModuleWrapper>
         );
     }
 }

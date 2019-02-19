@@ -6,18 +6,23 @@ import {
     MuiThemeProvider,
     //
 } from '@material-ui/core/styles';
+import { BrowserRouter as Router } from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory';
+
 import './sass/main.sass';
 // import reducer from './redux/reducer/reducer';
 import { theme } from './theme/styles';
 import App from './components/App';
 import store from './redux/store/store';
 
-// const store = createStore(reducer);
+const history = createBrowserHistory();
 const render = (MyApp) => {
     ReactDOM.render(
         <Provider store={ store }>
             <MuiThemeProvider theme={ theme }>
-                <MyApp />
+                <Router history={ history }>
+                    <MyApp />
+                </Router>
             </MuiThemeProvider>
         </Provider>,
         document.getElementById('root')

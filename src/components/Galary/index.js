@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { Scrollbars } from 'react-custom-scrollbars';
-import { MODULE_PHOTOS, MODULE_VIDEOS } from '../../consts/generalConsts';
+import { MODULE_PHOTOS, MODULE_VIDEOS, MODULE_ABOUT, MODULE_CONTACTS } from '../../consts/generalConsts';
 import Photos from './Photos';
 import Videos from './Videos/index';
 // import Scroller from '../Scroller/index';
+import About from './About/index';
+import Contacts from './Contacts';
 
 class Galary extends Component {
     constructor(props) {
@@ -18,6 +21,8 @@ class Galary extends Component {
         switch (module.name) {
         case MODULE_PHOTOS: { return <Photos />; }
         case MODULE_VIDEOS: { return <Videos />; }
+        case MODULE_CONTACTS: { return <Contacts />; }
+        case MODULE_ABOUT: { return <About />; }
         default: {
             return null;
         }
@@ -29,7 +34,11 @@ class Galary extends Component {
             <div className='galary'>
                 {/* <Scroller vertical> */}
                 <Scrollbars className='galaryScroller'>
-                    { this.getContent() }
+                    {/* { this.getContent() } */}
+                    <Route path='/photos' render={ () => <Photos /> } />
+                    <Route path='/videos' render={ () => <Videos /> } />
+                    <Route path='/contacts' render={ () => <Contacts /> } />
+                    <Route path='/about' render={ () => <About /> } />
                 </Scrollbars>
                 {/* </Scroller> */}
             </div>
