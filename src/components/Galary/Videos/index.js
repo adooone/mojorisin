@@ -17,7 +17,7 @@ class Videos extends Component {
         const words = ['mojorisin', 'video', 'gallary'];
         const res = [];
         while (index !== size) {
-            res[index] = words[_.random(0, 3)];
+            res[index] = words[_.random(0, 2)];
             index++;
         }
         return res;

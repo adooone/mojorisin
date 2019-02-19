@@ -52,13 +52,15 @@ class AppToolbar extends Component {
                         </div>
                         <div className='desktopVersionBlock'>
                             <div className='desktopAppBar'>
-                                <div className='desktopLogo'>
-                                    <LogoSVG size={ 30 } />
-                                    <p style={ { paddingLeft: 17, fontSize: 17 } }>
-                                        { 'RISIN PRODUCTION' }
-                                        {/* <span style={ { paddingLeft: 17, fontSize: 17 } }>PRODUCTION</span> */}
-                                    </p>
-                                </div>
+                                <Link to='/'>
+                                    <div className='desktopLogo'>
+                                        <LogoSVG size={ 30 } />
+                                        <p style={ { paddingLeft: 17, fontSize: 17 } }>
+                                            { 'RISIN PRODUCTION' }
+                                            {/* <span style={ { paddingLeft: 17, fontSize: 17 } }>PRODUCTION</span> */}
+                                        </p>
+                                    </div>
+                                </Link>
                                 <div className='desktopTopMenu'>
                                     {Modules.map((module) => (
                                         <Link to={ module.path } key={ module.name }>
