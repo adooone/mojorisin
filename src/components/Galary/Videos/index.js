@@ -9,11 +9,28 @@ import {
 } from '@material-ui/core';
 
 class Videos extends Component {
+    text() {
+        const size = 1600;
+        let index = 0;
+        const words = ['mojorisin', 'video', 'gallary'];
+        const res = [];
+        while (index !== size) {
+            res[index] = words[_.random(0, 3)];
+            index++;
+        }
+        return res;
+    }
     render() {
         return (
-            <div>
+            <div className='videoGallary'>
                 <Toolbar>
-                    <p>Video Galary</p>
+                    <p className='effect'>
+                        {
+                            _.map(this.text(), (item) => {
+                                return `${ item } `;
+                            })
+                        }
+                    </p>
                 </Toolbar>
             </div>
         );

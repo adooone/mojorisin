@@ -74,5 +74,11 @@ export const theme = createMuiTheme({
                 //
             },
         },
+        MuiButton: {
+            root: {
+                margin: 8,
+                //
+            },
+        },
     },
 });

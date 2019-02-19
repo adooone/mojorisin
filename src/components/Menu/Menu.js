@@ -11,7 +11,7 @@ import {
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 // import { Scrollbars } from 'react-custom-scrollbars';
-import Logo from '../Logo/Logo';
+// import Logo from '../Logo/Logo';
 import {
     CLOSE_MENU,
     OPEN_MODULE,
@@ -19,6 +19,7 @@ import {
 } from '../../redux/actions/actions';
 import Modules from '../../description/modules';
 import { LANG_RU, LANG_EN } from '../../consts/generalConsts';
+import LogoSVG from '../Logo/LogoSVG';
 
 class Menu extends Component {
     constructor(props) {
@@ -44,7 +45,9 @@ class Menu extends Component {
                 open={ this.props.opened }
             >
                 {/* <Scrollbars style={ { height: 500, width: 400 } }> */}
-                <Logo />
+                <div className='logoContainer'>
+                    <LogoSVG size={ 60 } />
+                </div>
                 <List>
                     {Modules.map((module) => (
                         <ListItem
