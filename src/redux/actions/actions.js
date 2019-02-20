@@ -22,6 +22,15 @@ export const OPEN_MODULE = (module) => {
         module,
     };
 };
+export const OPEN_ALBUM = (album) => {
+    return {
+        type: ActionTypes.OPEN_ALBUM,
+        album,
+    };
+};
+export const CLOSE_ALBUMS = () => {
+    return { type: ActionTypes.CLOSE_ALBUMS };
+};
 export const CHANGE_LANG = (lang) => {
     return {
         type: ActionTypes.CHANGE_LANG,

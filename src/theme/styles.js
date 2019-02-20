@@ -77,6 +77,7 @@ export const theme = createMuiTheme({
         MuiButton: {
             root: {
                 margin: 8,
+                borderRadius: 0,
                 //
             },
         },

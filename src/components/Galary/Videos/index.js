@@ -14,7 +14,7 @@ class Videos extends Component {
     text() {
         const size = 1600;
         let index = 0;
-        const words = ['mojorisin', 'video', 'gallary'];
+        const words = ['пиздуй', 'на хуй', 'отсюда'];
         const res = [];
         while (index !== size) {
             res[index] = words[_.random(0, 2)];

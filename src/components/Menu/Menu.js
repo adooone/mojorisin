@@ -37,7 +37,6 @@ class Menu extends Component {
     }
     render() {
         const { dict } = this.props;
-        console.log(this.props);
         return (
             <Drawer
                 PaperProps={ { className: 'menu' } }

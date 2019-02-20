@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // import ModuleWrapper from '../wrapper';
-import { Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core';
 import LogoSVG from '../../Logo/LogoSVG';
 // import classnames from 'classnames';
 // import {
@@ -15,13 +15,13 @@ import LogoSVG from '../../Logo/LogoSVG';
 class Home extends Component {
     render() {
         return (
-            <div className='homePage'>
+            // <div className='homePage'>
+            <Link to='/photos' className='homePage'>
+                {/* <Button color='primary'>Welcome to my portfolio</Button> */}
                 <LogoSVG width='40%' />
                 <p className='homeCaptionName'>RISIN PRODUCTION</p>
-                <Link to='/photos'>
-                    <Button color='primary'>Welcome to my portfolio</Button>
-                </Link>
-            </div>
+            </Link>
+            // </div>
         );
     }
 }

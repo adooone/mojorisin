@@ -11,10 +11,10 @@ import Galary from './Galary/index';
 
 class App extends Component {
     componentDidMount() {
-        const isMobile = window.screen.width < 600;
-        if (isMobile) console.log('using MOBILE version');
-        else console.log('using DESKTOP version');
-        window.onload = () => { console.log('loaded'); };
+        // const isMobile = window.screen.width < 600;
+        // if (isMobile) console.log('using MOBILE version');
+        // else console.log('using DESKTOP version');
+        // window.onload = () => { console.log('loaded'); };
         this.props.dispatch(OPEN());
     }
     render() {

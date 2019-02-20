@@ -17,8 +17,8 @@ class LogoSVG extends Component {
 }
 
 LogoSVG.propTypes = {
-    size: PropTypes.number,
-    width: PropTypes.number,
+    size: PropTypes.any,
+    width: PropTypes.any,
     //
 };
 LogoSVG.defaultProps = {

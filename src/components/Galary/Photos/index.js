@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Route } from 'react-router-dom';
 // import classnames from 'classnames';
 import {
     Grid,
@@ -10,62 +10,95 @@ import {
     //
 } from '@material-ui/core';
 import photos from '../../../description/photos';
+import Album from './album';
+import { CLOSE_ALBUMS } from '../../../redux/actions/actions';
 
 class Photos extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
-    render() {
-        // const { dict } = this.props;
+    constructor(props) {
+        super(props);
+        this.getAlbums = this.getAlbums.bind(this);
+    }
+    componentDidUpdate() {
+        console.log(this.props.match.isExact);
+        if (this.props.match.isExact) this.props.dispatch(CLOSE_ALBUMS());
+    }
+    getAlbums() {
         return (
-            <div className='galaryContainer'>
-                {/* <Toolbar>
-                    <p>Album 1</p>
-                </Toolbar> */}
-                <Grid
-                    className='photosContainer'
-                    container
-                    spacing={ 0 }
-                >
-                    {_.map(photos.albums[0].images, (obj, i) => {
-                        return (
-                            <Grid
-                                key={ i }
-                                item
-                                xs={ 12 }
-                                sm={ obj.portrait ? 3 : 3 }
-                            >
-                                <div className='photo'>
-                                    <div className='photoHoverEffect' />
-                                    <img
-                                        className='image'
-                                        src={ obj.src }
-                                        alt={ obj.name }
-                                        // style={ { height: '100%' } }
-                                    />
-                                </div>
-                            </Grid>
-                        );
-                    })}
-                </Grid>
+            <div className='albums'>
+                {_.map(photos.albums, (album, i) => {
+                    return (
+                        <Album
+                            name={ album.name }
+                            background={ album.background }
+                            key={ i }
+                        />
+                    );
+                })}
+            </div>
+        );
+    }
+    getPhotos({ match }) {
+        const album = _.find(photos.albums, o => {
+            return o.name === match.params.name;
+        });
+        return (
+            <Grid
+                className='photosContainer'
+                container
+                spacing={ 0 }
+            >
+                {album && _.map(album.images, (obj, i) => {
+                    return (
+                        <Grid key={ i } item xs={ 6 } sm={ 3 }>
+                            <div className='photo'>
+                                <div className='photoHoverEffect' />
+                                <img
+                                    className='image'
+                                    src={ obj.src }
+                                    alt={ obj.name }
+                                />
+                            </div>
+                        </Grid>
+                    );
+                })}
+            </Grid>
+        );
+    }
+    render() {
+        const { selectedAlbum } = this.props;
+        return (
+            <div className='photosContainer'>
+                { !selectedAlbum && this.getAlbums() }
+                <Route
+                    path='/photos/:name'
+                    render={ this.getPhotos }
+                />
             </div>
         );
     }
 }
 
-// Photos.propTypes = {
-//     // dict: PropTypes.object.isRequired,
-//     // opened: PropTypes.bool.isRequired,
-//     // dispatch: PropTypes.func.isRequired,
-//     // selectedModule: PropTypes.object.isRequired,
-//     //
-// };
+Photos.propTypes = {
+    // dict: PropTypes.object.isRequired,
+    // opened: PropTypes.bool.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    // selectedModule: PropTypes.object.isRequired,
+    selectedAlbum: PropTypes.object,
+    match: PropTypes.object.isRequired,
+    //
+};
+
+Photos.defaultProps = {
+    selectedAlbum: false,
+    //
+};
 
 function select(store) {
     return {
         opened: store.viewReducer.isMenuOpened,
         selectedModule: store.viewReducer.selectedModule,
         dict: store.viewReducer.dict,
+        selectedAlbum: store.viewReducer.selectedAlbum,
         //
     };
 }

@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { Scrollbars } from 'react-custom-scrollbars';
+import {
+    // TransitionGroup,
+    CSSTransition,
+} from 'react-transition-group';
+
 import { MODULE_PHOTOS, MODULE_VIDEOS, MODULE_ABOUT, MODULE_CONTACTS } from '../../consts/generalConsts';
 import Photos from './Photos';
 import Videos from './Videos/index';
@@ -33,18 +38,20 @@ class Galary extends Component {
     render() {
         return (
             // <Paper />
-            <div className='galary'>
-                <Scrollbars className='galaryScroller'>
-                    {/* { this.getContent() } */}
-                    <Switch>
-                        <Route exact path='/photos' render={ () => <Photos /> } />
-                        <Route exact path='/videos' render={ () => <Videos /> } />
-                        <Route exact path='/contacts' render={ () => <Contacts /> } />
-                        <Route exact path='/about' render={ () => <About /> } />
-                        <Route exact path='/' render={ () => <Home /> } />
-                    </Switch>
-                </Scrollbars>
-            </div>
+            <CSSTransition timeout={ 200 }>
+                <div className='galary'>
+                    <Scrollbars className='galaryScroller'>
+                        {/* { this.getContent() } */}
+                        <Switch>
+                            <Route path='/photos' render={ () => <Photos /> } />
+                            <Route path='/videos' render={ () => <Videos /> } />
+                            <Route path='/contacts' render={ () => <Contacts /> } />
+                            <Route path='/about' render={ () => <About /> } />
+                            <Route exact path='*' render={ () => <Home /> } />
+                        </Switch>
+                    </Scrollbars>
+                </div>
+            </CSSTransition>
         );
     }
 }

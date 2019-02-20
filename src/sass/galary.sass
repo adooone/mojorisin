@@ -31,6 +31,7 @@
         left: 0
         width: 100%
         height: 100%
+        cursor: default
         .homeCaptionName
             margin: 20px
             font-size: 96.5px
@@ -41,42 +42,93 @@
     .galaryScroller
         width: 100%
         height: 100%
+        .photosContainer
+            height: 100%
+            .albums
+                display: flex
+                justify-content: space-around
+                align-items: stretch
+                width: 100%
+                height: 100%
+                @media #{$media-phones}
+                    flex-direction: column
+                .albumLink
+                    width: 100%
+                    height: 100%
+                    @media #{$media-phones}
+                        height: 33%
+                .albumBackground
+                    width: 100%
+                    height: 100%
+                    background-position: -300px
+                    @media #{$media-phones}
+                        background-position: center
+                        background-size: 100%
+                .album
+                    // border: 1px solid $defaultColor
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    width: 100%
+                    height: 100%
+                    font-size: 40px
+                    transition: all .3s ease
+                    opacity: .5
+                    background: rgba(0,0,0,0.0)
+                    margin: 0
+                    @media #{$media-phones}
+                        opacity: 1
+                        background: rgba(0,0,0,0.7)
+                        height: 100%
+                    &:hover
+                        background: rgba(0,0,0,0.7)
+                        opacity: 1
+                        p
+                            margin-top: 0px
+                            opacity: 1
+                    p
+                        margin-top: 200px
+                        text-align: justify
+                        word-wrap: break-word
+                        transition: opacity .5s ease, margin-top .3s ease
+                        opacity: 0
+                        @media #{$media-phones}
+                            opacity: 1
+            .photo
+                background: $colorText
+                height: 400px
+                overflow: hidden
+                box-sizing: border-box
+                @media #{$media-phones}
+                    height: 200px
+                .photoHoverEffect
+                    background: rgba(0,0,0,0.3)
+                    position: relative
+                    width: 100%
+                    height: 100%
+                    // border: 20px solid rgba(0,0,0,0)
+                    transition: all .3s ease
+                    z-index: 2
+                    @media #{$media-phones}
+                        background: none
+                        border-radius: 0
+                    &:hover
+                        // border: 1px solid $primaryColor
+                        background: rgba(0,0,0,0)
+                        opacity: .2
+                        // box-shadow: 0 0 20px 0 $primaryColor inset
+                        // box-shadow: 0 0 40px 0 #000 inset
+                .image
+                    position: absolute
+                    margin-top: -400px
+                    height: 400px
+                    @media #{$media-phones}
+                        margin-top: -300px
+                        height: 300px
+                    z-index: 1
         .galaryContainer
             width: 100%
+            height: 100%
             // padding: 0px 88px
             @media #{$media-phones}
                 // padding: 0px 26px
-            .photosContainer
-                // padding: 26px 0px
-                .photo
-                    background: $colorText
-                    height: 400px
-                    overflow: hidden
-                    box-sizing: border-box
-                    @media #{$media-phones}
-                        height: 300px
-                    .photoHoverEffect
-                        background: rgba(0,0,0,0.3)
-                        position: relative
-                        width: 100%
-                        height: 100%
-                        // border: 20px solid rgba(0,0,0,0)
-                        transition: all .3s ease
-                        z-index: 2
-                        @media #{$media-phones}
-                            background: none
-                            border-radius: 0
-                        &:hover
-                            // border: 1px solid $primaryColor
-                            background: rgba(0,0,0,0)
-                            opacity: .2
-                            // box-shadow: 0 0 20px 0 $primaryColor inset
-                            // box-shadow: 0 0 40px 0 #000 inset
-                    .image
-                        position: absolute
-                        margin-top: -400px
-                        height: 400px
-                        @media #{$media-phones}
-                            margin-top: -300px
-                            height: 300px
-                        z-index: 1
