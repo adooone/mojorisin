@@ -22,6 +22,19 @@ class Photos extends Component {
         console.log(this.props.match.isExact);
         if (this.props.match.isExact) this.props.dispatch(CLOSE_ALBUMS());
     }
+    render() {
+        const { match, selectedAlbum } = this.props;
+        console.log(selectedAlbum);
+        return (
+            <div className='photosContainer'>
+                <Route exact path={ match.url } render={ this.getAlbums } />
+                <Route
+                    path='/photos/:name'
+                    render={ this.getPhotos }
+                />
+            </div>
+        );
+    }
     getAlbums() {
         return (
             <div className='albums'>
@@ -40,6 +53,7 @@ class Photos extends Component {
     getPhotos({ match }) {
         const album = _.find(photos.albums, o => {
             return o.name === match.params.name;
+            // return o.name === name;
         });
         return (
             <Grid
@@ -62,18 +76,6 @@ class Photos extends Component {
                     );
                 })}
             </Grid>
-        );
-    }
-    render() {
-        const { selectedAlbum } = this.props;
-        return (
-            <div className='photosContainer'>
-                { !selectedAlbum && this.getAlbums() }
-                <Route
-                    path='/photos/:name'
-                    render={ this.getPhotos }
-                />
-            </div>
         );
     }
 }

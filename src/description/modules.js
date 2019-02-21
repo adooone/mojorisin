@@ -1,4 +1,5 @@
 import {
+    MODULE_HOME,
     MODULE_PHOTOS,
     MODULE_VIDEOS,
     MODULE_CONTACTS,
@@ -6,6 +7,12 @@ import {
 } from '../consts/generalConsts';
 
 const Modules = [
+    {
+        name: MODULE_HOME,
+        path: '',
+        icon: 'change_history',
+        caption: 'modules.home',
+    },
     {
         name: MODULE_PHOTOS,
         path: 'photos',

@@ -11,6 +11,7 @@ const initialState = Immutable({
     isMenuOpened: false,
     selectedModule: Modules[0],
     selectedAlbum: null,
+    loading: true,
     userParams: {
         lang: LANG_EN,
         //
@@ -23,7 +24,7 @@ const viewReducer = createReducer(initialState, {
         return initialState;
     },
     [ActionTypes.OPEN](state) {
-        return state;
+        return state.set('loading', false);
     },
     [ActionTypes.OPEN_MENU](state) {
         return state.set('isMenuOpened', true);

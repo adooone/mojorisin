@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import classnames from 'classnames';
 import { OPEN_ALBUM } from '../../../redux/actions/actions';
 import photos from '../../../description/photos';
 // import classnames from 'classnames';
@@ -12,20 +13,30 @@ import photos from '../../../description/photos';
 // } from '@material-ui/core';
 
 class Album extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { clicked: false };
+    }
     render() {
         const album = _.find(photos.albums, (o) => {
             return o.name === this.props.name;
         });
         return (
-            <Link to={ `/photos/${ album.name }` } className='albumLink'>
-                <div className='albumBackground' style={ { backgroundImage: `url(${ this.props.background })` } }>
-                    <Button
-                        className='album'
-                        onClick={ () => this.props.dispatch(OPEN_ALBUM(album)) }
-                    >
-                        <p>{this.props.name}</p>
-                    </Button>
-                </div>
+            <Link
+                to={ `/photos/${ album.name }` }
+                // className={ `albumLink${ this.state.clicked ? '.clicked' : '' }` }
+                className={ classnames('albumLink', { 'albumLinkClicked': this.state.clicked }) }
+            >
+                <div className='albumBackground' style={ { backgroundImage: `url(${ this.props.background })` } } />
+                <Button
+                    className='album'
+                    onClick={ () => {
+                        this.setState({ clicked: true });
+                        this.props.dispatch(OPEN_ALBUM(album));
+                    } }
+                >
+                    <p>{this.props.name}</p>
+                </Button>
             </Link>
         );
     }
