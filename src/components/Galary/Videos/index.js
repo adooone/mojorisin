@@ -8,7 +8,9 @@ import { withRouter } from 'react-router-dom';
 //     // IconButton,
 //     // Icon,
 // } from '@material-ui/core';
-import ModuleWrapper from '../wrapper';
+// import ModuleWrapper from '../wrapper';
+import Carousel from './Corousel/index';
+import videos from '../../../description/videos';
 
 class Videos extends Component {
     text(words) {
@@ -24,19 +26,26 @@ class Videos extends Component {
     }
     render() {
         return (
-            <ModuleWrapper className='videoGallary'>
-                {/* <Toolbar> */}
-                <p className='effect'>
-                    {
-                        _.map(this.text(['mojo', 'risin', 'photos', 'videos', 'production']), (item) => {
-                            return `${ item } `;
-                        })
-                    }
-                </p>
-                {/* </Toolbar> */}
-            </ModuleWrapper>
+            <div className='CarouselHolder'>
+                <Carousel slides={ videos } />
+            </div>
         );
     }
+    // render() {
+    //     return (
+    //         <ModuleWrapper className='videoGallary'>
+    //             {/* <Toolbar> */}
+    //             <p className='effect'>
+    //                 {
+    //                     _.map(this.text(['mojo', 'risin', 'photos', 'videos', 'production']), (item) => {
+    //                         return `${ item } `;
+    //                     })
+    //                 }
+    //             </p>
+    //             {/* </Toolbar> */}
+    //         </ModuleWrapper>
+    //     );
+    // }
 }
 
 //Videos.propTypes = {

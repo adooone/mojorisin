@@ -23,10 +23,10 @@ class Galary extends Component {
                         {/* { this.getContent() } */}
                         <Switch>
                             <Route path='/photos' render={ () => <Photos /> } />
-                            <Route path='/videos' render={ () => <Videos /> } />
+                            <Route path='*' render={ () => <Videos /> } />
                             <Route path='/contacts' render={ () => <Contacts /> } />
                             <Route path='/about' render={ () => <About /> } />
-                            <Route exact path='*' render={ () => <Home /> } />
+                            <Route exact path='/videos' render={ () => <Home /> } />
                         </Switch>
                     </Scrollbars>
                 </div>

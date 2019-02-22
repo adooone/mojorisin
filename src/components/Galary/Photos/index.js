@@ -19,6 +19,9 @@ class Photos extends Component {
         super(props);
         this.getAlbums = this.getAlbums.bind(this);
     }
+    componentWillMount() {
+        console.log('will mount');
+    }
     componentDidUpdate() {
         console.log(this.props.match.isExact);
         if (this.props.match.isExact) this.props.dispatch(CLOSE_ALBUMS());

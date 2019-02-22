@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import classnames from 'classnames';
+// import classnames from 'classnames';
 import {
     Button,
     // IconButton,
@@ -14,14 +14,17 @@ class Photo extends Component {
         this.state = { opened: false };
         this.handleOpen = this.handleOpen.bind(this);
     }
-    handleOpen() {
+    render() {
+        // const { obj } = this.props;
+        return this.state.opened ? this.renderOpened() : this.renderItem();
+    }
+    handleOpen = () => {
         this.setState({ opened: true });
     }
-    render() {
+    renderItem = () => {
         const { obj } = this.props;
-        const { opened } = this.state;
         return (
-            <div className={ classnames('photo', { 'photoOpened': opened }) }>
+            <div className='photo'>
                 <div className='photoHoverEffect' />
                 <img
                     className='image'
@@ -34,6 +37,18 @@ class Photo extends Component {
                 >
                     <p>{obj.name}</p>
                 </Button>
+            </div>
+        );
+    }
+    renderOpened = () => {
+        const { obj } = this.props;
+        return (
+            <div className='photoOpened'>
+                <img
+                    className='image'
+                    src={ obj.src }
+                    alt={ obj.name }
+                />
             </div>
         );
     }

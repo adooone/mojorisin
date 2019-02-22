@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
     Button,
+    Icon,
+    IconButton,
     // TextField,
     // IconButton,
     // Icon,
@@ -28,11 +30,22 @@ class Toolbar extends Component {
         this.props.dispatch(OPEN_MODULE(module));
         if (window.visualViewport.width < 600) this.props.dispatch(CLOSE_MENU());
     }
-    ModuleBtn = (module, caption) => (
-        <Button onClick={ () => this.openModule(module) }>
-            { caption }
-        </Button>
-    )
+    ModuleBtn = (module, caption) => {
+        if (module.name === 'Home') {
+            return (
+                // <div style={ { marginRight: 10, paddingRight: 10, borderRight: '1px solid white' } }>
+                <IconButton>
+                    <Icon>home</Icon>
+                </IconButton>
+                // </div>
+            );
+        }
+        return (
+            <Button onClick={ () => this.openModule(module) }>
+                {caption}
+            </Button>
+        );
+    }
     render() {
         const { dict/* , selectedModule, opened */ } = this.props;
         return (
