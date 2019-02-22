@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { /* Link,  */withRouter } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 // import ModuleWrapper from '../wrapper';
 // import { Button } from '@material-ui/core';
 import LogoSVG from '../../Logo/LogoSVG';
+// import { randomText } from '../../Helpers/functions';
 // import classnames from 'classnames';
 // import {
 // IconButton,
@@ -15,13 +16,18 @@ import LogoSVG from '../../Logo/LogoSVG';
 class Home extends Component {
     render() {
         return (
-            // <div className='homePage'>
-            <Link to='/photos' className='homePage'>
+            <div className='homePage'>
+                {/* <Link to='/photos' className='homePage'> */}
                 {/* <Button color='primary'>Welcome to my portfolio</Button> */}
-                <LogoSVG width='40%' />
+                {/* <div> */}
+                <LogoSVG width='30%' />
                 <p className='homeCaptionName'>RISIN PRODUCTION</p>
-            </Link>
-            // </div>
+                {/* </div>
+                <div>
+                    { randomText(['text'], 200) }
+                </div> */}
+                {/* </Link> */}
+            </div>
         );
     }
 }

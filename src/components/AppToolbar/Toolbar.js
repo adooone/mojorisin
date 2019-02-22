@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
     Button,
+    // TextField,
     // IconButton,
     // Icon,
 } from '@material-ui/core';
@@ -15,6 +16,8 @@ import {
 // import classnames from 'classnames';
 import Modules from '../../description/modules';
 import LogoSVG from '../Logo/LogoSVG';
+import LangButton from '../Helpers/LangButton';
+import { LANG_RU, LANG_EN } from '../../consts/generalConsts';
 
 class Toolbar extends Component {
     constructor(props) {
@@ -42,11 +45,16 @@ class Toolbar extends Component {
                         </div>
                     </Link>
                     <div className='desktopTopMenu'>
+                        {/* <TextField label='Search' /> */}
                         {Modules.map((module) => (
-                            <Link to={ module.path } key={ module.name }>
+                            <Link to={ `/${ module.path }` } key={ module.name }>
                                 {this.ModuleBtn(module, dict.translate(module.caption)) }
                             </Link>
                         ))}
+                        <div className='langContainerDesktop'>
+                            <LangButton lang={ LANG_RU } />
+                            <LangButton lang={ LANG_EN } />
+                        </div>
                     </div>
                 </div>
             </div>

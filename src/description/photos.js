@@ -84,6 +84,16 @@ const photos = {
                 {
                     caption: 'photo',
                     src: pathObjects,
+                    portrait: true,
+                },
+                {
+                    caption: 'photo',
+                    src: pathObjects,
+                    portrait: true,
+                },
+                {
+                    caption: 'photo',
+                    src: pathObjects,
                     portrait: false,
                 },
                 {

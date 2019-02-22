@@ -8,6 +8,11 @@ module.exports = {
     entry: './src/index.js',
     devtool: 'inline-source-map',
     devServer: {
+        // before(app) {
+        //     app.get('*', (req, res) => {
+        //         res.send('index');
+        //     });
+        // },
         contentBase: './docs',
         hot: true,
         historyApiFallback: true,

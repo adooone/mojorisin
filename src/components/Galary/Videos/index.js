@@ -11,10 +11,10 @@ import { withRouter } from 'react-router-dom';
 import ModuleWrapper from '../wrapper';
 
 class Videos extends Component {
-    text() {
+    text(words) {
         const size = 1600;
         let index = 0;
-        const words = ['mojo', 'risin', 'photos', 'videos', 'production'];
+        // const words = ['mojo', 'risin', 'photos', 'videos', 'production'];
         const res = [];
         while (index !== size) {
             res[index] = words[_.random(0, words.length - 1)];
@@ -28,7 +28,7 @@ class Videos extends Component {
                 {/* <Toolbar> */}
                 <p className='effect'>
                     {
-                        _.map(this.text(), (item) => {
+                        _.map(this.text(['mojo', 'risin', 'photos', 'videos', 'production']), (item) => {
                             return `${ item } `;
                         })
                     }

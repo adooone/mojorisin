@@ -9,7 +9,7 @@ import Modules from '../../description/modules';
 
 const initialState = Immutable({
     isMenuOpened: false,
-    selectedModule: Modules[0],
+    selectedModule: Modules[1],
     selectedAlbum: null,
     loading: true,
     userParams: {

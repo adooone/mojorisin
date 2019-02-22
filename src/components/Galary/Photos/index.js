@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core';
 import photos from '../../../description/photos';
 import Album from './album';
+import Photo from './photo';
 import { CLOSE_ALBUMS } from '../../../redux/actions/actions';
 
 class Photos extends Component {
@@ -64,14 +65,7 @@ class Photos extends Component {
                 {album && _.map(album.images, (obj, i) => {
                     return (
                         <Grid key={ i } item xs={ 6 } sm={ 3 }>
-                            <div className='photo'>
-                                <div className='photoHoverEffect' />
-                                <img
-                                    className='image'
-                                    src={ obj.src }
-                                    alt={ obj.name }
-                                />
-                            </div>
+                            <Photo obj={ obj } />
                         </Grid>
                     );
                 })}
