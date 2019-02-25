@@ -7,9 +7,14 @@ import { connect } from 'react-redux';
 // IconButton,
 //     Icon,
 // } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import Slide from './Slide';
 
 class Carousel extends Component {
+    constructor(props) {
+        super(props);
+        this.renderNavigation = this.renderNavigation.bind(this);
+    }
     render() {
         const { slides } = this.props;
         return (
@@ -31,6 +36,15 @@ class Carousel extends Component {
                         />
                     );
                 }) }
+                { this.renderNavigation() }
+            </div>
+        );
+    }
+    renderNavigation() {
+        return (
+            <div>
+                <Button>prev</Button>
+                <Button>next</Button>
             </div>
         );
     }

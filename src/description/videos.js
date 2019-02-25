@@ -17,6 +17,10 @@ const Videos = [
         name: 'advertising',
         wall: pathAdvertising,
     },
+    {
+        name: 'advertising2',
+        wall: pathAdvertising,
+    },
 ];
 
 export default Videos;

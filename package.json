@@ -90,9 +90,12 @@
   },
   "dependencies": {
     "@material-ui/icons": "^2.0.3",
+    "axios": "^0.18.0",
     "babel-eslint": "^10.0.1",
+    "dotenv": "^6.2.0",
     "eslint-config-airbnb": "^17.1.0",
     "react-custom-scrollbars": "^4.2.1",
+    "react-dropzone": "^9.0.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-transition-group": "^2.5.3"

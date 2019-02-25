@@ -98,5 +98,9 @@ module.exports = {
             React: 'react',
             ReactDOM: 'react-dom',
         }),
+        new webpack.DefinePlugin({
+            'process.env.NEPTUNE_DEV_HOST': JSON.stringify(process.env.NEPTUNE_DEV_HOST),
+            'process.env.NEPTUNE_PROD_HOST': JSON.stringify(process.env.NEPTUNE_PROD_HOST),
+        }),
     ],
 };
