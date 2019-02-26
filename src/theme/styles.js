@@ -73,11 +73,21 @@ export const theme = createMuiTheme({
                 boxShadow: 'none',
                 //
             },
+            root: {
+                margin: 15,
+                //
+            },
         },
         MuiButton: {
             root: {
                 margin: 8,
                 borderRadius: 0,
+                //
+            },
+        },
+        MuiFormGroup: {
+            root: {
+                margin: 30,
                 //
             },
         },

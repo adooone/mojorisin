@@ -8,25 +8,22 @@ const getUser = () => {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
     })
-        .then(response => response.json())
-        .then(res => console.log(res));
+        .then(response => response.json());
+};
+const createAlbum = (name) => {
+    return axios.get(`${ NEPTUNE_DEV_HOST }/api/create_album`, { params: { name } });
+};
+const getPhotos = (album) => {
+    return axios.get(`${ NEPTUNE_DEV_HOST }/api/photo/getPhotos`, { params: { album } });
 };
 const uploadPhoto = (data) => {
-    // return fetch(`${ NEPTUNE_DEV_HOST }/api/photo/upload`, {
-    //     headers: {
-    //         // 'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
-    //         'Content-Type': 'multipart/form-data',
-    //     },
-    //     method: 'POST',
-    //     body: data,
-    //     // body: JSON.stringify({ id: data.id, name: data.name, info: data.info }),
-    // })
-    axios.post(`${ NEPTUNE_DEV_HOST }/api/photo/upload`, data, { 'Content-Type': 'multipart/form-data' })
-        .then(res => console.log(res));
+    return axios.post(`${ NEPTUNE_DEV_HOST }/api/photo/upload`, data, { 'Content-Type': 'multipart/form-data' });
 };
 
 const neptune = {
     getUser,
+    createAlbum,
+    getPhotos,
     uploadPhoto,
     //
 };

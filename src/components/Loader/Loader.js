@@ -5,9 +5,6 @@ import classnames from 'classnames';
 import LogoSVG from '../Logo/LogoSVG';
 
 class Loader extends Component {
-    componentWillUnmount() {
-        console.log('end loading...');
-    }
     render() {
         return (
             <div className={ classnames('loader', { 'loaded': !this.props.loading }) }>
