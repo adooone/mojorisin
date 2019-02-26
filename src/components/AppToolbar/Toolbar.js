@@ -19,7 +19,7 @@ import {
 import Modules from '../../description/modules';
 import LogoSVG from '../Logo/LogoSVG';
 import LangButton from '../Helpers/LangButton';
-import { LANG_RU, LANG_EN } from '../../consts/generalConsts';
+import { LANG_RU, LANG_EN, MODULE_TYPE_ICON } from '../../consts/generalConsts';
 
 class Toolbar extends Component {
     constructor(props) {
@@ -31,18 +31,16 @@ class Toolbar extends Component {
         if (window.visualViewport.width < 600) this.props.dispatch(CLOSE_MENU());
     }
     ModuleBtn = (module, caption) => {
-        if (module.name === 'Home') {
+        if (module.type === MODULE_TYPE_ICON) {
             return (
-                // <div style={ { marginRight: 10, paddingRight: 10, borderRight: '1px solid white' } }>
                 <IconButton>
-                    <Icon>home</Icon>
+                    <Icon>{ module.icon }</Icon>
                 </IconButton>
-                // </div>
             );
         }
         return (
             <Button onClick={ () => this.openModule(module) }>
-                {caption}
+                { caption }
             </Button>
         );
     }
@@ -58,12 +56,11 @@ class Toolbar extends Component {
                         </div>
                     </Link>
                     <div className='desktopTopMenu'>
-                        {/* <TextField label='Search' /> */}
-                        {Modules.map((module) => (
+                        { Modules.map((module) => (
                             <Link to={ `/${ module.path }` } key={ module.name }>
                                 {this.ModuleBtn(module, dict.translate(module.caption)) }
                             </Link>
-                        ))}
+                        )) }
                         <div className='langContainerDesktop'>
                             <LangButton lang={ LANG_RU } />
                             <LangButton lang={ LANG_EN } />

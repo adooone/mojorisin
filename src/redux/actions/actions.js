@@ -31,6 +31,9 @@ export const OPEN_ALBUM = (album) => {
 export const CLOSE_ALBUMS = () => {
     return { type: ActionTypes.CLOSE_ALBUMS };
 };
+export const LOGIN_ADMIN = () => {
+    return { type: ActionTypes.LOGIN_ADMIN };
+};
 export const CHANGE_LANG = (lang) => {
     return {
         type: ActionTypes.CHANGE_LANG,

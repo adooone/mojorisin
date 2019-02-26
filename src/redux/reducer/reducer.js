@@ -12,6 +12,7 @@ const initialState = Immutable({
     selectedModule: Modules[1],
     selectedAlbum: null,
     loading: true,
+    admin: false,
     userParams: {
         lang: LANG_EN,
         //
@@ -40,6 +41,9 @@ const viewReducer = createReducer(initialState, {
     },
     [ActionTypes.CLOSE_ALBUMS](state) {
         return state.set('selectedAlbum', null);
+    },
+    [ActionTypes.LOGIN_ADMIN](state) {
+        return state.set('admin', true);
     },
     [ActionTypes.CHANGE_LANG](state, action) {
         return state.merge({

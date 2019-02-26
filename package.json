@@ -5,8 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open --mode development --config webpack.config.js",
-    "build": "webpack -p",
+    "start": "webpack-dev-server --open --mode development --config webpack/webpack.dev.js",
+    "build": "webpack -p --config webpack/webpack.prod.js",
     "watch": "webpack --watch"
   },
   "directories": {
@@ -93,6 +93,7 @@
     "axios": "^0.18.0",
     "babel-eslint": "^10.0.1",
     "dotenv": "^6.2.0",
+    "dotenv-webpack": "^1.7.0",
     "eslint-config-airbnb": "^17.1.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-dropzone": "^9.0.0",

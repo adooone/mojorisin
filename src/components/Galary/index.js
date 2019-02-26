@@ -13,6 +13,7 @@ import Videos from './Videos/index';
 import About from './About/index';
 import Contacts from './Contacts';
 import Home from './Home';
+import Admin from './Admin';
 
 class Galary extends Component {
     render() {
@@ -22,6 +23,7 @@ class Galary extends Component {
                     <Scrollbars className='galaryScroller'>
                         {/* { this.getContent() } */}
                         <Switch>
+                            <Route path='/admin' render={ () => <Admin /> } />
                             <Route path='/photos' render={ () => <Photos /> } />
                             <Route path='/videos' render={ () => <Videos /> } />
                             <Route path='/contacts' render={ () => <Contacts /> } />

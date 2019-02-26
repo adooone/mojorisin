@@ -5,9 +5,7 @@ import { connect } from 'react-redux';
 
 // import ModuleWrapper from '../wrapper';
 // import { Button } from '@material-ui/core';
-// import LogoSVG from '../../Logo/LogoSVG';
-import { Button, TextField, FormGroup, Paper } from '@material-ui/core';
-import UploadForm from '../UploadForm';
+import LogoSVG from '../../Logo/LogoSVG';
 import neptune from '../../../neptune_api';
 // import { randomText } from '../../Helpers/functions';
 // import classnames from 'classnames';
@@ -30,37 +28,8 @@ class Home extends Component {
     render() {
         return (
             <div className='homePage'>
-                {/* <Link to='/photos' className='homePage'> */}
-                {/* <Button color='primary'>Welcome to my portfolio</Button> */}
-                {/* <div> */}
-                {/* <LogoSVG width='30%' />
-                <p className='homeCaptionName'>RISIN PRODUCTION</p> */}
-                <UploadForm />
-                <Paper>
-                    <FormGroup>
-                        <TextField
-                            id='getName'
-                            label='Album Name'
-                            onChange={ e => { this.setState({ getAlbumName: e.target.value }); } }
-                        />
-                        <Button onClick={ this.getPhotos }>Get Photos</Button>
-                    </FormGroup>
-                </Paper>
-                <Paper>
-                    <FormGroup>
-                        <TextField
-                            id='name'
-                            label='Album Name'
-                            onChange={ e => { this.setState({ albumName: e.target.value }); } }
-                        />
-                        <Button onClick={ this.createAlbum }>create album</Button>
-                    </FormGroup>
-                </Paper>
-                {/* </div>
-                <div>
-                    { randomText(['text'], 200) }
-                </div> */}
-                {/* </Link> */}
+                <LogoSVG width='30%' />
+                <p className='homeCaptionName'>RISIN PRODUCTION</p>
             </div>
         );
     }
