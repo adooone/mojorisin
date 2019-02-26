@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
 
 const NEPTUNE_DEV_HOST = 'http://localhost:8080';
-// const NEPTUNE_PROD_HOST = 'https://neptunews.com';
+const NEPTUNE_PROD_HOST = 'https://neptunews.com';
+const NEPTUNE_HOST = NEPTUNE_PROD_HOST;
 
 const getUser = () => {
     return fetch(`${ NEPTUNE_DEV_HOST }/api/login?name=denis`, {
@@ -11,13 +13,13 @@ const getUser = () => {
         .then(response => response.json());
 };
 const createAlbum = (name) => {
-    return axios.get(`${ NEPTUNE_DEV_HOST }/api/create_album`, { params: { name } });
+    return axios.get(`${ NEPTUNE_HOST }/api/create_album`, { params: { name } });
 };
 const getPhotos = (album) => {
-    return axios.get(`${ NEPTUNE_DEV_HOST }/api/photo/getPhotos`, { params: { album } });
+    return axios.get(`${ NEPTUNE_HOST }/api/photo/getPhotos`, { params: { album } });
 };
 const uploadPhoto = (data) => {
-    return axios.post(`${ NEPTUNE_DEV_HOST }/api/photo/upload`, data, { 'Content-Type': 'multipart/form-data' });
+    return axios.post(`${ NEPTUNE_HOST }/api/photo/upload`, data, { 'Content-Type': 'multipart/form-data' });
 };
 
 const neptune = {

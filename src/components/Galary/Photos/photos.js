@@ -20,12 +20,9 @@ class PhotoGrid extends Component {
             //
         };
     }
-    componentDidUpdate(prevProps) {
-        const { name } = this.props.selectedAlbum;
-        if (this.props.selectedAlbum !== prevProps.selectedAlbum) {
-            neptune.getPhotos(name)
-                .then(res => this.setState({ images: res.data.photos }));
-        }
+    componentDidMount() {
+        neptune.getPhotos(this.props.selectedAlbum.name)
+            .then(res => this.setState({ images: res.data.photos }));
     }
     render() {
         return (
