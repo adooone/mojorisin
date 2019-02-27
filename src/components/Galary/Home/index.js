@@ -28,7 +28,7 @@ class Home extends Component {
     render() {
         return (
             <div className='homePage'>
-                <LogoSVG width='30%' />
+                <LogoSVG width='20%' />
                 <p className='homeCaptionName'>RISIN PRODUCTION</p>
             </div>
         );

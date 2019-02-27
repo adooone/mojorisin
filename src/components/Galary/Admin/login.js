@@ -25,7 +25,7 @@ class LoginForm extends Component {
     render() {
         return (
             <div className='LoginForm'>
-                <Dialog open={ true }>
+                <Dialog open={ true } onClose={ this.handleClose }>
                     <DialogTitle>Login</DialogTitle>
                     <DialogContent>
                         <FormGroup>
@@ -43,7 +43,8 @@ class LoginForm extends Component {
                         </FormGroup>
                     </DialogContent>
                     <DialogActions>
-                        <Button variant='contained' onClick={ this.login }>login</Button>
+                        <Button variant='outlined' onClick={ this.login }>login</Button>
+                        <Button variant='outlined' onClick={ this.handleClose }>close</Button>
                     </DialogActions>
                 </Dialog>
             </div>
@@ -54,9 +55,10 @@ class LoginForm extends Component {
         neptune.login(name, password)
             .then(response => {
                 if (response.data.admin) this.props.dispatch(LOGIN_ADMIN());
-                else window.location = window.location.origin;
+                else this.handleClose();
             });
     }
+    handleClose = () => { window.location = window.location.origin; };
 }
 
 LoginForm.propTypes = {

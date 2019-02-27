@@ -1,0 +1,71 @@
+.Corousel
+    .CorouselLabel
+        position: fixed
+        left: 0
+        top: 0
+        display: flex
+        justify-content: flex-end
+        align-items: flex-start
+        flex-direction: column
+        width: 50%
+        height: 100%
+        padding: 100px
+        h3
+            font-size: 100px
+            line-height: 120px
+            margin: 0
+        p
+            font-size: 30px
+            opacity: .6
+    .CorouselItems
+        position: fixed
+        right: 0
+        top: 15vh
+        width: 50%
+        display: flex
+        justify-content: center
+        flex-direction: column
+        transition: all 1s ease
+        .CorouselItem
+            display: flex
+            justify-content: center
+            align-items: center
+            font-size: 50px
+            width: 60vh
+            height: 60vh
+            margin: 5vh
+            background-color: #000
+            border-radius: 2vh
+            box-shadow: 0px 0px 60px -10px rgba(0,0,0,0.5)
+            opacity: 0.6
+            transition: all .6s ease, transform .3s ease
+        .activeItem
+            opacity: 1
+            // &:hover
+            //     transform: translateX(-20px)
+
+    .CorouselNavigation
+        position: absolute
+        bottom: 10vh
+        right: 0
+        display: flex
+        flex-direction: column
+
+
+.SwitcherBackground
+    width: calc(100% + 100px)
+    height: calc(100% + 100px)
+    position: fixed
+    top: -100px
+    left: -100px
+    z-index: -100
+    filter: blur(110px)
+.backgroundDarken
+    width: calc(100% + 100px)
+    height: calc(100% + 100px)
+    position: fixed
+    top: -100px
+    left: -100px
+    z-index: -99
+    background-color: #000000
+    opacity: 0.4

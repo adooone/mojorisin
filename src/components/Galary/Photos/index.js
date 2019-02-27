@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter, Route } from 'react-router-dom';
+import { withRouter, Route, Switch } from 'react-router-dom';
 // import classnames from 'classnames';
 import photos from '../../../description/photos';
 import Album from './album';
@@ -20,11 +20,13 @@ class Photos extends Component {
         const { match } = this.props;
         return (
             <div className='photosContainer'>
-                <Route exact path={ match.url } render={ this.getAlbums } />
-                <Route
-                    path='/photos/:name'
-                    render={ () => <PhotoGrid /> }
-                />
+                <Switch>
+                    <Route exact path={ match.url } render={ this.getAlbums } />
+                    <Route
+                        path='/photos/:name'
+                        render={ () => <PhotoGrid /> }
+                    />
+                </Switch>
             </div>
         );
     }

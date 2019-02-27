@@ -8,7 +8,7 @@ import {
     CSSTransition,
 } from 'react-transition-group';
 
-import Photos from './Photos';
+import Photos from './nuPhoto/photos';
 import Videos from './Videos/index';
 import About from './About/index';
 import Contacts from './Contacts';

@@ -91,5 +91,11 @@ export const theme = createMuiTheme({
                 //
             },
         },
+        MuiFormControl: {
+            root: {
+                margin: '10px 0',
+                //
+            },
+        },
     },
 });

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 // import classnames from 'classnames';
 import {
     Button,
@@ -34,9 +35,7 @@ class Photo extends Component {
                 <Button
                     className='photoBtn'
                     onClick={ this.handleOpen }
-                >
-                    <p>{obj.name}</p>
-                </Button>
+                />
             </div>
         );
     }
@@ -63,4 +62,4 @@ function select(/* store */) {
     return { };
 }
 
-export default connect(select)(Photo);
+export default withRouter(connect(select)(Photo));
