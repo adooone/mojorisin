@@ -13,6 +13,8 @@ const initialState = Immutable({
     selectedAlbum: null,
     loading: true,
     admin: false,
+    complexBackground: true,
+    imageBackgroundSrc: 'https://cn.opendesktop.org/img/f/c/2/7/026c18b8da5fd20734e179b3a01a83bf3962.jpg',
     userParams: {
         lang: LANG_EN,
         //

@@ -18,8 +18,12 @@ import {
 // import classnames from 'classnames';
 import Modules from '../../description/modules';
 import LogoSVG from '../Logo/LogoSVG';
-import LangButton from '../Helpers/LangButton';
-import { LANG_RU, LANG_EN, MODULE_TYPE_ICON } from '../../consts/generalConsts';
+// import LangButton from '../Helpers/LangButton';
+import {
+    // LANG_RU,
+    // LANG_EN,
+    MODULE_TYPE_ICON,
+} from '../../consts/generalConsts';
 
 class Toolbar extends Component {
     constructor(props) {
@@ -61,10 +65,10 @@ class Toolbar extends Component {
                                 {this.ModuleBtn(module, dict.translate(module.caption)) }
                             </Link>
                         )) }
-                        <div className='langContainerDesktop'>
+                        {/* <div className='langContainerDesktop'>
                             <LangButton lang={ LANG_RU } />
                             <LangButton lang={ LANG_EN } />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

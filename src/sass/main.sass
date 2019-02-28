@@ -31,7 +31,7 @@ body
         position: fixed
         top: 0
         // box-shadow: 0px 0px 40px -10px rgba(0,0,0,0.2)
-        z-index: 2
+        z-index: 1000
         .mobileAppBar
             display: flex
             align-items: center
@@ -39,7 +39,7 @@ body
             display: flex
             align-items: center
             justify-content: space-between
-            padding: 0 $gutter-side
+            padding: 0 100px
             width: 100%
             .desktopLogo
                 display: flex
@@ -129,3 +129,24 @@ body
 .LoginForm
     display: flex
     justify-content: center
+
+.imageBackground
+    width: calc(100% + 100px)
+    height: calc(100% + 100px)
+    position: fixed
+    top: -100px
+    left: -100px
+    z-index: -100
+    filter: blur(50px)
+.backgroundDark
+    width: calc(100% + 100px)
+    height: calc(100% + 100px)
+    position: fixed
+    top: -100px
+    left: -100px
+    z-index: -99
+    background-color: darken($colorText, 2)
+    opacity: 1
+    transition: all .4s ease
+.transparentDark
+    opacity: .5

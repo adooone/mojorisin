@@ -18,9 +18,21 @@ class Photos extends Component {
         return (
             <div className='Photos'>
                 <Switch>
-                    <Route exact path={ match.url } render={ () => <Switcher items={ photos.albums } /> } />
-                    { _.map(photos.albums, (album) => (
+                    <Route
+                        exact
+                        path={ match.url }
+                        render={ () => (
+                            <Switcher
+                                onChange={ (index) => {
+                                    console.log(photos.albums[index]);
+                                } }
+                                items={ photos.albums }
+                            />
+                        ) }
+                    />
+                    { _.map(photos.albums, (album, i) => (
                         <Route
+                            key={ i }
                             path={ `/photos/${ album.name }` }
                             render={ () => <Album /> }
                         />
