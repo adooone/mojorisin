@@ -6,6 +6,7 @@ import classnames from 'classnames';
 
 import { Icon, IconButton } from '@material-ui/core';
 import Item from './item';
+// import { CHANGE_BACKGROUND } from '../../../../redux/actions/actions';
 
 const SCROLL_MAX = 300;
 class Switcher extends Component {
@@ -17,8 +18,6 @@ class Switcher extends Component {
             scrolling: false,
             scrollValue: 0,
         };
-        // this.handleNavDown = this.handleNavDown.bind(this);
-        // this.handleNavUp = this.handleNavUp.bind(this);
         this.handleNav = this.handleNav.bind(this);
         this.onWheel = this.onWheel.bind(this);
         this.handleItemClick = this.handleItemClick.bind(this);
@@ -29,7 +28,12 @@ class Switcher extends Component {
         const { active, scrolling, opened } = this.state;
         return (
             <div className='Corousel'>
-                <div className={ classnames('CorouselLabel', { 'CorouselLabelOpened': opened !== null }) }>
+                <div className={
+                    classnames(
+                        'CorouselLabel',
+                        { 'CorouselLabelOpened': opened !== null }
+                    ) }
+                >
                     <h3>{ items[active].name }</h3>
                     <p>Some very important words</p>
                     <div className='CorouselNavigation'>
@@ -52,8 +56,11 @@ class Switcher extends Component {
                 </div>
                 <div
                     id='photo_items'
-                    // className={ classnames('CorouselItems', { 'CorouselScrolling': scrolling }) }
-                    className={ classnames('CorouselItems', { 'CorouselItemsOpened': opened !== null }) }
+                    className={
+                        classnames(
+                            'CorouselItems',
+                            { 'CorouselItemsOpened': opened !== null }
+                        ) }
                     onWheel={ opened === null ? this.onWheel : () => { } }
                 >
                     {_.map(items, (item, i) => {
@@ -83,7 +90,10 @@ class Switcher extends Component {
         // const up = direction === 'up';
         const element = document.getElementById('photo_items');
         const indicator = document.getElementById('indicator');
-        const next = up ? this.state.active - 1 : this.state.active + 1;
+        const { active } = this.state;
+        const next = up ?
+            (active !== 0 ? active - 1 : active) :
+            (active !== 2 ? active + 1 : active);
         anime({
             targets: element,
             translateY: `-${ next * 70 }vh`,
@@ -97,11 +107,11 @@ class Switcher extends Component {
             easing: 'easeInQuad',
         });
         this.props.onChange(next);
+        // this.props.dispatch(CHANGE_BACKGROUND(this.props.items[next].background));
         this.setState({ active: next });
     }
     onWheel(e) {
         const { scrollValue } = this.state;
-        console.log(scrollValue);
 
         const newValue = scrollValue + e.deltaY;
         clearTimeout(this.clear);
@@ -120,6 +130,7 @@ class Switcher extends Component {
 }
 
 Switcher.propTypes = {
+    // dispatch: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
     //

@@ -54,6 +54,9 @@ const viewReducer = createReducer(initialState, {
         });
         // return state.setIn(['userParams', 'lang'], action.lang);
     },
+    [ActionTypes.CHANGE_BACKGROUND](state, action) {
+        return state.merge({ imageBackgroundSrc: action.src });
+    },
 });
 
 const mainReducer = combineReducers({ viewReducer });

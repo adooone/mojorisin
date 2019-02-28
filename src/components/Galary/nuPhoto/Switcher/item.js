@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import { Button } from '@material-ui/core';
+// import { Scrollbars } from 'react-custom-scrollbars';
+import { Button, IconButton, Icon } from '@material-ui/core';
+// import Photo from '../../Photos/photo';
+import PhotosGrid from '../photosGrid';
 
 class Item extends Component {
     constructor(props) {
@@ -24,23 +27,37 @@ class Item extends Component {
                     { 'openedItem': opened }
                 ) }
             >
-                <Button
-                    onClick={ () => {
-                        onClick(index);
-                        this.setState({ opened: true });
-                    } }
-                >
-                    {'open'}
-                </Button>
-                <Button
-                    onClick={ () => {
-                        onClose(index);
-                        this.setState({ opened: false });
-                    } }
-                >
-                    {'close'}
-                </Button>
-                { data.name }
+                <div className='ButtonContainer'>
+                    <Button
+                        disableRipple
+                        className='OpenButton'
+                        onClick={ () => {
+                            onClick(index);
+                            this.setState({ opened: true });
+                        } }
+                    >
+                        { '' }
+                    </Button>
+                    { opened && (
+                        <IconButton
+                            className='CloseButton'
+                            onClick={ () => {
+                                onClose(index);
+                                this.setState({ opened: false });
+                            } }
+                        >
+                            <Icon>close</Icon>
+                        </IconButton>
+                    ) }
+                    { opened && <PhotosGrid data={ data } /> }
+                    { !opened && (
+                    <>
+                        <p>{ data.name }</p>
+                        {/* <img src={ data.background } alt='cover' /> */}
+                        {/* <div className='coverDarker' /> */}
+                    </>
+                    )}
+                </div>
             </div>
         );
     }

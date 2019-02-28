@@ -11,3 +11,4 @@ export const CLOSE_ALBUMS = 'CLOSE_ALBUMS';
 
 export const LOGIN_ADMIN = 'LOGIN_ADMIN';
 export const CHANGE_LANG = 'CHANGE_LANG';
+export const CHANGE_BACKGROUND = 'CHANGE_BACKGROUND';

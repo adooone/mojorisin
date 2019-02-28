@@ -40,3 +40,9 @@ export const CHANGE_LANG = (lang) => {
         lang,
     };
 };
+export const CHANGE_BACKGROUND = (src) => {
+    return {
+        type: ActionTypes.CHANGE_BACKGROUND,
+        src,
+    };
+};
