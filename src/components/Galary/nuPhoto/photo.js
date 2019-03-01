@@ -5,28 +5,34 @@ import { withRouter } from 'react-router-dom';
 // import classnames from 'classnames';
 import {
     Button,
-    // IconButton,
-    // Icon,
+    IconButton,
+    Icon,
 } from '@material-ui/core';
+import neptune from '../../../neptune_api';
 
 class Photo extends Component {
     constructor(props) {
         super(props);
-        this.state = { opened: false };
+        // this.state = { opened: false };
         this.handleOpen = this.handleOpen.bind(this);
     }
     render() {
         // const { obj } = this.props;
-        return this.state.opened ? this.renderOpened() : this.renderItem();
+        return this.renderItem();
+        // return this.state.opened ? this.renderOpened() : this.renderItem();
     }
     handleOpen = () => {
-        this.setState({ opened: true });
+        // this.setState({ opened: true });
     }
     renderItem = () => {
         const { obj } = this.props;
         return (
             <div className='photo'>
-                <div className='photoHoverEffect' />
+                <div className='deleteBtn'>
+                    <IconButton onClick={ this.deletePhoto }>
+                        <Icon>delete</Icon>
+                    </IconButton>
+                </div>
                 <img
                     className='image'
                     src={ obj.src }
@@ -40,6 +46,9 @@ class Photo extends Component {
                 </Button>
             </div>
         );
+    }
+    deletePhoto = () => {
+        neptune.deletePhoto(this.props.obj);
     }
     renderOpened = () => {
         const { obj } = this.props;

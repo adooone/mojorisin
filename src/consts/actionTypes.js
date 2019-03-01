@@ -12,3 +12,6 @@ export const CLOSE_ALBUMS = 'CLOSE_ALBUMS';
 export const LOGIN_ADMIN = 'LOGIN_ADMIN';
 export const CHANGE_LANG = 'CHANGE_LANG';
 export const CHANGE_BACKGROUND = 'CHANGE_BACKGROUND';
+export const TEST_FETCH = 'TEST_FETCH';
+export const SHOW_SNACKBAR = 'SHOW_SNACKBAR';
+export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';

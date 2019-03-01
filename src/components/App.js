@@ -9,6 +9,7 @@ import MobileMenu from './AppToolbar/MobileMenu/index';
 // import { LANG_RU } from '../consts/generalConsts';
 import Galary from './Galary/index';
 import ComplexWall from './ComplexWall';
+import Snackbar from './Snackbar/Snackbar';
 // import Loader from './Loader/Loader';
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
                 <MobileMenu />
                 <Galary />
                 <ComplexWall />
+                {this.props.SnackbarVisible && <Snackbar msg={ this.props.msg } /> }
                 {/* <Loader /> */}
             </div>
         );
@@ -37,10 +39,14 @@ class App extends Component {
 App.propTypes = {
     //
     dispatch: PropTypes.func.isRequired,
+    SnackbarVisible: PropTypes.bool.isRequired,
+    msg: PropTypes.object.isRequired,
 };
 
 function select(store) {
     return {
+        msg: store.viewReducer.SnackbarMessage,
+        SnackbarVisible: store.viewReducer.SnackbarVisible,
         lang: store.viewReducer.userParams.lang,
         loading: store.viewReducer.loading,
         //

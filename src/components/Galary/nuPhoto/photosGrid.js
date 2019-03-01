@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import classnames from 'classnames';
-import { Scrollbars } from 'react-custom-scrollbars';
-import { Grid } from '@material-ui/core';
+// import { Scrollbars } from 'react-custom-scrollbars';
+import { Grid, IconButton } from '@material-ui/core';
 import anime from 'animejs';
 import Photo from './photo';
 import neptune from '../../../neptune_api';
@@ -34,6 +34,7 @@ class PhotosGrid extends Component {
                     const targetId = `photo-${ i }`;
                     this.animate(targetId, (i < 3 ? i : i - 3) * 200);
                 });
+                this.animate('addBtn', (images.length - 3) * 200);
             });
     }
     animate(targetId, delay) {
@@ -49,30 +50,45 @@ class PhotosGrid extends Component {
     }
     render() {
         return (
-            <Scrollbars className='CorouselItemScroller'>
+            // <Scrollbars className='CorouselItemScroller'>
+            <Grid
+                id='gridPhotosContainer'
+                className='PhotoGridContainer'
+                container
+                spacing={ 0 }
+            >
+                {_.map(this.state.images, (obj, i) => {
+                    const targetId = `photo-${ i }`;
+                    return (
+                        <Grid
+                            id={ targetId }
+                            className='PhotoGridItem'
+                            key={ i }
+                            item
+                            xs={ 6 }
+                            sm={ 4 }
+                        >
+                            <Photo obj={ { ...obj, album: this.props.data.name } } />
+                        </Grid>
+                    );
+                })}
                 <Grid
-                    id='gridPhotosContainer'
-                    className='PhotoGridContainer'
-                    container
-                    spacing={ 0 }
+                    id='addBtn'
+                    className='PhotoGridItem'
+                    key={ this.state.images.length }
+                    item
+                    xs={ 6 }
+                    sm={ 4 }
                 >
-                    {_.map(this.state.images, (obj, i) => {
-                        const targetId = `photo-${ i }`;
-                        return (
-                            <Grid
-                                id={ targetId }
-                                className='PhotoGridItem'
-                                key={ i }
-                                item
-                                xs={ 6 }
-                                sm={ 4 }
-                            >
-                                <Photo obj={ obj } />
-                            </Grid>
-                        );
-                    })}
+                    <div className='addBtnContainer'>
+                        <IconButton className='addBtn'>
+                            {/* <Icon fontSize='large'>add</Icon> */}
+                            <p>add photo</p>
+                        </IconButton>
+                    </div>
                 </Grid>
-            </Scrollbars>
+            </Grid>
+            // </Scrollbars>
         );
     }
 }

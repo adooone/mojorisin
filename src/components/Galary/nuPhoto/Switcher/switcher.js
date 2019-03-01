@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {
+    withRouter,
+    // Link,
+} from 'react-router-dom';
 import { connect } from 'react-redux';
 import anime from 'animejs';
 import classnames from 'classnames';
@@ -24,7 +28,7 @@ class Switcher extends Component {
         this.handleItemClose = this.handleItemClose.bind(this);
     }
     render() {
-        const { items } = this.props;
+        const { items, ContentComponent } = this.props;
         const { active, scrolling, opened } = this.state;
         return (
             <div className='Corousel'>
@@ -65,15 +69,17 @@ class Switcher extends Component {
                 >
                     {_.map(items, (item, i) => {
                         return (
+                            // <Link key={ i } to={ `/${ item.routePath }` }>
                             <Item
                                 index={ i }
                                 scrolling={ scrolling }
                                 active={ active === i }
-                                key={ i }
                                 data={ item }
+                                ContentComponent={ ContentComponent }
                                 onClick={ this.handleItemClick }
                                 onClose={ this.handleItemClose }
                             />
+                            // </Link>
                         );
                     })}
                 </div>
@@ -131,6 +137,7 @@ class Switcher extends Component {
 
 Switcher.propTypes = {
     // dispatch: PropTypes.func.isRequired,
+    ContentComponent: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
     //
@@ -144,4 +151,4 @@ function select(/* store */) {
     return { };
 }
 
-export default connect(select)(Switcher);
+export default withRouter(connect(select)(Switcher));

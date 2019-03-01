@@ -9,8 +9,9 @@ import {
 // import classnames from 'classnames';
 
 import photos from '../../../description/photos';
-import Album from './album';
+// import Album from './album';
 import Switcher from './Switcher/switcher';
+import PhotosGrid from './photosGrid';
 
 class Photos extends Component {
     render() {
@@ -27,16 +28,17 @@ class Photos extends Component {
                                     console.log(photos.albums[index]);
                                 } }
                                 items={ photos.albums }
+                                ContentComponent={ (data) => <PhotosGrid data={ data } /> }
                             />
                         ) }
                     />
-                    { _.map(photos.albums, (album, i) => (
+                    {/* { _.map(photos.albums, (album, i) => (
                         <Route
                             key={ i }
-                            path={ `/photos/${ album.name }` }
+                            path={ `/photos/${ album.routePath }` }
                             render={ () => <Album /> }
                         />
-                    )) }
+                    )) } */}
                 </Switch>
             </div>
         );

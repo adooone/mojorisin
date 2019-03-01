@@ -70,9 +70,10 @@ class UploadForm extends Component {
     }
 }
 
-//UploadForm.propTypes = {
-//
-//};
+// UploadForm.propTypes = {
+//     dispatch: PropTypes.func.isRequired,
+//     //
+// };
 
 //UploadForm.defaultProps = {
 //

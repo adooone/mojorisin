@@ -9,7 +9,6 @@ export const OPEN = (params) => {
         params,
     };
 };
-
 export const OPEN_MENU = () => {
     return { type: ActionTypes.OPEN_MENU };
 };
@@ -45,4 +44,19 @@ export const CHANGE_BACKGROUND = (src) => {
         type: ActionTypes.CHANGE_BACKGROUND,
         src,
     };
+};
+export const TEST_FETCH = (name) => {
+    return {
+        type: ActionTypes.TEST_FETCH,
+        name,
+    };
+};
+export const SHOW_SNACKBAR = (msg) => {
+    return {
+        type: ActionTypes.SHOW_SNACKBAR,
+        msg,
+    };
+};
+export const CLOSE_SNACKBAR = () => {
+    return { type: ActionTypes.CLOSE_SNACKBAR };
 };

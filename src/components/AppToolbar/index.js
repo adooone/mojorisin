@@ -8,15 +8,12 @@ import Toolbar from './Toolbar';
 class AppToolbar extends Component {
     render() {
         return (
-            <>
-                <header>
-                    <div className='toolbar'>
-                        <MobileTolbar />
-                        <Toolbar />
-                    </div>
-                </header>
-                <div className='headerWrap' />
-            </>
+            <header>
+                <div className='toolbar'>
+                    <MobileTolbar />
+                    <Toolbar />
+                </div>
+            </header>
         );
     }
 }
@@ -26,7 +23,6 @@ function select(store) {
         opened: store.viewReducer.isMenuOpened,
         selectedModule: store.viewReducer.selectedModule,
         dict: store.viewReducer.dict,
-        //
     };
 }
 

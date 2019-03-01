@@ -23,7 +23,14 @@ const getPhotos = (album) => {
     return axios.get(`${ NEPTUNE_HOST }/api/photo/getPhotos`, { params: { album } });
 };
 const uploadPhoto = (data) => {
+    console.log(data);
     return axios.post(`${ NEPTUNE_HOST }/api/photo/upload`, data, { 'Content-Type': 'multipart/form-data' });
+};
+const deletePhoto = (data) => {
+    console.log(data.id);
+    console.log(data.album);
+    const { id, album } = data;
+    return axios.get(`${ NEPTUNE_HOST }/api/photo/delete`, { params: { id, album } });
 };
 
 const neptune = {
@@ -32,6 +39,7 @@ const neptune = {
     createAlbum,
     getPhotos,
     uploadPhoto,
+    deletePhoto,
     //
 };
 

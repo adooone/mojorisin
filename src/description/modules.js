@@ -22,7 +22,7 @@ const Modules = [
         type: MODULE_TYPE_ICON,
         path: 'admin',
         icon: 'settings',
-        caption: 'modules.home',
+        caption: 'modules.settings',
     },
     {
         name: MODULE_PHOTOS,

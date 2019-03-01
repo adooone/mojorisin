@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
+import {
+    withRouter,
+    // Route,
+} from 'react-router-dom';
 // import { Scrollbars } from 'react-custom-scrollbars';
 import { Button, IconButton, Icon } from '@material-ui/core';
 // import Photo from '../../Photos/photo';
-import PhotosGrid from '../photosGrid';
+// import PhotosGrid from '../photosGrid';
 
 class Item extends Component {
     constructor(props) {
@@ -16,7 +20,7 @@ class Item extends Component {
         };
     }
     render() {
-        const { index, active, scrolling, data, onClick, onClose } = this.props;
+        const { index, active, scrolling, data, onClick, onClose, ContentComponent } = this.props;
         const { opened } = this.state;
         return (
             <div
@@ -27,32 +31,34 @@ class Item extends Component {
                     { 'openedItem': opened }
                 ) }
             >
-                <div className='ButtonContainer'>
-                    <Button
-                        disableRipple
-                        className='OpenButton'
-                        onClick={ () => {
-                            onClick(index);
-                            this.setState({ opened: true });
-                        } }
-                    >
-                        { '' }
-                    </Button>
+                <div className='CorouselItemContent'>
                     { opened && (
-                        <IconButton
-                            className='CloseButton'
-                            onClick={ () => {
-                                onClose(index);
-                                this.setState({ opened: false });
-                            } }
-                        >
-                            <Icon>close</Icon>
-                        </IconButton>
+                        <>
+                            <IconButton
+                                className='CloseButton'
+                                onClick={ () => {
+                                    onClose(index);
+                                    this.setState({ opened: false });
+                                } }
+                            >
+                                <Icon>close</Icon>
+                            </IconButton>
+                            {ContentComponent(data)}
+                        </>
                     ) }
-                    { opened && <PhotosGrid data={ data } /> }
                     { !opened && (
                     <>
                         <p>{ data.name }</p>
+                        <Button
+                            disableRipple
+                            className='OpenButton'
+                            onClick={ () => {
+                                onClick(index);
+                                this.setState({ opened: true });
+                            } }
+                        >
+                            {''}
+                        </Button>
                         {/* <img src={ data.background } alt='cover' /> */}
                         {/* <div className='coverDarker' /> */}
                     </>
@@ -65,6 +71,7 @@ class Item extends Component {
 
 Item.propTypes = {
     index: PropTypes.number.isRequired,
+    ContentComponent: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
     active: PropTypes.bool.isRequired,
     scrolling: PropTypes.bool.isRequired,
@@ -81,4 +88,4 @@ function select(/* store */) {
     return { };
 }
 
-export default connect(select)(Item);
+export default withRouter(connect(select)(Item));

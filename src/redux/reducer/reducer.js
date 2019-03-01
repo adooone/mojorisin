@@ -15,6 +15,9 @@ const initialState = Immutable({
     admin: false,
     complexBackground: true,
     imageBackgroundSrc: 'https://cn.opendesktop.org/img/f/c/2/7/026c18b8da5fd20734e179b3a01a83bf3962.jpg',
+    // SnackbarMessage: { status: 200, text: 'Success' },
+    SnackbarMessage: {},
+    SnackbarVisible: false,
     userParams: {
         lang: LANG_EN,
         //
@@ -56,6 +59,12 @@ const viewReducer = createReducer(initialState, {
     },
     [ActionTypes.CHANGE_BACKGROUND](state, action) {
         return state.merge({ imageBackgroundSrc: action.src });
+    },
+    [ActionTypes.SHOW_SNACKBAR](state, action) {
+        return state.merge({ SnackbarVisible: true, SnackbarMessage: action.msg });
+    },
+    [ActionTypes.CLOSE_SNACKBAR](state) {
+        return state.merge({ SnackbarVisible: false });
     },
 });
 

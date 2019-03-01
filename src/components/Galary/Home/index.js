@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { /* Link,  */withRouter } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 // import ModuleWrapper from '../wrapper';
 // import { Button } from '@material-ui/core';
-import LogoSVG from '../../Logo/LogoSVG';
+// import LogoSVG from '../../Logo/LogoSVG';
+import { Button } from '@material-ui/core';
 import neptune from '../../../neptune_api';
+import { TEST_FETCH } from '../../../redux/actions/actions';
 // import { randomText } from '../../Helpers/functions';
 // import classnames from 'classnames';
 // import {
@@ -28,8 +30,13 @@ class Home extends Component {
     render() {
         return (
             <div className='homePage'>
-                <LogoSVG width='20%' />
-                <p className='homeCaptionName'>RISIN PRODUCTION</p>
+                {/* <LogoSVG width='20%' />
+                <p className='homeCaptionName'>RISIN PRODUCTION</p> */}
+                <Button
+                    onClick={ () => { this.props.dispatch(TEST_FETCH('uploading...')); } }
+                >
+                    { 'saga' }
+                </Button>
             </div>
         );
     }
@@ -41,9 +48,10 @@ class Home extends Component {
     }
 }
 
-//Home.propTypes = {
-//
-//};
+Home.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    //
+};
 
 function select(/* store */) {
     return { };
