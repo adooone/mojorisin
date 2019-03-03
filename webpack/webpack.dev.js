@@ -101,8 +101,8 @@ module.exports = {
             ReactDOM: 'react-dom',
         }),
         new webpack.DefinePlugin({
-            // 'process.env.NODE_ENV': JSON.stringify('PRODUCTION'),
-            'process.env.NODE_ENV': JSON.stringify('DEVELOPMENT'),
+            'process.env.NODE_ENV': JSON.stringify('PRODUCTION'),
+            // 'process.env.NODE_ENV': JSON.stringify('DEVELOPMENT'),
             //
         }),
         new Dotenv(),

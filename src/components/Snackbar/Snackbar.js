@@ -43,7 +43,7 @@ class Snackbar extends Component {
                     <Icon>{icon}</Icon>
                 </div>
                 <p>
-                    {msg.data.message}
+                    {msg.data.message || 'Done'}
                 </p>
             </div>
         );

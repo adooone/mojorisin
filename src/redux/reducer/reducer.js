@@ -11,13 +11,14 @@ const initialState = Immutable({
     isMenuOpened: false,
     selectedModule: Modules[1],
     selectedAlbum: null,
-    loading: true,
+    loading: false,
     admin: false,
     complexBackground: true,
     imageBackgroundSrc: 'https://cn.opendesktop.org/img/f/c/2/7/026c18b8da5fd20734e179b3a01a83bf3962.jpg',
     // SnackbarMessage: { status: 200, text: 'Success' },
     SnackbarMessage: {},
     SnackbarVisible: false,
+    photoData: {},
     userParams: {
         lang: LANG_EN,
         //
@@ -44,6 +45,9 @@ const viewReducer = createReducer(initialState, {
     [ActionTypes.OPEN_ALBUM](state, action) {
         return state.set('selectedAlbum', action.album);
     },
+    [ActionTypes.SET_PHOTO_DATA](state, action) {
+        return state.set('photoData', action.photoData);
+    },
     [ActionTypes.CLOSE_ALBUMS](state) {
         return state.set('selectedAlbum', null);
     },
@@ -65,6 +69,12 @@ const viewReducer = createReducer(initialState, {
     },
     [ActionTypes.CLOSE_SNACKBAR](state) {
         return state.merge({ SnackbarVisible: false });
+    },
+    [ActionTypes.SHOW_LOADER](state) {
+        return state.merge({ loading: true });
+    },
+    [ActionTypes.CLOSE_LOADER](state) {
+        return state.merge({ loading: false });
     },
 });
 

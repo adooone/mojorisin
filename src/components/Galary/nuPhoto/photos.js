@@ -54,8 +54,11 @@ Photos.propTypes = {
 //
 //};
 
-function select(/* store */) {
-    return { };
+function select(store) {
+    return {
+        photoData: store.viewReducer.photoData,
+        //
+    };
 }
 
 export default withRouter(connect(select)(Photos));

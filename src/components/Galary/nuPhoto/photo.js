@@ -8,7 +8,8 @@ import {
     IconButton,
     Icon,
 } from '@material-ui/core';
-import neptune from '../../../neptune_api';
+// import neptune from '../../../neptune_api';
+import { DELETE_FILE } from '../../../redux/actions/actions';
 
 class Photo extends Component {
     constructor(props) {
@@ -48,7 +49,8 @@ class Photo extends Component {
         );
     }
     deletePhoto = () => {
-        neptune.deletePhoto(this.props.obj);
+        this.props.dispatch(DELETE_FILE(this.props.obj));
+        // neptune.deletePhoto(this.props.obj);
     }
     renderOpened = () => {
         const { obj } = this.props;
@@ -66,6 +68,7 @@ class Photo extends Component {
 
 Photo.propTypes = {
     obj: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
     //
 };
 

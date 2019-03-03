@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-
 import { withRouter } from 'react-router-dom';
+import classnames from 'classnames';
+
 import { OPEN } from '../redux/actions/actions';
 import AppToolbar from './AppToolbar/index';
 import MobileMenu from './AppToolbar/MobileMenu/index';
@@ -10,7 +11,7 @@ import MobileMenu from './AppToolbar/MobileMenu/index';
 import Galary from './Galary/index';
 import ComplexWall from './ComplexWall';
 import Snackbar from './Snackbar/Snackbar';
-// import Loader from './Loader/Loader';
+import Loader from './Loader/Loader';
 
 class App extends Component {
     componentDidMount() {
@@ -25,14 +26,16 @@ class App extends Component {
     }
     render() {
         return (
-            <div className='AppContainer'>
-                <AppToolbar />
-                <MobileMenu />
-                <Galary />
-                <ComplexWall />
-                {this.props.SnackbarVisible && <Snackbar msg={ this.props.msg } /> }
-                {/* <Loader /> */}
-            </div>
+            <>
+                <div className={ classnames('AppContainer', { 'app_blured': this.props.loading }) }>
+                    <AppToolbar />
+                    <MobileMenu />
+                    <Galary />
+                    <ComplexWall />
+                    {this.props.SnackbarVisible && <Snackbar msg={ this.props.msg } /> }
+                </div>
+                {this.props.loading && <Loader /> }
+            </>
         );
     }
 }
@@ -40,6 +43,7 @@ App.propTypes = {
     //
     dispatch: PropTypes.func.isRequired,
     SnackbarVisible: PropTypes.bool.isRequired,
+    loading: PropTypes.bool.isRequired,
     msg: PropTypes.object.isRequired,
 };
 

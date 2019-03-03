@@ -10,8 +10,8 @@ import {
     DialogContent,
     FormGroup,
 } from '@material-ui/core';
-import neptune from '../../../neptune_api';
-import { LOGIN_ADMIN } from '../../../redux/actions/actions';
+// import neptune from '../../../neptune_api';
+import { NEPTUNE_LOGIN } from '../../../redux/actions/actions';
 // import classnames from 'classnames';
 class LoginForm extends Component {
     constructor(props) {
@@ -52,11 +52,12 @@ class LoginForm extends Component {
     }
     login() {
         const { name, password } = this.state;
-        neptune.login(name, password)
-            .then(response => {
-                if (response.data.admin) this.props.dispatch(LOGIN_ADMIN());
-                else this.handleClose();
-            });
+        this.props.dispatch(NEPTUNE_LOGIN(name, password));
+        // neptune.login(name, password)
+        //     .then(response => {
+        //         if (response.data.admin) this.props.dispatch(LOGIN_ADMIN());
+        //         else this.handleClose();
+        //     });
     }
     handleClose = () => { window.location = window.location.origin; };
 }

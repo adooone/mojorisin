@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
     Button,
@@ -9,7 +9,8 @@ import {
     FormLabel,
 } from '@material-ui/core';
 
-import neptune from '../../../../neptune_api';
+// import neptune from '../../../../neptune_api';
+import { UPLOAD_FILE } from '../../../../redux/actions/actions';
 // import classnames from 'classnames';
 class UploadForm extends Component {
     constructor(props) {
@@ -66,14 +67,15 @@ class UploadForm extends Component {
         data.append('db', db);
         data.append('name', name);
         data.append('info', info);
-        neptune.uploadPhoto(data);
+        this.props.dispatch(UPLOAD_FILE(data));
+        // neptune.uploadPhoto(data);
     }
 }
 
-// UploadForm.propTypes = {
-//     dispatch: PropTypes.func.isRequired,
-//     //
-// };
+UploadForm.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    //
+};
 
 //UploadForm.defaultProps = {
 //

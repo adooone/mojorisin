@@ -6,36 +6,76 @@ import { connect } from 'react-redux';
 import { Grid, IconButton } from '@material-ui/core';
 import anime from 'animejs';
 import Photo from './photo';
-import neptune from '../../../neptune_api';
+import { GET_PHOTOS } from '../../../redux/actions/actions';
+// import neptune from '../../../neptune_api';
+
+function animate(targetId, delay) {
+    setTimeout(() => {
+        const target = document.getElementById(targetId);
+        anime({
+            targets: target,
+            marginTop: '0',
+            duration: 1000,
+            easing: 'easeOutQuart',
+        });
+    }, delay);
+}
 
 class PhotosGrid extends Component {
     constructor(props) {
         super(props);
         this.state = {
             images: [],
+            // loaded: false,
             //
         };
     }
-    componentDidMount() {
-        neptune.getPhotos(this.props.data.name)
-            .then(res => {
-                const images = res.data.photos;
-                this.setState({ images: res.data.photos });
-                const grid = document.getElementById('gridPhotosContainer');
-                setTimeout(() => {
-                    anime({
-                        targets: grid,
-                        translateY: '-100vh',
-                        duration: 700,
-                        easing: 'easeOutQuad',
-                    });
-                }, 500);
-                _.forEach(images, (image, i) => {
-                    const targetId = `photo-${ i }`;
-                    this.animate(targetId, (i < 3 ? i : i - 3) * 200);
-                });
-                this.animate('addBtn', (images.length - 3) * 200);
+    static getDerivedStateFromProps(nextProps/* , prevState */) {
+        const images = nextProps.photoData;
+        // if (!prevState.loaded) {
+        //     PhotosGrid.PhotoAnimate(images);
+        //     return { images, loaded: true };
+        // }
+        PhotosGrid.PhotoAnimate(images);
+        return { images };
+    }
+    static PhotoAnimate(images) {
+        const grid = document.getElementById('gridPhotosContainer');
+        setTimeout(() => {
+            anime({
+                targets: grid,
+                translateY: '-100vh',
+                duration: 700,
+                easing: 'easeOutQuad',
             });
+        }, 500);
+        _.forEach(images, (image, i) => {
+            const targetId = `photo-${ i }`;
+            animate(targetId, (i < 3 ? i : i - 3) * 200);
+        });
+        animate('addBtn', (images.length - 3) * 200);
+    }
+    componentDidMount() {
+        this.props.dispatch(GET_PHOTOS(this.props.data.name));
+        // neptune.getPhotos(this.props.data.name)
+        //     .then(res => {
+        //         const images = res.data.photos;
+        //         this.setState({ images: res.data.photos });
+        //         const grid = document.getElementById('gridPhotosContainer');
+        //         setTimeout(() => {
+        //             anime({
+        //                 targets: grid,
+        //                 translateY: '-100vh',
+        //                 duration: 700,
+        //                 easing: 'easeOutQuad',
+        //             });
+        //         }, 500);
+        //         _.forEach(images, (image, i) => {
+        //             const targetId = `photo-${ i }`;
+        //             this.animate(targetId, (i < 3 ? i : i - 3) * 200);
+        //         });
+        //         this.animate('addBtn', (images.length - 3) * 200);
+        //     });
     }
     animate(targetId, delay) {
         setTimeout(() => {
@@ -95,6 +135,8 @@ class PhotosGrid extends Component {
 
 PhotosGrid.propTypes = {
     data: PropTypes.object.isRequired,
+    photoData: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
     //
 };
 
@@ -102,8 +144,11 @@ PhotosGrid.propTypes = {
 //
 //};
 
-function select(/* store */) {
-    return { };
+function select(store) {
+    return {
+        photoData: store.viewReducer.photoData,
+        //
+    };
 }
 
 export default connect(select)(PhotosGrid);

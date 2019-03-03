@@ -27,6 +27,12 @@ export const OPEN_ALBUM = (album) => {
         album,
     };
 };
+export const SET_PHOTO_DATA = (photoData) => {
+    return {
+        type: ActionTypes.SET_PHOTO_DATA,
+        photoData,
+    };
+};
 export const CLOSE_ALBUMS = () => {
     return { type: ActionTypes.CLOSE_ALBUMS };
 };
@@ -45,12 +51,6 @@ export const CHANGE_BACKGROUND = (src) => {
         src,
     };
 };
-export const TEST_FETCH = (name) => {
-    return {
-        type: ActionTypes.TEST_FETCH,
-        name,
-    };
-};
 export const SHOW_SNACKBAR = (msg) => {
     return {
         type: ActionTypes.SHOW_SNACKBAR,
@@ -59,4 +59,43 @@ export const SHOW_SNACKBAR = (msg) => {
 };
 export const CLOSE_SNACKBAR = () => {
     return { type: ActionTypes.CLOSE_SNACKBAR };
+};
+export const SHOW_LOADER = () => {
+    return { type: ActionTypes.SHOW_LOADER };
+};
+export const CLOSE_LOADER = () => {
+    return { type: ActionTypes.CLOSE_LOADER };
+};
+
+//SAGAS
+export const TEST_FETCH = (name) => {
+    return {
+        type: ActionTypes.TEST_FETCH,
+        name,
+    };
+};
+export const GET_PHOTOS = (album) => {
+    return {
+        type: ActionTypes.GET_PHOTOS,
+        album,
+    };
+};
+export const UPLOAD_FILE = (data) => {
+    return {
+        type: ActionTypes.UPLOAD_FILE,
+        data,
+    };
+};
+export const DELETE_FILE = (data) => {
+    return {
+        type: ActionTypes.DELETE_FILE,
+        data,
+    };
+};
+export const NEPTUNE_LOGIN = (name, password) => {
+    return {
+        type: ActionTypes.NEPTUNE_LOGIN,
+        name,
+        password,
+    };
 };
