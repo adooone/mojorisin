@@ -6,7 +6,7 @@ const Dotenv = require('dotenv-webpack');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: path.resolve(__dirname, '../src', 'index.js'),
+    entry: path.resolve(__dirname, '../front', 'index.js'),
     devtool: 'inline-source-map',
     mode: 'development',
     devServer: {
@@ -90,9 +90,9 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['docs']),
         new HtmlWebPackPlugin({
-            template: path.resolve(__dirname, '../src/public/', 'index.html'),
+            template: path.resolve(__dirname, '../front/public/', 'index.html'),
             filename: 'index.html',
-            favicon: path.resolve(__dirname, '../src/public/', 'favicon.ico'),
+            favicon: path.resolve(__dirname, '../front/public/', 'favicon.ico'),
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
