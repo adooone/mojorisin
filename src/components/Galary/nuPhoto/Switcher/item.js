@@ -59,7 +59,7 @@ class Item extends Component {
                         >
                             {''}
                         </Button>
-                        {/* <img src={ data.background } alt='cover' /> */}
+                        <img src={ data.background } alt='cover' />
                         {/* <div className='coverDarker' /> */}
                     </>
                     )}

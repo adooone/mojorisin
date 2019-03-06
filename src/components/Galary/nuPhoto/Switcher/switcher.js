@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import anime from 'animejs';
 import classnames from 'classnames';
 
-import { Icon, IconButton } from '@material-ui/core';
+import { Icon, IconButton, Grid } from '@material-ui/core';
 import Item from './item';
 // import { CHANGE_BACKGROUND } from '../../../../redux/actions/actions';
 
@@ -21,11 +21,13 @@ class Switcher extends Component {
             opened: null,
             scrolling: false,
             scrollValue: 0,
+            images: [1, 2, 3, 4, 5, 6],
         };
         this.handleNav = this.handleNav.bind(this);
         this.onWheel = this.onWheel.bind(this);
         this.handleItemClick = this.handleItemClick.bind(this);
         this.handleItemClose = this.handleItemClose.bind(this);
+        this.getItemsPreview = this.getItemsPreview.bind(this);
     }
     render() {
         const { items, ContentComponent } = this.props;
@@ -83,6 +85,9 @@ class Switcher extends Component {
                         );
                     })}
                 </div>
+                <div className='CorouselItemObjects'>
+                    { this.getItemsPreview() }
+                </div>
             </div>
         );
     }
@@ -102,7 +107,7 @@ class Switcher extends Component {
             (active !== 2 ? active + 1 : active);
         anime({
             targets: element,
-            translateY: `-${ next * 70 }vh`,
+            translateY: `-${ next * 79 }vh`,
             duration: 300,
             easing: 'easeInQuad',
         });
@@ -132,6 +137,31 @@ class Switcher extends Component {
             this.handleNav(true);
             this.setState({ scrollValue: 0 });
         } else this.setState({ scrollValue: newValue, scrolling: true });
+    }
+    getItemsPreview() {
+        return (
+            <Grid
+                id='gridItemsPreview'
+                className='CorouselItemsPreview'
+                container
+                spacing={ 0 }
+            >
+                {_.map(this.state.images, (obj, i) => {
+                    // const targetId = `photo-${ i }`;
+                    return (
+                        <Grid
+                            className='CorouselItemPreview'
+                            key={ i }
+                            item
+                            xs={ 6 }
+                            sm={ 4 }
+                        >
+                            <div className='ItemPreview' />
+                        </Grid>
+                    );
+                })}
+            </Grid>
+        );
     }
 }
 

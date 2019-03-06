@@ -13,7 +13,7 @@ const initialState = Immutable({
     selectedAlbum: null,
     loading: false,
     admin: false,
-    complexBackground: true,
+    complexBackground: false,
     imageBackgroundSrc: 'https://cn.opendesktop.org/img/f/c/2/7/026c18b8da5fd20734e179b3a01a83bf3962.jpg',
     // SnackbarMessage: { status: 200, text: 'Success' },
     SnackbarMessage: {},

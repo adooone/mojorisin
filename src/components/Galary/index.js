@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 // import { PropTypes } from 'prop-types';
-import { Scrollbars } from 'react-custom-scrollbars';
+// import { Scrollbars } from 'react-custom-scrollbars';
 import {
     // TransitionGroup,
     CSSTransition,
@@ -20,17 +20,17 @@ class Galary extends Component {
         return (
             <CSSTransition timeout={ 200 }>
                 <div className='galary'>
-                    <Scrollbars className='galaryScroller'>
-                        {/* { this.getContent() } */}
-                        <Switch>
-                            <Route path='/admin' render={ () => <Admin /> } />
-                            <Route path='/photos' render={ () => <Photos /> } />
-                            <Route path='/videos' render={ () => <Videos /> } />
-                            <Route path='/contacts' render={ () => <Contacts /> } />
-                            <Route path='/about' render={ () => <About /> } />
-                            <Route exact path='*' render={ () => <Home /> } />
-                        </Switch>
-                    </Scrollbars>
+                    {/* <Scrollbars className='galaryScroller'> */}
+                    {/* { this.getContent() } */}
+                    <Switch>
+                        <Route path='/admin' render={ () => <Admin /> } />
+                        <Route path='/photos' render={ () => <Photos /> } />
+                        <Route path='/videos' render={ () => <Videos /> } />
+                        <Route path='/contacts' render={ () => <Contacts /> } />
+                        <Route path='/about' render={ () => <About /> } />
+                        <Route exact path='*' render={ () => <Home /> } />
+                    </Switch>
+                    {/* </Scrollbars> */}
                 </div>
             </CSSTransition>
         );
