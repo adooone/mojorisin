@@ -55,8 +55,8 @@ class Toolbar extends Component {
                 <div className='desktopAppBar'>
                     <Link to='/'>
                         <div className='desktopLogo'>
-                            <LogoSVG size={ 30 } />
-                            <p className='companyName'>RISIN PRODUCTION</p>
+                            <LogoSVG size={ 26 } />
+                            <div className='companyName'>RISIN PRODUCTION</div>
                         </div>
                     </Link>
                     <div className='desktopTopMenu'>

@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import classnames from 'classnames';
 import anime from 'animejs';
-
-import LogoSVG from '../Logo/LogoSVG';
+// import LogoSVG from '../Logo/LogoSVG';
 
 class Loader extends Component {
     componentDidMount() {
@@ -36,7 +35,7 @@ class Loader extends Component {
                 // className={ classnames('loader', { 'loader_start': this.props.loading }) }
             >
                 <div className='loaderLogo' id='loader'>
-                    <LogoSVG width={ 400 } />
+                    <div className='loaderObj' />
                 </div>
             </div>
         );

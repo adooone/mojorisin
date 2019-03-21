@@ -15,7 +15,8 @@ body
     background-color: darken($colorText, 2)
     color: $colorLightText
     // font-family: 'Comfortaa'
-    font-family: 'Poiret One'
+    // font-family: 'Poiret One'
+    font-family: 'Josefin Sans', sans-serif
     overflow: hidden
     a
         color: $colorLightText
@@ -48,8 +49,11 @@ body
                 width: 200px
                 margin-top: 16vh
             .companyName
+                display: flex
+                align-items: center
                 padding-left: 17px
-                font-size: 17px
+                font-size: 16px
+                font-weight: 300
             .desktopVersionBlock
                 width: 100%
     .toolbar
@@ -90,6 +94,10 @@ body
         justify-content: center
         align-items: center
         transition: all .8s ease
+        .loaderObj
+            width: 40px
+            height: 40px
+            background-color: $colorLight
         .loaderLogo
             display: flex
             justify-content: center
@@ -128,10 +136,13 @@ body
     -webkit-text-fill-color: rgba(255,255,255,.1)
 
 .AdminPage
-    padding: 100px
+    // padding: 300px
+    width: 100%
+    height: 100%
     display: flex
     flex-direction: row
     justify-content: center
+    align-items: center
 .LoginForm
     display: flex
     justify-content: center

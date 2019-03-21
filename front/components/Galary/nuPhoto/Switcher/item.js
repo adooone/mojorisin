@@ -10,6 +10,7 @@ import {
 import { Button, IconButton, Icon } from '@material-ui/core';
 // import Photo from '../../Photos/photo';
 // import PhotosGrid from '../photosGrid';
+import anime from '../../../../lib/anime';
 
 class Item extends Component {
     constructor(props) {
@@ -20,8 +21,9 @@ class Item extends Component {
         };
     }
     render() {
-        const { index, active, scrolling, data, onClick, onClose, ContentComponent } = this.props;
+        const { index, active, scrolling, data, cover, onClick, onClose, ContentComponent } = this.props;
         const { opened } = this.state;
+        const coverId = `itemCover_${ data.name }`;
         return (
             <div
                 className={ classnames(
@@ -39,6 +41,15 @@ class Item extends Component {
                                 onClick={ () => {
                                     onClose(index);
                                     this.setState({ opened: false });
+                                    setTimeout(() => {
+                                        anime({
+                                            targets: document.getElementById(coverId),
+                                            opacity: '1',
+                                            scale: 1,
+                                            duration: 600,
+                                            easing: 'easeOutQuad',
+                                        });
+                                    }, 100);
                                 } }
                             >
                                 <Icon>close</Icon>
@@ -53,16 +64,25 @@ class Item extends Component {
                             disableRipple
                             className='OpenButton'
                             onClick={ () => {
-                                onClick(index);
-                                this.setState({ opened: true });
+                                anime({
+                                    targets: document.getElementById(coverId),
+                                    opacity: '0',
+                                    scale: 1.3,
+                                    duration: 1200,
+                                    easing: 'easeOutQuart',
+                                });
+                                setTimeout(() => {
+                                    onClick(index);
+                                    this.setState({ opened: true });
+                                }, 100);
                             } }
                         >
                             {''}
                         </Button>
-                        <img src={ data.background } alt='cover' />
                         {/* <div className='coverDarker' /> */}
                     </>
                     )}
+                    <img id={ coverId } src={ cover || data.background } alt='cover' />
                 </div>
             </div>
         );
@@ -73,6 +93,7 @@ Item.propTypes = {
     index: PropTypes.number.isRequired,
     ContentComponent: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
+    cover: PropTypes.string.isRequired,
     active: PropTypes.bool.isRequired,
     scrolling: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,

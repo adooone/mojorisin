@@ -18,7 +18,7 @@ const initialState = Immutable({
     // SnackbarMessage: { status: 200, text: 'Success' },
     SnackbarMessage: {},
     SnackbarVisible: false,
-    photoData: {},
+    photoData: [],
     userParams: {
         lang: LANG_EN,
         //

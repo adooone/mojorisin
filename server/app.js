@@ -1,9 +1,8 @@
-const express = require('express');
 const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
 const cors = require('cors');
-
+const logger = require('morgan');
+const express = require('express');
+const cookieParser = require('cookie-parser');
 const indexRouter = require('./routes/index');
 
 const app = express();
@@ -19,6 +18,5 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../docs', '/')));
 
 app.use('/', indexRouter);
-// app.use('/users', usersRouter);
 
 module.exports = app;

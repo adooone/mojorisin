@@ -3,23 +3,25 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import classnames from 'classnames';
 // import { Scrollbars } from 'react-custom-scrollbars';
-import { Grid, IconButton } from '@material-ui/core';
-import anime from 'animejs';
+import { Grid } from '@material-ui/core';
+import anime from '../../../lib/anime';
 import Photo from './photo';
 import { GET_PHOTOS } from '../../../redux/actions/actions';
+
 // import neptune from '../../../neptune_api';
 
-function animate(targetId, delay) {
-    setTimeout(() => {
-        const target = document.getElementById(targetId);
-        anime({
-            targets: target,
-            marginTop: '0',
-            duration: 1000,
-            easing: 'easeOutQuart',
-        });
-    }, delay);
-}
+// function animate(targetId, delay) {
+//     setTimeout(() => {
+//         const target = document.getElementById(targetId);
+//         anime({
+//             targets: target,
+//             marginTop: '0',
+//             opacity: '1',
+//             duration: 1000,
+//             easing: 'easeOutQuart',
+//         });
+//     }, delay);
+// }
 
 class PhotosGrid extends Component {
     constructor(props) {
@@ -32,65 +34,26 @@ class PhotosGrid extends Component {
     }
     static getDerivedStateFromProps(nextProps/* , prevState */) {
         const images = nextProps.photoData;
-        // if (!prevState.loaded) {
-        //     PhotosGrid.PhotoAnimate(images);
-        //     return { images, loaded: true };
-        // }
         PhotosGrid.PhotoAnimate(images);
         return { images };
     }
-    static PhotoAnimate(images) {
-        const grid = document.getElementById('gridPhotosContainer');
+    static PhotoAnimate() {
         setTimeout(() => {
             anime({
-                targets: grid,
-                translateY: '-100vh',
-                duration: 700,
-                easing: 'easeOutQuad',
+                targets: '.PhotoGridItem',
+                marginTop: '0',
+                opacity: '1',
+                duration: 600,
+                easing: 'easeOutQuart',
+                delay: anime.stagger(150),
             });
         }, 500);
-        _.forEach(images, (image, i) => {
-            const targetId = `photo-${ i }`;
-            animate(targetId, (i < 3 ? i : i - 3) * 200);
-        });
-        animate('addBtn', (images.length - 3) * 200);
     }
     componentDidMount() {
         this.props.dispatch(GET_PHOTOS(this.props.data.name));
-        // neptune.getPhotos(this.props.data.name)
-        //     .then(res => {
-        //         const images = res.data.photos;
-        //         this.setState({ images: res.data.photos });
-        //         const grid = document.getElementById('gridPhotosContainer');
-        //         setTimeout(() => {
-        //             anime({
-        //                 targets: grid,
-        //                 translateY: '-100vh',
-        //                 duration: 700,
-        //                 easing: 'easeOutQuad',
-        //             });
-        //         }, 500);
-        //         _.forEach(images, (image, i) => {
-        //             const targetId = `photo-${ i }`;
-        //             this.animate(targetId, (i < 3 ? i : i - 3) * 200);
-        //         });
-        //         this.animate('addBtn', (images.length - 3) * 200);
-        //     });
-    }
-    animate(targetId, delay) {
-        setTimeout(() => {
-            const target = document.getElementById(targetId);
-            anime({
-                targets: target,
-                marginTop: '0',
-                duration: 1000,
-                easing: 'easeOutQuart',
-            });
-        }, delay);
     }
     render() {
         return (
-            // <Scrollbars className='CorouselItemScroller'>
             <Grid
                 id='gridPhotosContainer'
                 className='PhotoGridContainer'
@@ -112,21 +75,6 @@ class PhotosGrid extends Component {
                         </Grid>
                     );
                 })}
-                <Grid
-                    id='addBtn'
-                    className='PhotoGridItem'
-                    key={ this.state.images.length }
-                    item
-                    xs={ 6 }
-                    sm={ 4 }
-                >
-                    <div className='addBtnContainer'>
-                        <IconButton className='addBtn'>
-                            {/* <Icon fontSize='large'>add</Icon> */}
-                            <p>add photo</p>
-                        </IconButton>
-                    </div>
-                </Grid>
             </Grid>
             // </Scrollbars>
         );
@@ -135,7 +83,7 @@ class PhotosGrid extends Component {
 
 PhotosGrid.propTypes = {
     data: PropTypes.object.isRequired,
-    photoData: PropTypes.object.isRequired,
+    photoData: PropTypes.array.isRequired,
     dispatch: PropTypes.func.isRequired,
     //
 };

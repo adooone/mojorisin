@@ -5,12 +5,14 @@ import {
     // Link,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-import anime from 'animejs';
 import classnames from 'classnames';
 
 import { Icon, IconButton, Grid } from '@material-ui/core';
+import { SELECTOR_ITEM_PREVIEW } from '../../../../consts/generalConsts';
 import Item from './item';
+import anime from '../../../../lib/anime';
 import { GET_PHOTOS } from '../../../../redux/actions/actions';
+import motion from '../../../../lib/motion';
 // import { CHANGE_BACKGROUND } from '../../../../redux/actions/actions';
 
 const SCROLL_MAX = 300;
@@ -22,6 +24,7 @@ class Switcher extends Component {
             opened: null,
             scrolling: false,
             scrollValue: 0,
+            albumPreview: [],
             // images: [1, 2, 3, 4, 5, 6],
         };
         this.handleNav = this.handleNav.bind(this);
@@ -29,6 +32,14 @@ class Switcher extends Component {
         this.handleItemClick = this.handleItemClick.bind(this);
         this.handleItemClose = this.handleItemClose.bind(this);
         this.getItemsPreview = this.getItemsPreview.bind(this);
+    }
+    static getDerivedStateFromProps(nextProps/* , prevState */) {
+        const images = nextProps.photoData;
+        const albumPreview = _.take(images, 6);
+        return { albumPreview };
+    }
+    componentDidMount() {
+        this.props.dispatch(GET_PHOTOS(this.props.items[0].name));
     }
     render() {
         const { items, ContentComponent } = this.props;
@@ -41,7 +52,7 @@ class Switcher extends Component {
                         { 'CorouselLabelOpened': opened !== null }
                     ) }
                 >
-                    <h3>{ items[active].name }</h3>
+                    <h3>{ items[active].caption }</h3>
                     <p>Some very important words</p>
                     <div className='CorouselNavigation'>
                         <IconButton
@@ -74,10 +85,12 @@ class Switcher extends Component {
                         return (
                             // <Link key={ i } to={ `/${ item.routePath }` }>
                             <Item
+                                key={ i }
                                 index={ i }
                                 scrolling={ scrolling }
                                 active={ active === i }
                                 data={ item }
+                                cover={ false }
                                 ContentComponent={ ContentComponent }
                                 onClick={ this.handleItemClick }
                                 onClose={ this.handleItemClose }
@@ -87,15 +100,17 @@ class Switcher extends Component {
                     })}
                 </div>
                 <div className='CorouselItemObjects'>
-                    { this.getItemsPreview() }
+                    { this.getItemsPreview()}
                 </div>
             </div>
         );
     }
     handleItemClick(index) {
+        motion.hide(SELECTOR_ITEM_PREVIEW);
         this.setState({ opened: index });
     }
     handleItemClose() {
+        motion.show(SELECTOR_ITEM_PREVIEW);
         this.setState({ opened: null });
     }
     handleNav(up) {
@@ -109,7 +124,7 @@ class Switcher extends Component {
             (active !== 2 ? active + 1 : active);
         anime({
             targets: element,
-            translateY: `-${ next * 79 }vh`,
+            translateY: `-${ next * 76 }vh`,
             duration: 300,
             easing: 'easeInQuad',
         });
@@ -120,8 +135,10 @@ class Switcher extends Component {
             easing: 'easeInQuad',
         });
         this.props.onChange(next);
-        this.props.dispatch(GET_PHOTOS(items[next].name));
-        // this.props.dispatch(CHANGE_BACKGROUND(this.props.items[next].background));
+        motion.hide(SELECTOR_ITEM_PREVIEW, () => {
+            this.props.dispatch(GET_PHOTOS(items[next].name));
+            motion.show(SELECTOR_ITEM_PREVIEW);
+        });
         this.setState({ active: next });
     }
     onWheel(e) {
@@ -149,11 +166,10 @@ class Switcher extends Component {
                 container
                 spacing={ 0 }
             >
-                {_.map(this.props.photoData, (obj, i) => {
-                    // const targetId = `photo-${ i }`;
+                {_.map(this.state.albumPreview, (obj, i) => {
                     return (
                         <Grid
-                            className='CorouselItemPreview'
+                            className={ SELECTOR_ITEM_PREVIEW }
                             key={ i }
                             item
                             xs={ 6 }

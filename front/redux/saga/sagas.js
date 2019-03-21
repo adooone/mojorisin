@@ -16,13 +16,11 @@ import {
 } from '../actions/actions';
 
 const sagas = {
-    * [ActionTypes.TEST_FETCH](action) {
+    * [ActionTypes.TEST_FETCH]() {
         yield put(SHOW_LOADER());
         yield delay(2000);
         const resp = yield call(neptune.login, 'denis', '1234');
-        console.log(resp);
         yield put(SHOW_SNACKBAR(resp));
-        yield console.log(action.name);
         yield put(CLOSE_LOADER());
     },
     * [ActionTypes.GET_PHOTOS](action) {

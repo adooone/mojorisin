@@ -7,7 +7,7 @@ import {
     //
 } from '@material-ui/core/styles';
 import { Router } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 
 import './sass/main.sass';
 // import reducer from './redux/reducer/reducer';

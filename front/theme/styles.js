@@ -12,7 +12,8 @@ export const theme = createMuiTheme({
         // Use the system font instead of the default Roboto font.
         useNextVariants: true,
         fontFamily: [
-            '"Poiret One"',
+            '"Josefin Sans"',
+            // '"Poiret One"',
             // '"Comfortaa"',
         ].join(','),
         fontSize: 17,

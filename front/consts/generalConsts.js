@@ -10,3 +10,6 @@ export const MODULE_ABOUT = 'About';
 
 export const LANG_RU = 'ru';
 export const LANG_EN = 'en';
+
+// SELECTORS
+export const SELECTOR_ITEM_PREVIEW = 'CorouselItemPreview';

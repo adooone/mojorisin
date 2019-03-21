@@ -16,7 +16,7 @@ class UploadForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            db: 'objects',
+            db: 'sessions',
             selectedFile: null,
             name: null,
             info: null,

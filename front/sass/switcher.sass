@@ -14,18 +14,20 @@
         z-index: 200
         h3
             font-size: 100px
-            line-height: 120px
+            font-weight: 500
             margin: 0
             transition: all .4s ease
         p
-            font-size: 30px
+            padding: 0 10px
+            font-size: 24px
+            font-weight: 300
             transition: all .4s ease
     .CorouselLabelOpened
         width: 25%
         transform: translateY(-60vh)
-        padding: 0 100px
+        padding: 0 16vh
         h3
-            font-size: 80px
+            font-size: 60px
             line-height: 120px
         p
             opacity: 0
@@ -33,11 +35,11 @@
             opacity: 0
     .CorouselItemsOpened
         top: 0 !important
-        width: 75% !important
+        width: 70% !important
     .CorouselItems
         position: fixed
         right: 0
-        top: 10.5vh
+        top: 12vh
         width: 63%
         display: flex
         justify-content: center
@@ -51,12 +53,12 @@
             justify-content: center
             align-items: center
             font-size: 50px
-            width: 75vh
-            height: 75vh
-            margin: 2vh
-            background-color: darken($colorDark, 5)
-            border-radius: 4vh
-            box-shadow: 0px 0px 60px -10px rgba(0,0,0,0.5)
+            width: 70vh
+            height: 70vh
+            margin: 3vh
+            // background-color: darken($colorDark, 5)
+            border-radius: 3vh
+            // box-shadow: 0px 0px 60px -10px rgba(0,0,0,0.5)
             opacity: 0.6
             transition: all .6s ease, transform .9s ease
             overflow: hidden
@@ -90,11 +92,12 @@
                     z-index: 800
                 .PhotoGridContainer
                     position: absolute
-                    top: 100vh
+                    top: 0
                     padding: 100px 150px
                     min-width: 75vw
                     .PhotoGridItem
-                        margin-top: 100vh
+                        margin-top: 80px
+                        opacity: 0
                         .addBtnContainer
                             height: 350px
                             margin: 15px
@@ -168,7 +171,7 @@
             height: 100vh
             margin: 0
             border-radius: 0
-            background-color: darken($colorDark, 3)
+            // background-color: darken($colorDark, 3)
         .scrollingItem
             transform: scale(0.9)
     .CorouselIndicator
@@ -197,14 +200,21 @@
     .CorouselItemsPreview
         position: absolute
         top: 20vh
-        left: -100px
-        width: 1260px
+        left: -50px
+        width: 1080px
         display: flex
+        opacity: 0.2
         .CorouselItemPreview
-            height: 420px
-            padding: 15px
+            height: 360px
+            padding: 7px
+            margin-top: 30px
+            opacity: 1
+            transition: all 1s ease
             .ItemPreview
-                border-radius: 20px 
+                overflow: hidden
+                border-radius: 15px
                 width: 100%
                 height: 100%
                 background: lighten($colorDark, 3)
+                img
+                    width: 100%
