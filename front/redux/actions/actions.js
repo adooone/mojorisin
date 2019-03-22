@@ -33,6 +33,12 @@ export const SET_PHOTO_DATA = (photoData) => {
         photoData,
     };
 };
+export const SET_PREVIEW_DATA = (previewData) => {
+    return {
+        type: ActionTypes.SET_PREVIEW_DATA,
+        previewData,
+    };
+};
 export const CLOSE_ALBUMS = () => {
     return { type: ActionTypes.CLOSE_ALBUMS };
 };
@@ -78,6 +84,12 @@ export const GET_PHOTOS = (album) => {
     return {
         type: ActionTypes.GET_PHOTOS,
         album,
+    };
+};
+export const GET_PHOTOS_PREVIEW = () => {
+    return {
+        type: ActionTypes.GET_PHOTOS_PREVIEW,
+        //
     };
 };
 export const UPLOAD_FILE = (data) => {

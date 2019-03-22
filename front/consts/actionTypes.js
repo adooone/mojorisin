@@ -8,6 +8,7 @@ export const OPEN_MODULE = 'OPEN_MODULE';
 
 export const OPEN_ALBUM = 'OPEN_ALBUM';
 export const SET_PHOTO_DATA = 'SET_PHOTO_DATA';
+export const SET_PREVIEW_DATA = 'SET_PREVIEW_DATA';
 export const CLOSE_ALBUMS = 'CLOSE_ALBUMS';
 
 export const LOGIN_ADMIN = 'LOGIN_ADMIN';
@@ -21,6 +22,7 @@ export const CLOSE_LOADER = 'CLOSE_LOADER';
 ///SAGAS
 export const TEST_FETCH = 'TEST_FETCH';
 export const GET_PHOTOS = 'GET_PHOTOS';
+export const GET_PHOTOS_PREVIEW = 'GET_PHOTOS_PREVIEW';
 export const UPLOAD_FILE = 'UPLOAD_FILE';
 export const DELETE_FILE = 'DELETE_FILE';
 export const NEPTUNE_LOGIN = 'NEPTUNE_LOGIN';

@@ -2,8 +2,9 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-
 const webpack = require('webpack');
+const pcckageConfig = require('../package.json');
+
 
 module.exports = {
     entry: path.resolve(__dirname, '../front', 'index.js'),
@@ -102,6 +103,7 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('PRODUCTION'),
+            'process.env.VERSION': JSON.stringify(pcckageConfig.version),
             //
         }),
         new Dotenv(),

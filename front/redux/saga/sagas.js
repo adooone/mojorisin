@@ -19,9 +19,23 @@ const sagas = {
     * [ActionTypes.TEST_FETCH]() {
         yield put(SHOW_LOADER());
         yield delay(2000);
-        const resp = yield call(neptune.login, 'denis', '1234');
+        let resp = null;
+        try {
+            resp = yield call(neptune.login, 'denis', '1234');
+        } catch (err) {
+            yield put(SHOW_SNACKBAR('error'));
+            yield put(CLOSE_LOADER());
+        }
         yield put(SHOW_SNACKBAR(resp));
         yield put(CLOSE_LOADER());
+    },
+    * [ActionTypes.GET_PHOTOS_PREVIEW](action) {
+        // yield put(SHOW_LOADER());
+        // yield delay(2000);
+        const resp = yield call(neptune.getPhotosPreview, action.album);
+        yield put(SET_PHOTO_DATA(resp.data.photos));
+        yield put(SHOW_SNACKBAR(resp));
+        // yield put(CLOSE_LOADER());
     },
     * [ActionTypes.GET_PHOTOS](action) {
         // yield put(SHOW_LOADER());

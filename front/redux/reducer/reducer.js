@@ -19,6 +19,7 @@ const initialState = Immutable({
     SnackbarMessage: {},
     SnackbarVisible: false,
     photoData: [],
+    previewData: [],
     userParams: {
         lang: LANG_EN,
         //
@@ -47,6 +48,9 @@ const viewReducer = createReducer(initialState, {
     },
     [ActionTypes.SET_PHOTO_DATA](state, action) {
         return state.set('photoData', action.photoData);
+    },
+    [ActionTypes.SET_PREVIEW_DATA](state, action) {
+        return state.set('previewData', action.previewData);
     },
     [ActionTypes.CLOSE_ALBUMS](state) {
         return state.set('selectedAlbum', null);

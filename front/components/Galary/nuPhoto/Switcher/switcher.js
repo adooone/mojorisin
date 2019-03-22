@@ -35,7 +35,7 @@ class Switcher extends Component {
     }
     static getDerivedStateFromProps(nextProps/* , prevState */) {
         const images = nextProps.photoData;
-        const albumPreview = _.take(images, 6);
+        const albumPreview = _.take(images, 3);
         return { albumPreview };
     }
     componentDidMount() {

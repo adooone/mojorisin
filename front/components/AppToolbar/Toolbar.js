@@ -57,6 +57,8 @@ class Toolbar extends Component {
                         <div className='desktopLogo'>
                             <LogoSVG size={ 26 } />
                             <div className='companyName'>RISIN PRODUCTION</div>
+                            {process.env.NODE_ENV === 'DEVELOPMENT' && (
+                                <div className='version'>{ process.env.VERSION }</div>)}
                         </div>
                     </Link>
                     <div className='desktopTopMenu'>
@@ -65,10 +67,6 @@ class Toolbar extends Component {
                                 {this.ModuleBtn(module, dict.translate(module.caption)) }
                             </Link>
                         )) }
-                        {/* <div className='langContainerDesktop'>
-                            <LangButton lang={ LANG_RU } />
-                            <LangButton lang={ LANG_EN } />
-                        </div> */}
                     </div>
                 </div>
             </div>

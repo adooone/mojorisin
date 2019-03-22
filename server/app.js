@@ -1,9 +1,11 @@
-const path = require('path');
-const cors = require('cors');
-const logger = require('morgan');
 const express = require('express');
+const path = require('path');
 const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
+
 const indexRouter = require('./routes/index');
+const photosRouter = require('./routes/photos');
 
 const app = express();
 // app.use(cors({
@@ -18,5 +20,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../docs', '/')));
 
 app.use('/', indexRouter);
+app.use('/photos', photosRouter);
 
+if (!process.env.PRODUCTION) console.log('=== development mode ===');
+if (process.env.PRODUCTION) console.log('=== production mode ===');
+console.log(`=== ${ process.env.NODE_ENV } ===`);
 module.exports = app;

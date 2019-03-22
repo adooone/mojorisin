@@ -43,9 +43,9 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-syntax-import-meta": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.4.0",
-    "@babel/preset-env": "^7.4.1",
+    "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
-    "@babel/runtime": "^7.4.0",
+    "@babel/runtime": "^7.4.2",
     "@material-ui/core": "^3.9.0",
     "@material-ui/icons": "^3.0.2",
     "animejs": "^2.2.0",
@@ -91,6 +91,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "@google-cloud/storage": "^2.4.3",
     "@material-ui/icons": "^2.0.3",
     "axios": "^0.18.0",
     "babel-eslint": "^10.0.1",
@@ -100,7 +101,10 @@
     "dotenv-webpack": "^1.7.0",
     "eslint-config-airbnb": "^17.1.0",
     "express": "^4.16.4",
+    "knex": "^0.16.3",
     "morgan": "^1.9.1",
+    "multer": "^1.4.1",
+    "mysql": "^2.16.0",
     "nodemon": "^1.18.10",
     "react-custom-scrollbars": "^4.2.1",
     "react-dropzone": "^9.0.0",
@@ -109,5 +113,23 @@
     "react-transition-group": "^2.6.1",
     "redux-saga": "^1.0.2",
     "redux-thunk": "^2.3.0"
+  },
+  "cloud-repo-tools": {
+    "requiresProjectId": true,
+    "requiresKeyFile": true,
+    "test": {
+      "app": {
+        "requiredEnvVars": [
+          "GCLOUD_STORAGE_BUCKET"
+        ],
+        "msg": "<input type=\"file\" name=\"file\">",
+        "substitutions": "risinproduction_bucket=$GCLOUD_STORAGE_BUCKET"
+      },
+      "build": {
+        "requiredEnvVars": [
+          "GCLOUD_STORAGE_BUCKET"
+        ]
+      }
+    }
   }
 }

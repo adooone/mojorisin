@@ -12,6 +12,7 @@ import Galary from './Galary/index';
 import ComplexWall from './ComplexWall';
 import Snackbar from './Snackbar/Snackbar';
 import Loader from './Loader/Loader';
+// import VersionContainer from './Helpers/Version';
 
 class App extends Component {
     componentDidMount() {
