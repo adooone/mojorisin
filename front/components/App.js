@@ -16,12 +16,12 @@ import Loader from './Loader/Loader';
 
 class App extends Component {
     componentDidMount() {
-        // const isMobile = window.screen.width < 600;
-        // if (isMobile) console.log('using MOBILE version');
-        // else console.log('using DESKTOP version');
+        const isMobile = window.screen.width < 600;
+        if (isMobile) console.log('using MOBILE version');
+        else console.log('using DESKTOP version');
         window.onload = () => {
             _.delay(() => {
-                this.props.dispatch(OPEN());
+                this.props.dispatch(OPEN({ isMobile }));
             }, 1000);
         };
     }

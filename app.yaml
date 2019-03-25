@@ -1,5 +1,5 @@
 runtime: nodejs10
 
 env_variables:
-  GCLOUD_STORAGE_BUCKET: neptunewa-bucket
+  GCLOUD_STORAGE_BUCKET: risin_media
   PRODUCTION: true

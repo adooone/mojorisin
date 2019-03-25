@@ -13,10 +13,11 @@ import { CLOSE_SNACKBAR } from '../../redux/actions/actions';
 
 class Snackbar extends Component {
     componentDidMount() {
+        const { mobileVersion } = this.props;
         const snackbar = document.getElementById('Snackbar');
         anime({
             targets: snackbar,
-            bottom: '50px',
+            bottom: mobileVersion ? 0 : '50px',
             duration: 300,
             easing: 'easeInQuad',
         });
@@ -52,6 +53,7 @@ class Snackbar extends Component {
 
 Snackbar.propTypes = {
     dispatch: PropTypes.func.isRequired,
+    mobileVersion: PropTypes.bool.isRequired,
     msg: PropTypes.object.isRequired,
     //
 };
@@ -60,8 +62,11 @@ Snackbar.propTypes = {
 //
 //};
 
-function select(/* store */) {
-    return { };
+function select(store) {
+    return {
+        mobileVersion: store.viewReducer.mobileVersion,
+        //
+    };
 }
 
 export default connect(select)(Snackbar);

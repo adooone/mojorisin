@@ -35,7 +35,7 @@ class Home extends Component {
                 <Button
                     onClick={ () => { this.props.dispatch(TEST_FETCH('uploading...')); } }
                 >
-                    { 'saga' }
+                    { 'test message' }
                 </Button>
             </div>
         );

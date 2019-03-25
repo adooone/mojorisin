@@ -2,8 +2,8 @@ import {
     MODULE_HOME,
     MODULE_PHOTOS,
     MODULE_VIDEOS,
-    MODULE_CONTACTS,
-    MODULE_ABOUT,
+    // MODULE_CONTACTS,
+    // MODULE_ABOUT,
     MODULE_TYPE_ICON,
     MODULE_ADMIN,
     MODULE_TYPE_TEXT,
@@ -38,20 +38,20 @@ const Modules = [
         icon: 'change_history',
         caption: 'modules.videos',
     },
-    {
-        name: MODULE_CONTACTS,
-        type: MODULE_TYPE_TEXT,
-        path: 'contacts',
-        icon: 'change_history',
-        caption: 'modules.contacts',
-    },
-    {
-        name: MODULE_ABOUT,
-        type: MODULE_TYPE_TEXT,
-        path: 'about',
-        icon: 'change_history',
-        caption: 'modules.about',
-    },
+    // {
+    //     name: MODULE_CONTACTS,
+    //     type: MODULE_TYPE_TEXT,
+    //     path: 'contacts',
+    //     icon: 'change_history',
+    //     caption: 'modules.contacts',
+    // },
+    // {
+    //     name: MODULE_ABOUT,
+    //     type: MODULE_TYPE_TEXT,
+    //     path: 'about',
+    //     icon: 'change_history',
+    //     caption: 'modules.about',
+    // },
 ];
 
 export default Modules;

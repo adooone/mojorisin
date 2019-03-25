@@ -11,7 +11,7 @@ const initialState = Immutable({
     isMenuOpened: false,
     selectedModule: Modules[1],
     selectedAlbum: null,
-    loading: false,
+    loading: true,
     admin: false,
     complexBackground: false,
     imageBackgroundSrc: 'https://cn.opendesktop.org/img/f/c/2/7/026c18b8da5fd20734e179b3a01a83bf3962.jpg',
@@ -24,6 +24,7 @@ const initialState = Immutable({
         lang: LANG_EN,
         //
     },
+    mobileVersion: false,
     dict: getDict(LANG_EN),
 });
 
@@ -31,8 +32,11 @@ const viewReducer = createReducer(initialState, {
     [ActionTypes.RESET_APP]() {
         return initialState;
     },
-    [ActionTypes.OPEN](state) {
-        return state.set('loading', false);
+    [ActionTypes.OPEN](state, action) {
+        return state.merge({
+            loading: false,
+            mobileVersion: action.params.isMobile,
+        });
     },
     [ActionTypes.OPEN_MENU](state) {
         return state.set('isMenuOpened', true);

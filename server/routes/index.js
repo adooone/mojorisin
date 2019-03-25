@@ -2,9 +2,9 @@ const express = require('express');
 const path = require('path');
 const multer = require('multer');
 const { Storage } = require('@google-cloud/storage');
-
-// const loginRequest = require('./login');
 const knex = require('./neptunedb');
+// eslint-disable-next-line import/order
+const bookshelf = require('bookshelf')(knex);
 
 const router = express.Router();
 // const upload = multer({ dest: 'dist/media/' });
@@ -14,19 +14,27 @@ const bucket = storage.bucket(process.env.GCLOUD_STORAGE_BUCKET);
 
 const upload = multer({ storage: multer.memoryStorage() }).single('image');
 
+const Users = bookshelf.Model.extend({
+    tableName: 'users',
+    //
+});
+
+
 router.get('/api/login', (req, res) => {
-    knex('users')
-        .where('name', req.query.name)
-        .select('password')
-        .map(row => row.password)
-        .then(result => {
-            const pass = result[0];
-            return { status: 200, admin: pass === req.query.password };
-        })
-        .then(result => {
-            res
-                .status(result.status)
-                .send({ admin: result.admin, message: 'User Info' });
+    Users
+        .where({ name: req.query.name })
+        .fetch()
+        .then(model => {
+            if (model) {
+                const passwordFromDB = model.get('password');
+                const admin = !!model.get('isAdmin');
+                const logged = passwordFromDB === req.query.password;
+                if (logged) {
+                    res
+                        .status(200)
+                        .send({ logged, admin, message: 'Logged in' });
+                } else res.status(201).send({ logged: false });
+            } else res.status(401).send({ msg: 'No such user' });
         });
 });
 router.get('/api/photo/getPhotos', (req, res) => {

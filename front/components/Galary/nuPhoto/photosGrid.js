@@ -8,21 +8,6 @@ import anime from '../../../lib/anime';
 import Photo from './photo';
 import { GET_PHOTOS } from '../../../redux/actions/actions';
 
-// import neptune from '../../../neptune_api';
-
-// function animate(targetId, delay) {
-//     setTimeout(() => {
-//         const target = document.getElementById(targetId);
-//         anime({
-//             targets: target,
-//             marginTop: '0',
-//             opacity: '1',
-//             duration: 1000,
-//             easing: 'easeOutQuart',
-//         });
-//     }, delay);
-// }
-
 class PhotosGrid extends Component {
     constructor(props) {
         super(props);

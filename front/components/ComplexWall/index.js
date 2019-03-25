@@ -9,11 +9,7 @@ class CoplexWall extends Component {
         return (
             <div className='CoplexWall'>
                 <div className={ classnames('backgroundDark', { 'transparentDark': complexBackground }) } />
-                {
-                    imageBackgroundSrc &&
-                    complexBackground !== '' &&
-                    this.renderImageBackground(imageBackgroundSrc)
-                }
+                { complexBackground ? this.renderImageBackground(imageBackgroundSrc) : null }
             </div>
         );
     }

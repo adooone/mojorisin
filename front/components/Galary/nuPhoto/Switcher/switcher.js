@@ -99,9 +99,7 @@ class Switcher extends Component {
                         );
                     })}
                 </div>
-                <div className='CorouselItemObjects'>
-                    { this.getItemsPreview()}
-                </div>
+                { this.getItemsPreview()}
             </div>
         );
     }
@@ -115,16 +113,18 @@ class Switcher extends Component {
     }
     handleNav(up) {
         // const up = direction === 'up';
-        const { items } = this.props;
+        const { items, isMobile } = this.props;
+        console.log(isMobile);
         const element = document.getElementById('photo_items');
         const indicator = document.getElementById('indicator');
+        const valueToScroll = isMobile ? 100 : 76;
         const { active } = this.state;
         const next = up ?
             (active !== 0 ? active - 1 : active) :
             (active !== 2 ? active + 1 : active);
         anime({
             targets: element,
-            translateY: `-${ next * 76 }vh`,
+            translateY: `-${ next * valueToScroll }vh`,
             duration: 300,
             easing: 'easeInQuad',
         });
@@ -192,6 +192,7 @@ Switcher.propTypes = {
     items: PropTypes.array.isRequired,
     photoData: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
+    isMobile: PropTypes.bool.isRequired,
     //
 };
 

@@ -93,7 +93,7 @@ Item.propTypes = {
     index: PropTypes.number.isRequired,
     ContentComponent: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
-    cover: PropTypes.string.isRequired,
+    cover: PropTypes.any.isRequired,
     active: PropTypes.bool.isRequired,
     scrolling: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,

@@ -27,7 +27,7 @@ body
         padding: 0
         line-height: 100%
     header
-        // background-color: $colorText
+        background-color: $colorDark
         height: $headerHeight
         width: 100%
         position: fixed
@@ -148,6 +148,12 @@ body
     display: flex
     justify-content: center
 .Snackbar
+    @media #{$media-phones}
+        border-radius: 0
+        left: 0
+        width: 100%
+        background: lighten($colorDark, 0)
+        color: lighten($colorLight, 0)
     position: absolute
     display: flex
     justify-content: flex-start
@@ -159,7 +165,8 @@ body
     min-width: 300px
     border-radius: 10px
     padding: 10px 30px
-    background: lighten($colorDark, 0)
+    background: lighten($colorLight, 0)
+    color: lighten($colorDark, 0)
     p
         display: flex
         font-size: 25px

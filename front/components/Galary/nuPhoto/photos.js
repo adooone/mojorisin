@@ -15,38 +15,31 @@ import PhotosGrid from './photosGrid';
 
 class Photos extends Component {
     render() {
-        const { match } = this.props;
+        const { match, mobileVersion } = this.props;
         return (
-            <div className='Photos'>
-                <Switch>
-                    <Route
-                        exact
-                        path={ match.url }
-                        render={ () => (
-                            <Switcher
-                                onChange={ (index) => {
-                                    console.log(photos.albums[index]);
-                                } }
-                                items={ photos.albums }
-                                ContentComponent={ (data) => <PhotosGrid data={ data } /> }
-                            />
-                        ) }
-                    />
-                    {/* { _.map(photos.albums, (album, i) => (
-                        <Route
-                            key={ i }
-                            path={ `/photos/${ album.routePath }` }
-                            render={ () => <Album /> }
+            <Switch>
+                <Route
+                    exact
+                    path={ match.url }
+                    render={ () => (
+                        <Switcher
+                            onChange={ (index) => {
+                                console.log(photos.albums[index]);
+                            } }
+                            items={ photos.albums }
+                            isMobile={ mobileVersion }
+                            ContentComponent={ (data) => <PhotosGrid data={ data } /> }
                         />
-                    )) } */}
-                </Switch>
-            </div>
+                    ) }
+                />
+            </Switch>
         );
     }
 }
 
 Photos.propTypes = {
     match: PropTypes.object.isRequired,
+    mobileVersion: PropTypes.bool.isRequired,
     //
 };
 
@@ -57,6 +50,7 @@ Photos.propTypes = {
 function select(store) {
     return {
         photoData: store.viewReducer.photoData,
+        mobileVersion: store.viewReducer.mobileVersion,
         //
     };
 }
