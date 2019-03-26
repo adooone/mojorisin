@@ -27,7 +27,8 @@ body
         padding: 0
         line-height: 100%
     header
-        background-color: $colorDark
+        @media #{$media-phones}
+            background-color: $colorDark
         height: $headerHeight
         width: 100%
         position: fixed
@@ -45,15 +46,16 @@ body
             padding: 0 16vh
             width: 100%
             .desktopLogo
+                position: absolute
+                top: 115px
                 display: flex
                 align-items: center
                 width: 200px
-                margin-top: 16vh
             .companyName
                 display: flex
-                align-items: center
+                // align-items: center
                 padding-left: 17px
-                font-size: 16px
+                font-size: 17px
                 font-weight: 300
             .desktopVersionBlock
                 width: 100%
@@ -149,14 +151,16 @@ body
     justify-content: center
 .Snackbar
     @media #{$media-phones}
-        border-radius: 0
+        border-radius: 5px
         left: 0
-        width: 100%
+        margin: 4%
+        width: 92%
         background: lighten($colorDark, 0)
         color: lighten($colorLight, 0)
+        padding: 10px 10px 10px 30px
     position: absolute
     display: flex
-    justify-content: flex-start
+    justify-content: space-between
     align-items: center
     z-index: 900
     bottom: -100px
@@ -165,9 +169,23 @@ body
     min-width: 300px
     border-radius: 10px
     padding: 10px 30px
-    background: lighten($colorLight, 0)
-    color: lighten($colorDark, 0)
+    background: lighten($colorDark, 0)
+    color: lighten($colorLight, 0)
+    div
+        display: flex
+        align-items: center
+    .resIcon
+        color: $colorSuccess
+    .closeBtn
+        @media #{$media-phones}
+            color: $colorLight
+        right: 0
+        opacity: 0.7
+        color: $colorDark
     p
+        @media #{$media-phones}
+            font-size: 16px
+            line-height: 16px
         display: flex
         font-size: 25px
         line-height: 25px

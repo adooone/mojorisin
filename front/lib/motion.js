@@ -1,29 +1,19 @@
 import anime from './anime';
 
 const hide = (target, complete, delay) => {
-    console.log(target);
-    setTimeout(() => {
-        anime({
-            targets: `.${ target }`,
-            // translateY: -200,
-            opacity: 0,
-            duration: 100,
-            easing: 'easeOutQuart',
-            delay: anime.stagger(200),
-            complete: () => {
-                anime({
-                    targets: `.${target}`,
-                    // translateY: 200,
-                    duration: 200,
-                    easing: 'easeOutQuart',
-                    complete,
-                });
-            }
-        });
-    }, delay);
+    const animation = anime.timeline({
+        easing: 'easeOutQuart',
+        duration: 1000,
+        // delay: anime.stagger(200),
+    }).add({
+        targets: `.${target}`,
+        opacity: 0,
+    });
+    animation.finished.then(() => {
+        complete();
+    });
 }
 const show = (target, complete, delay) => {
-    console.log(target);
     setTimeout(() => {
         anime({
             targets: `.${ target }`,
@@ -31,7 +21,7 @@ const show = (target, complete, delay) => {
             opacity: 1,
             duration: 100,
             easing: 'easeOutQuart',
-            delay: anime.stagger(200),
+            // delay: anime.stagger(200),
             complete,
         });
     }, delay);

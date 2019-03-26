@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-    Icon,
+    Icon, IconButton,
     // TextField,
     // IconButton,
     // Icon,
@@ -12,6 +12,10 @@ import { CLOSE_SNACKBAR } from '../../redux/actions/actions';
 
 
 class Snackbar extends Component {
+    constructor(props) {
+        super(props);
+        this.close = this.close.bind(this);
+    }
     componentDidMount() {
         const { mobileVersion } = this.props;
         const snackbar = document.getElementById('Snackbar');
@@ -22,14 +26,18 @@ class Snackbar extends Component {
             easing: 'easeInQuad',
         });
         setTimeout(() => {
-            anime({
-                targets: snackbar,
-                bottom: '-100px',
-                duration: 300,
-                easing: 'easeInQuad',
-                complete: () => this.props.dispatch(CLOSE_SNACKBAR()),
-            });
+            this.close();
         }, 4000);
+    }
+    close() {
+        const snackbar = document.getElementById('Snackbar');
+        anime({
+            targets: snackbar,
+            bottom: '-100px',
+            duration: 300,
+            easing: 'easeInQuad',
+            complete: () => this.props.dispatch(CLOSE_SNACKBAR()),
+        });
     }
     render() {
         const { msg } = this.props;
@@ -41,11 +49,12 @@ class Snackbar extends Component {
         return (
             <div id='Snackbar' className='Snackbar'>
                 <div>
-                    <Icon>{icon}</Icon>
+                    <Icon className='resIcon'>{icon}</Icon>
+                    <p>{msg.data.message || 'Done'}</p>
                 </div>
-                <p>
-                    {msg.data.message || 'Done'}
-                </p>
+                <IconButton className='closeBtn' onClick={ this.close }>
+                    <Icon>close</Icon>
+                </IconButton>
             </div>
         );
     }

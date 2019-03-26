@@ -16,7 +16,7 @@ import {
     CLOSE_MENU,
 } from '../../redux/actions/actions';
 // import classnames from 'classnames';
-import Modules from '../../description/modules';
+// import Modules from '../../description/modules';
 import LogoSVG from '../Logo/LogoSVG';
 // import LangButton from '../Helpers/LangButton';
 import {
@@ -49,25 +49,25 @@ class Toolbar extends Component {
         );
     }
     render() {
-        const { dict/* , selectedModule, opened */ } = this.props;
+        // const { dict/* , selectedModule, opened */ } = this.props;
         return (
             <div className='desktopVersionBlock'>
                 <div className='desktopAppBar'>
                     <Link to='/'>
                         <div className='desktopLogo'>
-                            <LogoSVG size={ 26 } />
+                            <LogoSVG size={ 30 } />
                             <div className='companyName'>RISIN PRODUCTION</div>
-                            {process.env.NODE_ENV === 'DEVELOPMENT' && (
-                                <div className='version'>{ process.env.VERSION }</div>)}
+                            {/* {process.env.NODE_ENV === 'DEVELOPMENT' && (
+                                <div className='version'>{ process.env.VERSION }</div>)} */}
                         </div>
                     </Link>
-                    <div className='desktopTopMenu'>
+                    {/* <div className='desktopTopMenu'>
                         { Modules.map((module) => (
                             <Link to={ `/${ module.path }` } key={ module.name }>
                                 {this.ModuleBtn(module, dict.translate(module.caption)) }
                             </Link>
                         )) }
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );
@@ -75,7 +75,7 @@ class Toolbar extends Component {
 }
 
 Toolbar.propTypes = {
-    dict: PropTypes.object.isRequired,
+    // dict: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
     // selectedModule: PropTypes.object.isRequired,
     // opened: PropTypes.bool.isRequired,

@@ -99,7 +99,7 @@ class Switcher extends Component {
                         );
                     })}
                 </div>
-                { this.getItemsPreview()}
+                {/* { this.getItemsPreview()} */}
             </div>
         );
     }
@@ -113,8 +113,7 @@ class Switcher extends Component {
     }
     handleNav(up) {
         // const up = direction === 'up';
-        const { items, isMobile } = this.props;
-        console.log(isMobile);
+        const { isMobile } = this.props;
         const element = document.getElementById('photo_items');
         const indicator = document.getElementById('indicator');
         const valueToScroll = isMobile ? 100 : 76;
@@ -135,10 +134,10 @@ class Switcher extends Component {
             easing: 'easeInQuad',
         });
         this.props.onChange(next);
-        motion.hide(SELECTOR_ITEM_PREVIEW, () => {
-            this.props.dispatch(GET_PHOTOS(items[next].name));
-            motion.show(SELECTOR_ITEM_PREVIEW);
-        });
+        // motion.hide(SELECTOR_ITEM_PREVIEW, () => {
+        //     this.props.dispatch(GET_PHOTOS(items[next].name));
+        //     motion.show(SELECTOR_ITEM_PREVIEW);
+        // });
         this.setState({ active: next });
     }
     onWheel(e) {
@@ -191,14 +190,15 @@ Switcher.propTypes = {
     ContentComponent: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
     photoData: PropTypes.array.isRequired,
-    onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
     isMobile: PropTypes.bool.isRequired,
     //
 };
 
-//Switcher.defaultProps = {
-//
-//};
+Switcher.defaultProps = {
+    onChange: () => {},
+    //
+};
 
 function select(store) {
     return {

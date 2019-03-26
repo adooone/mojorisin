@@ -1,20 +1,4 @@
 .Corousel
-    .CorouselLabelOpened
-        width: 25%
-        transform: translateY(-60vh)
-        padding: 0 16vh
-        h3
-            font-size: 60px
-            line-height: 120px
-        p
-            opacity: 0
-        .CorouselNavigation
-            opacity: 0
-    .CorouselItemsOpened
-        @media #{$media-phones}
-            width: 100% !important
-        top: 0 !important
-        width: 70% !important
     .CorouselLabel
         @media #{$media-phones}
             top: $headerHeight
@@ -204,6 +188,22 @@
             // background-color: darken($colorDark, 3)
         .scrollingItem
             transform: scale(0.9)
+    .CorouselLabelOpened
+        width: 25%
+        transform: translateY(-63vh)
+        padding: 0 16vh
+        h3
+            font-size: 80px
+            line-height: 80px
+        p
+            opacity: 0
+        .CorouselNavigation
+            opacity: 0
+    .CorouselItemsOpened
+        @media #{$media-phones}
+            width: 100% !important
+        top: 0 !important
+        width: 70% !important
     .CorouselIndicator
         position: absolute
         bottom: 45vh
@@ -215,7 +215,7 @@
         align-items: center
         border-radius: 10px
         background-color: grey
-        opacity: 0.3
+        opacity: 0
         .Pointer
             height: 20px
             width: 20px
@@ -223,12 +223,13 @@
             background-color: white
     .CorouselNavigation
         @media #{$media-phones}
+            left: auto
             right: 10px
             top: 10px
             z-index: 999
         position: absolute
-        bottom: 10vh
-        right: 0
+        bottom: 13.3vh
+        left: 100px
         display: flex
         flex-direction: column
     .CorouselItemsPreview

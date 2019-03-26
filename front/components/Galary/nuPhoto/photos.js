@@ -23,9 +23,6 @@ class Photos extends Component {
                     path={ match.url }
                     render={ () => (
                         <Switcher
-                            onChange={ (index) => {
-                                console.log(photos.albums[index]);
-                            } }
                             items={ photos.albums }
                             isMobile={ mobileVersion }
                             ContentComponent={ (data) => <PhotosGrid data={ data } /> }

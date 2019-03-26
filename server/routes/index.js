@@ -38,18 +38,31 @@ router.get('/api/login', (req, res) => {
         });
 });
 router.get('/api/photo/getPhotos', (req, res) => {
-    const table = req.query.album;
-    console.log(table);
-    knex(table)
-        .select()
-        .catch(err => res.status(401).send({ msg: err }))
-        .then(result => {
-            res.status(200)
-                .send({
-                    msg: 'Success',
-                    photos: result,
-                });
-        });
+    const tableName = req.query.album;
+    if (tableName) {
+        const model = bookshelf.Model.extend({ tableName });
+        model
+            .collection()
+            .fetch()
+            .then(album => {
+                res
+                    .status(200)
+                    .send({ msg: 'success', photos: album.toJSON() });
+            })
+            .catch(error => res.status(404).send({ msg: error }));
+    } else res.status(404).send({ msg: 'empty album name value' });
+});
+router.get('/api/photo/getCovers', (req, res) => {
+    const covers = bookshelf.Model.extend({ tableName: 'covers' });
+    covers
+        .collection()
+        .fetch()
+        .then(photos => {
+            res
+                .status(200)
+                .send({ msg: 'success', covers: photos.toJSON() });
+        })
+        .catch(error => res.status(404).send({ msg: error }));
 });
 router.post('/api/photo/upload', (req, res, next) => {
     upload(req, res, err => {
