@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-// import classnames from 'classnames';
+import classnames from 'classnames';
 import {
     Button,
     IconButton,
@@ -14,7 +14,7 @@ import { DELETE_FILE } from '../../../redux/actions/actions';
 class Photo extends Component {
     constructor(props) {
         super(props);
-        // this.state = { opened: false };
+        this.state = { opened: false };
         this.handleOpen = this.handleOpen.bind(this);
     }
     render() {
@@ -23,35 +23,24 @@ class Photo extends Component {
         // return this.state.opened ? this.renderOpened() : this.renderItem();
     }
     handleOpen = () => {
-        // this.setState({ opened: true });
+        this.setState({ opened: true });
     }
     renderItem = () => {
         const { obj } = this.props;
         return (
-            <div className='photo'>
+            <div className={ classnames('photo', { 'photoOpened': this.state.opened }) }>
                 <div className='deleteBtn'>
-                    <IconButton onClick={ this.deletePhoto }>
-                        <Icon>delete</Icon>
-                    </IconButton>
+                    <IconButton onClick={ this.deletePhoto }><Icon>delete</Icon></IconButton>
                 </div>
-                <img
-                    className='image'
-                    src={ obj.src }
-                    alt={ obj.name }
-                />
-                <Button
-                    className='photoBtn'
-                    onClick={ this.handleOpen }
-                >
-                    { '' }
-                </Button>
+                <img className='image' src={ obj.src } alt={ obj.name } />
+                <Button className='photoBtn' onClick={ this.handleOpen }>{ ' ' }</Button>
             </div>
         );
     }
     deletePhoto = () => {
         this.props.dispatch(DELETE_FILE(this.props.obj));
-        // neptune.deletePhoto(this.props.obj);
     }
+    setCover = () => {}
     renderOpened = () => {
         const { obj } = this.props;
         return (

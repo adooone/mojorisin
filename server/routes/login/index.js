@@ -1,10 +1,11 @@
-// const knex = require('../neptunedb');
+const express = require('express');
+const path = require('path');
 
-function login(a, b) {
-    console.log(a);
-    console.log(b);
-    if (a === b) return { status: 200, resp: true };
-    return { status: 400, resp: false };
-}
+const router = express.Router();
 
-module.exports = login;
+router.get('*', (req, res) => {
+    console.log('res');
+    res.sendFile('index.html', { root: path.join(__dirname, '../../../docs') });
+});
+
+module.exports = router;

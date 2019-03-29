@@ -27,9 +27,21 @@ const show = (target, complete, delay) => {
     }, delay);
 }
 
+const openPhotoMenu = (target) => {
+    const element = document.getElementById(target);
+    anime({
+        targets: element,
+        translateY: 0,
+        opacity: 1,
+        duration: 100,
+        easing: 'easeOutQuart',
+    })
+}
+
 const motion = {
     hide,
     show,
+    openPhotoMenu,
     //
 }
 

@@ -59,7 +59,7 @@ class Item extends Component {
                     ) }
                     { !opened && (
                     <>
-                        <p>{ data.name }</p>
+                        {/* <p>{ data.name }</p> */}
                         <Button
                             disableRipple
                             className='OpenButton'

@@ -53,7 +53,7 @@ class Switcher extends Component {
                     ) }
                 >
                     <h3>{ items[active].caption }</h3>
-                    <p>Some very important words</p>
+                    <p>Objects photography sessions. Anything you want.</p>
                     <div className='CorouselNavigation'>
                         <IconButton
                             disabled={ active === 0 }
@@ -116,7 +116,7 @@ class Switcher extends Component {
         const { isMobile } = this.props;
         const element = document.getElementById('photo_items');
         const indicator = document.getElementById('indicator');
-        const valueToScroll = isMobile ? 100 : 76;
+        const valueToScroll = isMobile ? 70 : 100;
         const { active } = this.state;
         const next = up ?
             (active !== 0 ? active - 1 : active) :

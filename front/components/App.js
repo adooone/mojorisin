@@ -45,7 +45,7 @@ App.propTypes = {
     dispatch: PropTypes.func.isRequired,
     SnackbarVisible: PropTypes.bool.isRequired,
     loading: PropTypes.bool.isRequired,
-    msg: PropTypes.object.isRequired,
+    msg: PropTypes.any.isRequired,
 };
 
 function select(store) {

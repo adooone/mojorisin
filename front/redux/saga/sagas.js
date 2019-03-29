@@ -40,16 +40,25 @@ const sagas = {
     * [ActionTypes.GET_PHOTOS](action) {
         // yield put(SHOW_LOADER());
         // yield delay(2000);
-        const resp = yield call(neptune.getPhotos, action.album);
-        yield put(SET_PHOTO_DATA(resp.data.photos));
-        yield put(SHOW_SNACKBAR(resp));
+        let resp = null;
+        try {
+            resp = yield call(neptune.getPhotos, action.album);
+            yield put(SET_PHOTO_DATA(resp.data.photos));
+            yield put(SHOW_SNACKBAR(resp));
+        } catch (error) {
+            yield put(SHOW_SNACKBAR(error.toString()));
+        }
         // yield put(CLOSE_LOADER());
     },
     * [ActionTypes.UPLOAD_FILE](action) {
         yield put(SHOW_LOADER());
         // yield delay(2000);
-        const resp = yield call(neptune.uploadPhoto, action.data);
-        yield put(SHOW_SNACKBAR(resp));
+        try {
+            const resp = yield call(neptune.uploadPhoto, action.data);
+            yield put(SHOW_SNACKBAR(resp));
+        } catch (error) {
+            yield put(SHOW_SNACKBAR(error.toString()));
+        }
         yield put(CLOSE_LOADER());
     },
     * [ActionTypes.DELETE_FILE](action) {

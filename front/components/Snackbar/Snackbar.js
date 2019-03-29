@@ -42,15 +42,18 @@ class Snackbar extends Component {
     render() {
         const { msg } = this.props;
         let icon = 'report';
-        switch (msg.status) {
-        case 200: { icon = 'done'; break; }
-        default: icon = 'report';
+        const isMsgString = typeof msg === 'string';
+        if (!isMsgString) {
+            switch (msg.status) {
+            case 200: { icon = 'done'; break; }
+            default: icon = 'report';
+            }
         }
         return (
             <div id='Snackbar' className='Snackbar'>
                 <div>
                     <Icon className='resIcon'>{icon}</Icon>
-                    <p>{msg.data.message || 'Done'}</p>
+                    <p>{isMsgString ? msg : msg.data.message || 'Done'}</p>
                 </div>
                 <IconButton className='closeBtn' onClick={ this.close }>
                     <Icon>close</Icon>
@@ -63,7 +66,7 @@ class Snackbar extends Component {
 Snackbar.propTypes = {
     dispatch: PropTypes.func.isRequired,
     mobileVersion: PropTypes.bool.isRequired,
-    msg: PropTypes.object.isRequired,
+    msg: PropTypes.any.isRequired,
     //
 };
 

@@ -6,6 +6,7 @@ const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const photosRouter = require('./routes/photos');
+const loginRouter = require('./routes/login');
 
 const app = express();
 // app.use(cors({
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, '../docs', '/')));
 
 app.use('/', indexRouter);
 app.use('/photos', photosRouter);
+app.use('/login', loginRouter);
 
 if (!process.env.PRODUCTION) console.log('=== development mode ===');
 if (process.env.PRODUCTION) console.log('=== production mode ===');
