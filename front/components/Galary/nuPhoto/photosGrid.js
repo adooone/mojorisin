@@ -40,30 +40,30 @@ class PhotosGrid extends Component {
     render() {
         return (
             // <Scrollbars>
-                <Grid
-                    id='gridPhotosContainer'
-                    className='PhotoGridContainer'
-                    container
-                    spacing={ 0 }
-                >
-                    {_.map(this.state.images, (obj, i) => {
-                        const targetId = `photo-${ i }`;
-                        return (
-                            <Grid
-                                id={ targetId }
-                                className='PhotoGridItem'
-                                key={ i }
-                                item
-                                xs={ 6 }
-                                sm={ 12 }
-                                md={ 6 }
-                                lg={ 4 }
-                            >
-                                <Photo obj={ { ...obj, album: this.props.data.name } } />
-                            </Grid>
-                        );
-                    })}
-                </Grid>
+            <Grid
+                id='gridPhotosContainer'
+                className='PhotoGridContainer'
+                container
+                spacing={ 0 }
+            >
+                {_.map(this.state.images, (obj, i) => {
+                    const targetId = `photo-${ i }`;
+                    return (
+                        <Grid
+                            id={ targetId }
+                            className='PhotoGridItem'
+                            key={ i }
+                            item
+                            xs={ 6 }
+                            sm={ 12 }
+                            md={ 6 }
+                            lg={ 4 }
+                        >
+                            <Photo obj={ { ...obj, album: this.props.data.name } } />
+                        </Grid>
+                    );
+                })}
+            </Grid>
             // </Scrollbars>
         );
     }
