@@ -55,8 +55,8 @@ class Toolbar extends Component {
                 <div className='desktopAppBar'>
                     <Link to='/'>
                         <div className='desktopLogo'>
-                            <LogoSVG size={ 30 } />
-                            <div className='companyName'>RISIN PRODUCTION</div>
+                            <LogoSVG size={ 25 } />
+                            <p className='companyName'>RISIN PRODUCTION</p>
                             {/* {process.env.NODE_ENV === 'DEVELOPMENT' && (
                                 <div className='version'>{ process.env.VERSION }</div>)} */}
                         </div>
