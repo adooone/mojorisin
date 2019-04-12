@@ -12,10 +12,13 @@ import photos from '../../../description/photos';
 // import Album from './album';
 import Switcher from './Switcher/switcher';
 import PhotosGrid from './photosGrid';
+import PhotoView from './PhotoView';
 
 class Photos extends Component {
     render() {
-        const { match, mobileVersion } = this.props;
+        const { match, mobileVersion, openedPhoto } = this.props;
+        console.log(match);
+        console.log(`${ match.url }/${ openedPhoto.name }`);
         return (
             <Switch>
                 <Route
@@ -29,6 +32,11 @@ class Photos extends Component {
                         />
                     ) }
                 />
+                <Route
+                    exact
+                    path={ `${ match.uri }/${ openedPhoto.name }` }
+                    render={ () => <PhotoView obj={ openedPhoto } /> }
+                />
             </Switch>
         );
     }
@@ -37,6 +45,7 @@ class Photos extends Component {
 Photos.propTypes = {
     match: PropTypes.object.isRequired,
     mobileVersion: PropTypes.bool.isRequired,
+    openedPhoto: PropTypes.object.isRequired,
     //
 };
 
@@ -47,6 +56,7 @@ Photos.propTypes = {
 function select(store) {
     return {
         photoData: store.viewReducer.photoData,
+        openedPhoto: store.viewReducer.openedPhoto,
         mobileVersion: store.viewReducer.mobileVersion,
         //
     };

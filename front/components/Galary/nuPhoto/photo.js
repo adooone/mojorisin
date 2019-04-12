@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import classnames from 'classnames';
+import { withRouter, Link } from 'react-router-dom';
+// import classnames from 'classnames';
 import {
     Button,
     IconButton,
     Icon,
 } from '@material-ui/core';
 // import neptune from '../../../neptune_api';
-import { DELETE_FILE } from '../../../redux/actions/actions';
+import { DELETE_FILE, OPEN_PHOTO } from '../../../redux/actions/actions';
 
 class Photo extends Component {
     constructor(props) {
         super(props);
-        this.state = { opened: false };
+        // this.state = { opened: false };
         this.handleOpen = this.handleOpen.bind(this);
     }
     render() {
@@ -23,17 +23,21 @@ class Photo extends Component {
         // return this.state.opened ? this.renderOpened() : this.renderItem();
     }
     handleOpen = () => {
-        this.setState({ opened: true });
+        // this.setState({ opened: true })
+        this.props.dispatch(OPEN_PHOTO(this.props.obj));
     }
     renderItem = () => {
         const { obj } = this.props;
+        console.log(obj);
         return (
-            <div className={ classnames('photo', { 'photoOpened': this.state.opened }) }>
+            <div className='photo'>
                 <div className='deleteBtn'>
                     <IconButton onClick={ this.deletePhoto }><Icon>delete</Icon></IconButton>
                 </div>
                 <img className='image' src={ obj.src } alt={ obj.name } />
-                <Button className='photoBtn' onClick={ this.handleOpen }>{ ' ' }</Button>
+                <Link to={ `photos/${ obj.name }` }>
+                    <Button className='photoBtn' onClick={ this.handleOpen }>{ ' ' }</Button>
+                </Link>
             </div>
         );
     }
@@ -41,18 +45,6 @@ class Photo extends Component {
         this.props.dispatch(DELETE_FILE(this.props.obj));
     }
     setCover = () => {}
-    renderOpened = () => {
-        const { obj } = this.props;
-        return (
-            <div className='photoOpened'>
-                <img
-                    className='image'
-                    src={ obj.src }
-                    alt={ obj.name }
-                />
-            </div>
-        );
-    }
 }
 
 Photo.propTypes = {

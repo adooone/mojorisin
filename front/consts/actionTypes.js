@@ -10,6 +10,7 @@ export const OPEN_ALBUM = 'OPEN_ALBUM';
 export const SET_PHOTO_DATA = 'SET_PHOTO_DATA';
 export const SET_PREVIEW_DATA = 'SET_PREVIEW_DATA';
 export const CLOSE_ALBUMS = 'CLOSE_ALBUMS';
+export const OPEN_PHOTO = 'OPEN_PHOTO';
 
 export const LOGIN_ADMIN = 'LOGIN_ADMIN';
 export const CHANGE_LANG = 'CHANGE_LANG';

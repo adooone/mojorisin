@@ -18,6 +18,7 @@ const initialState = Immutable({
     // SnackbarMessage: { status: 200, text: 'Success' },
     SnackbarMessage: {},
     SnackbarVisible: false,
+    openedPhoto: '',
     photoData: [],
     previewData: [],
     userParams: {
@@ -83,6 +84,9 @@ const viewReducer = createReducer(initialState, {
     },
     [ActionTypes.CLOSE_LOADER](state) {
         return state.merge({ loading: false });
+    },
+    [ActionTypes.OPEN_PHOTO](state, action) {
+        return state.merge({ openedPhoto: action.obj });
     },
 });
 

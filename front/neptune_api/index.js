@@ -2,8 +2,8 @@
 import axios from 'axios';
 
 console.log(process.env.NODE_ENV);
-// const NEPTUNE_DEV_HOST = 'http://localhost:8081';
-const NEPTUNE_DEV_HOST = 'https://neptunews.com';
+const NEPTUNE_DEV_HOST = 'http://localhost:8081'; // LOCAL
+// const NEPTUNE_DEV_HOST = 'https://neptunews.com'; // PROD
 const NEPTUNE_PROD_HOST = '';
 const NEPTUNE_HOST = process.env.NODE_ENV === 'DEVELOPMENT' ? NEPTUNE_DEV_HOST : NEPTUNE_PROD_HOST;
 

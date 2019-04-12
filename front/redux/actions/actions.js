@@ -80,6 +80,12 @@ export const TEST_FETCH = (name) => {
         name,
     };
 };
+export const OPEN_PHOTO = (obj) => {
+    return {
+        type: ActionTypes.OPEN_PHOTO,
+        obj,
+    };
+};
 export const GET_PHOTOS = (album) => {
     return {
         type: ActionTypes.GET_PHOTOS,
