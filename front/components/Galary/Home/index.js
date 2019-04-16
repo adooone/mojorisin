@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { /* Link,  */withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -8,7 +8,9 @@ import { connect } from 'react-redux';
 // import LogoSVG from '../../Logo/LogoSVG';
 import { Button } from '@material-ui/core';
 import neptune from '../../../neptune_api';
-import { TEST_FETCH } from '../../../redux/actions/actions';
+import { OPEN_MODULE } from '../../../redux/actions/actions';
+import Modules from '../../../description/modules';
+// import { TEST_FETCH } from '../../../redux/actions/actions';
 // import { randomText } from '../../Helpers/functions';
 // import classnames from 'classnames';
 // import {
@@ -32,11 +34,13 @@ class Home extends Component {
             <div className='homePage'>
                 {/* <LogoSVG width='20%' />
                 <p className='homeCaptionName'>RISIN PRODUCTION</p> */}
-                <Button
-                    onClick={ () => { this.props.dispatch(TEST_FETCH('uploading...')); } }
-                >
-                    { 'test message' }
-                </Button>
+                <Link to='photos'>
+                    <Button
+                        onClick={ () => { this.props.dispatch(OPEN_MODULE(Modules[2])); } }
+                    >
+                        {'photos'}
+                    </Button>
+                </Link>
             </div>
         );
     }

@@ -53,7 +53,7 @@ class Switcher extends Component {
                     ) }
                 >
                     <h3>{ items[active].caption }</h3>
-                    <p>Objects photography sessions. Anything you want.</p>
+                    <p>We offer object and advertizing photo sessions and anything you want.</p>
                     <div className='CorouselNavigation'>
                         <IconButton
                             disabled={ active === 0 }

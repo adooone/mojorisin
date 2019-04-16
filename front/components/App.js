@@ -13,6 +13,7 @@ import ComplexWall from './ComplexWall';
 import Snackbar from './Snackbar/Snackbar';
 import Loader from './Loader/Loader';
 // import VersionContainer from './Helpers/Version';
+import Footer from './Footer/index';
 
 class App extends Component {
     componentDidMount() {
@@ -33,6 +34,7 @@ class App extends Component {
                     <MobileMenu />
                     <Galary />
                     <ComplexWall />
+                    <Footer />
                     {this.props.SnackbarVisible && <Snackbar msg={ this.props.msg } /> }
                 </div>
                 {this.props.loading && <Loader /> }

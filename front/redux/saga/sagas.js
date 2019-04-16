@@ -44,7 +44,7 @@ const sagas = {
         try {
             resp = yield call(neptune.getPhotos, action.album);
             yield put(SET_PHOTO_DATA(resp.data.photos));
-            yield put(SHOW_SNACKBAR(resp));
+            // yield put(SHOW_SNACKBAR(resp));
         } catch (error) {
             yield put(SHOW_SNACKBAR(error.toString()));
         }

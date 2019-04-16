@@ -4,12 +4,12 @@ import Immutable from 'seamless-immutable';
 import * as ActionTypes from '../../consts/actionTypes';
 import { getDict } from '../../dictionary';
 import { LANG_EN } from '../../consts/generalConsts';
-import Modules from '../../description/modules';
+// import Modules from '../../description/modules';
 // import photos from '../../description/photos';
 
 const initialState = Immutable({
     isMenuOpened: false,
-    selectedModule: Modules[1],
+    selectedModule: {},
     selectedAlbum: null,
     loading: true,
     admin: false,
@@ -31,7 +31,10 @@ const initialState = Immutable({
 
 const viewReducer = createReducer(initialState, {
     [ActionTypes.RESET_APP]() {
-        return initialState;
+        return initialState.merge({
+            loading: false,
+            //
+        });
     },
     [ActionTypes.OPEN](state, action) {
         return state.merge({

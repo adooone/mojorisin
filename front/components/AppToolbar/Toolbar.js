@@ -14,6 +14,7 @@ import {
     // OPEN_MENU,
     OPEN_MODULE,
     CLOSE_MENU,
+    RESET_APP,
 } from '../../redux/actions/actions';
 // import classnames from 'classnames';
 // import Modules from '../../description/modules';
@@ -49,14 +50,25 @@ class Toolbar extends Component {
         );
     }
     render() {
-        // const { dict/* , selectedModule, opened */ } = this.props;
+        const { dict, selectedModule } = this.props;
+        console.log(selectedModule);
         return (
             <div className='desktopVersionBlock'>
                 <div className='desktopAppBar'>
                     <Link to='/'>
-                        <div className='desktopLogo'>
-                            <LogoSVG size={ 25 } />
+                        <div
+                            className='desktopLogo'
+                            onClick={ () => this.props.dispatch(RESET_APP()) }
+                            role='presentation'
+                        >
+                            <LogoSVG size={ 22 } />
                             <p className='companyName'>RISIN PRODUCTION</p>
+                            { !_.isEmpty(selectedModule) && (
+                            <>
+                                <div className='vertical_divider' />
+                                <p className='module_name'>{ dict.translate(selectedModule.caption) }</p>
+                            </>
+                            ) }
                             {/* {process.env.NODE_ENV === 'DEVELOPMENT' && (
                                 <div className='version'>{ process.env.VERSION }</div>)} */}
                         </div>
@@ -75,9 +87,9 @@ class Toolbar extends Component {
 }
 
 Toolbar.propTypes = {
-    // dict: PropTypes.object.isRequired,
+    dict: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
-    // selectedModule: PropTypes.object.isRequired,
+    selectedModule: PropTypes.object.isRequired,
     // opened: PropTypes.bool.isRequired,
     //
 };

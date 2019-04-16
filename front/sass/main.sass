@@ -7,6 +7,7 @@
 @import "videos"
 @import "upload"
 @import "switcher"
+@import "footer"
 
 body
     padding: 0
@@ -51,16 +52,20 @@ body
                 top: 115px
                 display: flex
                 align-items: center
+                height: 30px
                 // width: 200px
-            .companyName
-                @media #{$media-small}
-                    opacity: 0
-                opacity: 1
-                transition: all .4s ease
-                height: 100%
-                padding-left: 17px
-                font-size: 13px
-                font-weight: 600
+                .companyName
+                    @media #{$media-small}
+                        opacity: 0
+                    opacity: 1
+                    transition: all .4s ease
+                    // height: 100%
+                    padding: 0 12px
+                    font-size: 13px
+                    font-weight: 600
+                .module_name
+                    padding: 0 12px
+                    opacity: 0.3
             .desktopVersionBlock
                 width: 100%
     .toolbar
@@ -127,7 +132,10 @@ body
     .loader_start
         top: 0
         opacity: 1
-
+    .vertical_divider
+        border-left: 1px solid #fff
+        height: 100%
+        opacity: 0.3
 
 #root
     height: 100%
