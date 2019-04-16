@@ -32,7 +32,7 @@ class PhotosGrid extends Component {
                 easing: 'easeOutQuart',
                 delay: anime.stagger(150),
             });
-        }, 500);
+        }, 1000);
     }
     componentDidMount() {
         this.props.dispatch(GET_PHOTOS(this.props.data.name));

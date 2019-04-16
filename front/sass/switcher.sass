@@ -100,7 +100,9 @@
                     object-fit: cover
                 p
                     z-index: 200
-
+                .albumCover
+                    opacity: 1
+                    transition: opacity 1s ease
                 .CloseButton
                     @media #{$media-phones}
                         top: 90px
@@ -215,6 +217,8 @@
             padding: 0
             border-radius: 0
             // background-color: darken($colorDark, 3)
+            .albumCover
+                opacity: 0 !important
         .scrollingItem
             // transform: scale(0.9)
     .CorouselLabelOpened

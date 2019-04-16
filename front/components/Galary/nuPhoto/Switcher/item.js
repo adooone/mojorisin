@@ -10,7 +10,7 @@ import {
 import { Button, IconButton, Icon } from '@material-ui/core';
 // import Photo from '../../Photos/photo';
 // import PhotosGrid from '../photosGrid';
-import anime from '../../../../lib/anime';
+// import anime from '../../../../lib/anime';
 
 class Item extends Component {
     constructor(props) {
@@ -41,15 +41,6 @@ class Item extends Component {
                                 onClick={ () => {
                                     onClose(index);
                                     this.setState({ opened: false });
-                                    setTimeout(() => {
-                                        anime({
-                                            targets: document.getElementById(coverId),
-                                            opacity: '1',
-                                            scale: 1,
-                                            duration: 600,
-                                            easing: 'easeOutQuad',
-                                        });
-                                    }, 100);
                                 } }
                             >
                                 <Icon>close</Icon>
@@ -64,17 +55,8 @@ class Item extends Component {
                             disableRipple
                             className='OpenButton'
                             onClick={ () => {
-                                anime({
-                                    targets: document.getElementById(coverId),
-                                    opacity: '0',
-                                    scale: 1.3,
-                                    duration: 1200,
-                                    easing: 'easeOutQuart',
-                                });
-                                setTimeout(() => {
-                                    onClick(index);
-                                    this.setState({ opened: true });
-                                }, 100);
+                                onClick(index);
+                                this.setState({ opened: true });
                             } }
                         >
                             {''}
@@ -82,7 +64,7 @@ class Item extends Component {
                         {/* <div className='coverDarker' /> */}
                     </>
                     )}
-                    <img id={ coverId } src={ cover || data.background } alt='cover' />
+                    <img className='albumCover' id={ coverId } src={ cover || data.background } alt='cover' />
                 </div>
             </div>
         );
