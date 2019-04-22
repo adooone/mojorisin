@@ -86,6 +86,12 @@ export const OPEN_PHOTO = (obj) => {
         obj,
     };
 };
+export const CLOSE_PHOTO = () => {
+    return {
+        type: ActionTypes.CLOSE_PHOTO,
+        //
+    };
+};
 export const GET_PHOTOS = (album) => {
     return {
         type: ActionTypes.GET_PHOTOS,

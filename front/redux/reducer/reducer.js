@@ -91,6 +91,9 @@ const viewReducer = createReducer(initialState, {
     [ActionTypes.OPEN_PHOTO](state, action) {
         return state.merge({ openedPhoto: action.obj });
     },
+    [ActionTypes.CLOSE_PHOTO](state) {
+        return state.merge({ openedPhoto: false });
+    },
 });
 
 const mainReducer = combineReducers({ viewReducer });

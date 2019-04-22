@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
 
-console.log(process.env.NODE_ENV);
 const NEPTUNE_DEV_HOST = 'http://localhost:8081'; // LOCAL
 // const NEPTUNE_DEV_HOST = 'https://neptunews.com'; // PROD
 const NEPTUNE_PROD_HOST = '';
@@ -27,8 +26,6 @@ const uploadPhoto = (data) => {
     return axios.post(`${ NEPTUNE_HOST }/api/photo/upload`, data, { 'Content-Type': 'multipart/form-data' });
 };
 const deletePhoto = (data) => {
-    console.log(data.id);
-    console.log(data.album);
     const { id, album, filename } = data;
     return axios.get(`${ NEPTUNE_HOST }/api/photo/delete`, { params: { id, album, filename } });
 };

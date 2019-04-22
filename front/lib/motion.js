@@ -36,7 +36,6 @@ const openPhotoMenu = (target) => {
 }
 const moveToTop = (target) => {
     const element = document.getElementById(target);
-    console.log(element.classList);
     element.classList.remove('hidden');
 }
 

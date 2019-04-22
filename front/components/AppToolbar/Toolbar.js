@@ -51,7 +51,6 @@ class Toolbar extends Component {
     }
     render() {
         const { dict, selectedModule } = this.props;
-        console.log(selectedModule);
         return (
             <div className='desktopVersionBlock'>
                 <div className='desktopAppBar'>
@@ -61,7 +60,7 @@ class Toolbar extends Component {
                             onClick={ () => this.props.dispatch(RESET_APP()) }
                             role='presentation'
                         >
-                            <LogoSVG size={ 22 } />
+                            <LogoSVG size={ 20 } />
                             <p className='companyName'>RISIN PRODUCTION</p>
                             { !_.isEmpty(selectedModule) && (
                             <>

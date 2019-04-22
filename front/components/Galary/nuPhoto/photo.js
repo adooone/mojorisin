@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 // import classnames from 'classnames';
 import {
     Button,
@@ -28,16 +28,13 @@ class Photo extends Component {
     }
     renderItem = () => {
         const { obj } = this.props;
-        console.log(obj);
         return (
             <div className='photo'>
                 <div className='deleteBtn'>
                     <IconButton onClick={ this.deletePhoto }><Icon>delete</Icon></IconButton>
                 </div>
                 <img className='image' src={ obj.src } alt={ obj.name } />
-                <Link to={ `photos/${ obj.name }` }>
-                    <Button className='photoBtn' onClick={ this.handleOpen }>{ ' ' }</Button>
-                </Link>
+                <Button className='photoBtn' onClick={ this.handleOpen }>{ ' ' }</Button>
             </div>
         );
     }

@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 
 import { OPEN } from '../redux/actions/actions';
-import AppToolbar from './AppToolbar/index';
+// import AppToolbar from './AppToolbar/index';
 import MobileMenu from './AppToolbar/MobileMenu/index';
 // import { LANG_RU } from '../consts/generalConsts';
 import Galary from './Galary/index';
@@ -30,7 +30,7 @@ class App extends Component {
         return (
             <>
                 <div className={ classnames('AppContainer', { 'app_blured': this.props.loading }) }>
-                    <AppToolbar />
+                    {/* <AppToolbar /> */}
                     <MobileMenu />
                     <Galary />
                     <ComplexWall />

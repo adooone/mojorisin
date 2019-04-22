@@ -14,12 +14,14 @@ import About from './About/index';
 import Contacts from './Contacts';
 import Home from './Home';
 import Admin from './Admin';
+import AppToolbar from '../AppToolbar';
 
 class Galary extends Component {
     render() {
         return (
             <CSSTransition timeout={ 200 }>
                 <div className='galary'>
+                    <AppToolbar />
                     {/* <Scrollbars className='galaryScroller'> */}
                     {/* { this.getContent() } */}
                     <Switch>

@@ -9,3 +9,9 @@ node_modules
 docs/
 cloud_sql_proxy.exe
 .env
+
+server/\.DS_Store
+
+server/routes/\.DS_Store
+
+\.DS_Store

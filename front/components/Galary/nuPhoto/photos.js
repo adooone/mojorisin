@@ -17,27 +17,25 @@ import PhotoView from './PhotoView';
 class Photos extends Component {
     render() {
         const { match, mobileVersion, openedPhoto } = this.props;
-        console.log(match);
-        console.log(`${ match.url }/${ openedPhoto.name }`);
+        console.log(openedPhoto);
+        // console.log(`${ match.url }/${ openedPhoto.name }`);
         return (
-            <Switch>
-                <Route
-                    exact
-                    path={ match.url }
-                    render={ () => (
-                        <Switcher
-                            items={ photos.albums }
-                            isMobile={ mobileVersion }
-                            ContentComponent={ (data) => <PhotosGrid data={ data } /> }
-                        />
-                    ) }
-                />
-                <Route
-                    exact
-                    path={ `${ match.uri }/${ openedPhoto.name }` }
-                    render={ () => <PhotoView obj={ openedPhoto } /> }
-                />
-            </Switch>
+            <>
+                <Switch>
+                    <Route
+                        exact
+                        path={ match.url }
+                        render={ () => (
+                            <Switcher
+                                items={ photos.albums }
+                                isMobile={ mobileVersion }
+                                ContentComponent={ (data) => <PhotosGrid data={ data } /> }
+                            />
+                        ) }
+                    />
+                </Switch>
+                { openedPhoto && <PhotoView obj={ openedPhoto } /> }
+            </>
         );
     }
 }
