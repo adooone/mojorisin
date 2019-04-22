@@ -27,6 +27,7 @@ const knex = Knex({
 });
 // https://cloud.google.com/appengine/docs/standard/nodejs/using-cloud-sql
 // cloud_sql_proxy -instances=risinproduction:europe-west4:risinproduction-db=tcp:3306
+// ./cloud_sql_proxy -instances=risinproduction:europe-west4:risinproduction-db=tcp:3306
 // neptunewa:europe-west3:neptune-db
 // https://phpmyadmin-dot-neptunewa.appspot.com/
 module.exports = knex;
