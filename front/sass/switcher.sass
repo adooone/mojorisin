@@ -1,0 +1,292 @@
+.Corousel
+    .CorouselLabel
+        @media #{$media-phones}
+            top: $headerHeight
+            padding: 20px 40px
+            width: 100%
+            height: 180px
+            justify-content: center
+            z-index: 400
+            // background-color: $colorDark
+        position: fixed
+        left: 0
+        top: 0
+        display: flex
+        justify-content: center
+        align-items: flex-end
+        flex-direction: column
+        width: 40%
+        height: 100%
+        padding-left: 16vh
+        transition: all .4s ease
+        z-index: 200
+        // overflow: hidden
+        h3
+            @media #{$media-phones}
+                margin-top: 0
+                font-size: 30px
+            font-size: 3vw
+            font-weight: 900
+            margin: 0
+            transition: all .4s ease
+        p
+            @media #{$media-phones}
+                margin-top: 10px
+                font-size: 16px
+                padding: 0 3px
+            // padding: 0 10px
+            margin-top: 2vh
+            font-size: 1vw
+            font-weight: 300
+            opacity: 0.3
+            width: 70%
+            text-align: end
+            transition: all .4s ease
+    .CorouselItems
+        @media #{$media-phones}
+            top: 200px
+            left: 0
+            width: 100%
+            align-items: start
+        position: fixed
+        right: 0
+        // top: 12vh
+        width: 60%
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+        transition: all 1s ease
+        z-index: 300
+        .CorouselItem
+            @media #{$media-phones}
+                width: 50vh
+                height: 50vh
+                border-radius: 3vh
+                padding: 0
+                margin: 10vh
+                margin-left: 40px
+                opacity: 0.3
+                filter: blur(200px)
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-items: center
+            font-size: 50px
+            // width: 70vh
+            // height: 70vh
+            width: 100%
+            height: 100vh
+            // padding: 20px
+            // margin: 3vh
+            // background-color: darken($colorDark, 5)
+            // border-radius: 3vh
+            // box-shadow: 0px 0px 60px -10px rgba(0,0,0,0.5)
+            opacity: 0.6
+            transition: all .6s ease, transform .9s ease, filter 2s ease 1s
+            overflow: hidden
+            .CorouselItemContent
+                position: relative
+                width: 100%
+                height: 100%
+                display: flex
+                align-items: center
+                justify-content: center
+                img
+                    position: absolute
+                    height: 100%
+                    width: 100%
+                    object-fit: cover
+                p
+                    z-index: 200
+                .albumCover
+                    opacity: 1
+                    transition: opacity 1s ease
+                .CloseButton
+                    @media #{$media-phones}
+                        top: 90px
+                        left: 10px
+                        bottom: auto
+                        background: $colorDark
+                    position: absolute
+                    z-index: 1001
+                    left: 5vh
+                    bottom: 5vh
+                .OpenButton
+                    position: absolute
+                    top: 0
+                    left: 0
+                    width: 100%
+                    height: 100%
+                    margin: 0
+                    border-radius: 2vh
+                    z-index: 300
+                    &:hover
+                        background: none
+                .CorouselItemScroller
+                    z-index: 800
+                .PhotoGridContainer
+                    @media #{$media-phones}
+                        top: 80px
+                        padding: 0
+                    height: 75vh
+                    align-content: flex-start
+                    margin-left: 10vh
+                    .PhotoGridItem
+                        margin-left: 80px
+                        opacity: 0
+                        .addBtnContainer
+                            height: 350px
+                            margin: 15px
+                            display: flex
+                            justify-content: center
+                            align-items: center
+                            flex-direction: column
+                            background: lighten($colorDark, 1)
+                            .addBtn
+                                width: 200px
+                                height: 200px
+                                font-size: 50px
+                                opacity: 0.3
+                                p
+                                    font-size: 20px
+                    .photo
+                        margin: 1vh
+                        position: relative
+                        background: $colorText
+                        width: 23vh
+                        height: 23vh
+                        overflow: hidden
+                        box-sizing: border-box
+                        @media #{$media-small}
+                            height: 45vh
+                        @media #{$media-phones}
+                            margin: 0
+                            height: 200px
+                        &:hover
+                            .deleteBtn
+                                bottom: 15px
+                        .deleteBtn
+                            position: absolute
+                            bottom: -50px
+                            right: 15px
+                            z-index: 800
+                            transition: all .4s ease
+                        .image
+                            position: absolute
+                            height: 100%
+                            width: 100%
+                            object-fit: cover
+                            @media #{$media-phones}
+                            z-index: 1
+                        .photoBtn
+                            z-index: 100
+                            height: 100%
+                            width: 100%
+                            position: absolute
+                            top: 0
+                            left: 0
+                            padding: 0
+                            margin: 0
+                    .photoOpened
+                        @media #{$media-phones}
+                        position: fixed
+                        width: 100%
+                        top: 0
+                        left: 0
+                        z-index: 100
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        padding: 100px
+                        .image
+                            width: 100%
+        .activeItem
+            opacity: 1
+            filter: blur(0)
+            @media #{$media-phones}
+                transition: all .6s ease, filter 1s ease
+            // &:hover
+            //     transform: translateX(-20px)
+        .openedItem
+            width: 100%
+            height: 100vh
+            margin: 0
+            padding: 0
+            border-radius: 0
+            // background-color: darken($colorDark, 3)
+            .albumCover
+                opacity: 0 !important
+        .scrollingItem
+            // transform: scale(0.9)
+    .CorouselLabelOpened
+        @media #{$media-phones}
+            width: 25%
+            transform: translateY(-63vh)
+            padding: 0 16vh
+            h3
+                font-size: 80px
+                line-height: 80px
+            p
+                opacity: 0
+            .CorouselNavigation
+                opacity: 0
+    .CorouselItemsOpened
+        @media #{$media-phones}
+            width: 100% !important
+        top: 0 !important
+        width: 60% !important
+    .CorouselIndicator
+        position: absolute
+        bottom: 45vh
+        right: 0
+        height: 100px
+        width: 20px
+        display: flex
+        flex-direction: column
+        align-items: center
+        border-radius: 10px
+        background-color: grey
+        opacity: 0
+        .Pointer
+            height: 20px
+            width: 20px
+            border-radius: 10px
+            background-color: white
+    .CorouselNavigation
+        @media #{$media-phones}
+            left: auto
+            right: 15px
+            top: 10px
+            z-index: 999
+        position: absolute
+        display: none
+        bottom: 13.3vh
+        left: 100px
+        // display: flex
+        flex-direction: column
+    .CorouselItemsPreview
+        @media #{$media-phones}
+            display: none
+        position: absolute
+        top: 20vh
+        left: -50px
+        width: 1080px
+        display: flex
+        opacity: 0.2
+        .CorouselItemPreview
+            height: 360px
+            padding: 7px
+            margin-top: 30px
+            opacity: 1
+            transition: all 1s ease
+            .ItemPreview
+                overflow: hidden
+                border-radius: 15px
+                width: 100%
+                height: 100%
+                background: lighten($colorDark, 3)
+                img
+                    height: 100%
+                    width: 100%
+                    object-fit: cover

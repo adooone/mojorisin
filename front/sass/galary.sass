@@ -1,0 +1,172 @@
+@import 'colors'
+
+.galary
+    display: flex
+    position: relative
+    // width:  calc(100% - #{$menuWidth})
+    // height: calc(100% - #{$headerHeight})
+    width:  100%
+    height: 100%
+    // padding: 0px 88px
+    // margin-top: $headerHeight
+    // margin-left: $menuWidth
+    font-size: 25px
+    z-index: 2
+    overflow: hidden
+    // filter: blur(5px)
+    @media #{$media-phones}
+        margin-left: 0
+        width: 100%
+    .moduleModuleWrapper
+        padding: $gutter-m $gutter-side
+        @media #{$media-phones}
+            padding: 16px
+        // .videoGallary
+    .homePage
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+        position: relative
+        // background: darken($colorText, 5)
+        width: 100%
+        height: 100%
+        cursor: default
+        .homeCaptionName
+            margin: 20px
+            font-size: 46.5px
+            @media #{$media-phones}
+                margin: 10px
+                font-size: 30px
+    .galaryScroller
+        width: 100%
+        height: 100%
+        .photosContainer
+            height: 100%
+            .albums
+                display: flex
+                justify-content: space-around
+                align-items: stretch
+                width: 100%
+                height: 100%
+                @media #{$media-phones}
+                    flex-direction: column
+                .albumLink
+                    position: relative
+                    width: 100%
+                    height: 100%
+                    transition: all .5s ease
+                    overflow: hidden
+                    @media #{$media-phones}
+                        height: 33.3%
+                    &:hover
+                        .albumBackground
+                            z-index: -100
+                            filter: blur(5px)
+                            background-size: auto 115%
+                    .albumBackground
+                        width: calc(100% + 100px)
+                        margin-left: -50px
+                        height: calc(100% + 100px)
+                        margin-top: -50px
+                        background-position: center
+                        background-size: auto 120%
+                        filter: blur(0px)
+                        transition: background-size .2s linear, filter .1s ease
+                        @media #{$media-phones}
+                            background-position: center
+                            background-size: 110%
+                .album
+                    // border: 1px solid $defaultColor
+                    position: absolute
+                    top: 0
+                    left: 0
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    width: 100%
+                    height: 100%
+                    transition: all .3s ease
+                    opacity: .5
+                    background: rgba(0,0,0,0.5)
+                    margin: 0
+                    @media #{$media-phones}
+                        background: rgba(0,0,0,1)
+                        height: 100%
+                    &:hover
+                        background: rgba(0,0,0,0.75)
+                        opacity: 1
+                        p
+                            margin-top: 0px
+                            opacity: .7
+                    p
+                        font-size: 60px
+                        margin-top: 200px
+                        text-align: justify
+                        word-wrap: break-word
+                        transition: opacity .5s ease, margin-top .3s ease
+                        opacity: 0
+                        @media #{$media-phones}
+                            font-size: 30px
+                            opacity: 1
+                            margin-top: 0
+            .photoOpened, .PhotoView
+                position: fixed
+                width: 100%
+                top: 0
+                left: 0
+                z-index: 100
+                display: flex
+                justify-content: center
+                align-items: center
+                padding: 100px
+                .image
+                    width: 100%
+            .photo
+                position: relative
+                background: $colorText
+                height: 400px
+                overflow: hidden
+                box-sizing: border-box
+                @media #{$media-phones}
+                    height: 200px
+                .photoHoverEffect
+                    background: rgba(0,0,0,0.3)
+                    position: relative
+                    width: 100%
+                    height: 100%
+                    // border: 20px solid rgba(0,0,0,0)
+                    transition: all .3s ease
+                    z-index: 2
+                    @media #{$media-phones}
+                        background: none
+                        border-radius: 0
+                    &:hover
+                        // border: 1px solid $primaryColor
+                        background: rgba(0,0,0,0)
+                        opacity: .2
+                        // box-shadow: 0 0 20px 0 $primaryColor inset
+                        // box-shadow: 0 0 40px 0 #000 inset
+                .image
+                    position: absolute
+                    margin-top: -400px
+                    height: 400px
+                    @media #{$media-phones}
+                        margin-top: -300px
+                        height: 300px
+                    z-index: 1
+                .photoBtn
+                    z-index: 100
+                    height: 100%
+                    width: 100%
+                    position: absolute
+                    top: 0
+                    left: 0
+                    padding: 0
+                    margin: 0
+        .galaryContainer
+            width: 100%
+            height: 100%
+            // padding: 0px 88px
+            @media #{$media-phones}
+                // padding: 0px 26px

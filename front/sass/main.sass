@@ -1,0 +1,227 @@
+@import 'colors'
+@import 'menu'
+@import 'fonts'
+@import "custom"
+@import "logo"
+@import "galary"
+@import "videos"
+@import "upload"
+@import "switcher"
+@import "footer"
+
+body
+    padding: 0
+    margin: 0
+    height: 100vh
+    // background-color: #000
+    background-color: darken($colorText, 7)
+    // background-image: linear-gradient(to right bottom, #020202, #090909, #0f0f0f, #131313, #171717, #1b1b1b, #202020, #242424, #2b2b2b, #313131, #383838, #3f3f3f)
+    color: $colorLightText
+    // font-family: 'Comfortaa'
+    // font-family: 'Poiret One'
+    font-family: 'Josefin Sans', sans-serif
+    overflow: hidden
+    a
+        color: $colorLightText
+        text-decoration: none
+    p
+        margin: 0
+        padding: 0
+        line-height: 100%
+    header
+        @media #{$media-phones}
+            background-color: $colorDark
+        height: $headerHeight
+        width: 100%
+        position: fixed
+        top: 0
+        // box-shadow: 0px 0px 40px -10px rgba(0,0,0,0.2)
+        z-index: 1000
+        .mobileAppBar
+            display: flex
+            align-items: center
+            padding: 0 20px
+        .desktopAppBar
+            display: flex
+            align-items: center
+            justify-content: space-between
+            padding: 0 16vh
+            width: 100%
+            .desktopLogo
+                position: absolute
+                top: 115px
+                display: flex
+                align-items: center
+                height: 30px
+                // width: 200px
+                .companyName
+                    @media #{$media-small}
+                        opacity: 0
+                    opacity: 1
+                    transition: all .4s ease
+                    // height: 100%
+                    padding: 0 12px
+                    font-size: 13px
+                    font-weight: 600
+                .module_name
+                    padding: 0 12px
+                    opacity: 0.3
+            .desktopVersionBlock
+                width: 100%
+    .toolbar
+        display: flex
+        height: 100%
+        align-items: center
+        // justify-content: flex-end
+        // padding: 16px
+    .headerWrap
+        height: $headerHeight
+    .mobileVersionBlock
+        display: none
+        @media #{$media-phones}
+            display: block
+            width: 100%
+            height: 100%
+    .desktopVersionBlock
+        display: flex
+        width: 100%
+        height: 100%
+        @media #{$media-phones}
+            display: none
+    .AppContainer
+        height: 100%
+        transition: all .4s ease
+    .app_blured
+        filter: blur(50px)
+    .loader
+        position: fixed
+        top: 0
+        left: 0
+        // background: #000
+        width: 100%
+        height: 100%
+        opacity: 1
+        z-index: 1000
+        display: flex
+        justify-content: center
+        align-items: center
+        transition: all .8s ease
+        .loaderObj
+            width: 40px
+            height: 40px
+            background-color: $colorLight
+        .loaderLogo
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 200px
+            opacity: 0
+            .figure.m
+                width: 100px
+                height: 100px
+                background-color: $primaryColor
+                border-color: $primaryColor
+                // border: 100px solid transparent
+                // border-bottom: 100px solid $defaultColor
+                // border-left: 100px solid $defaultColor;
+            .figure.o
+                width: 100px
+                height: 100px
+                border-radius: 50px
+                background-color: $logoColor
+    .loader_start
+        top: 0
+        opacity: 1
+    .vertical_divider
+        border-left: 1px solid #fff
+        height: 100%
+        opacity: 0.3
+
+#root
+    height: 100%
+
+.effect
+    font-size: 15px
+    line-height: 15px
+    background: url('https://shelbycountyartscouncil.com/wp-content/uploads/2017/09/pexels-photo-226243.jpeg')
+    // background: url('https://3.img-dpreview.com/resources/images/buying-and-gift-guides-2017/card-budget-500.jpg?v=4916')
+    background-attachment: fixed
+    background-position: center
+    -webkit-background-clip: text
+    -webkit-text-fill-color: rgba(255,255,255,.1)
+
+.AdminPage
+    // padding: 300px
+    width: 100%
+    height: 100%
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+.LoginForm
+    display: flex
+    justify-content: center
+.Snackbar
+    @media #{$media-phones}
+        border-radius: 5px
+        left: 0
+        margin: 4%
+        width: 92%
+        background: lighten($colorDark, 0)
+        color: lighten($colorLight, 0)
+        padding: 10px 10px 10px 30px
+    position: absolute
+    display: flex
+    justify-content: space-between
+    align-items: center
+    z-index: 900
+    bottom: -100px
+    right: 100px
+    height: 70px
+    min-width: 300px
+    border-radius: 10px
+    padding: 10px 30px
+    background: lighten($colorDark, 0)
+    color: lighten($colorLight, 0)
+    div
+        display: flex
+        align-items: center
+    .resIcon
+        color: $colorSuccess
+    .closeBtn
+        @media #{$media-phones}
+            color: $colorLight
+        right: 0
+        opacity: 0.7
+        color: $colorDark
+    p
+        @media #{$media-phones}
+            font-size: 16px
+            line-height: 16px
+        display: flex
+        font-size: 25px
+        line-height: 25px
+        margin-left: 20px
+
+.imageBackground
+    width: calc(100% + 100px)
+    height: calc(100% + 100px)
+    position: fixed
+    top: -100px
+    left: -100px
+    z-index: -100
+    filter: blur(50px)
+    img
+        transition: all 1s ease
+.backgroundDark
+    width: calc(100% + 100px)
+    height: calc(100% + 100px)
+    position: fixed
+    top: -100px
+    left: -100px
+    z-index: -99
+    // background-color: darken($colorText, 2)
+    opacity: 1
+    transition: all .4s ease
+.transparentDark
+    opacity: .5
