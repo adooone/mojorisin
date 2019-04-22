@@ -26,7 +26,7 @@ class PhotosGrid extends Component {
         setTimeout(() => {
             anime({
                 targets: '.PhotoGridItem',
-                marginTop: '0',
+                marginLeft: '0',
                 opacity: '1',
                 duration: 600,
                 easing: 'easeOutQuart',
@@ -44,6 +44,8 @@ class PhotosGrid extends Component {
                 id='gridPhotosContainer'
                 className='PhotoGridContainer'
                 container
+                direction='column'
+                // alignContent='flex-start'
                 spacing={ 0 }
             >
                 {_.map(this.state.images, (obj, i) => {
@@ -54,9 +56,9 @@ class PhotosGrid extends Component {
                             className='PhotoGridItem'
                             key={ i }
                             item
-                            xs={ 6 }
-                            sm={ 12 }
-                            md={ 6 }
+                            // xs={ 6 }
+                            // sm={ 12 }
+                            // md={ 6 }
                             lg={ 4 }
                         >
                             <Photo obj={ { ...obj, album: this.props.data.name } } />
