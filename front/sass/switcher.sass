@@ -133,8 +133,9 @@
                     align-content: flex-start
                     margin-left: 10vh
                     .PhotoGridItem
-                        margin-left: 80px
-                        opacity: 0
+                        margin-top: 0
+                        opacity: 1
+                        transition: margin-top .4s ease, opacity .4s ease
                         .addBtnContainer
                             height: 350px
                             margin: 15px
@@ -150,6 +151,9 @@
                                 opacity: 0.3
                                 p
                                     font-size: 20px
+                    .hidden
+                        margin-top: 80px
+                        opacity: 0
                     .photo
                         margin: 1vh
                         position: relative

@@ -12,7 +12,7 @@ import { SELECTOR_ITEM_PREVIEW } from '../../../../consts/generalConsts';
 import Item from './item';
 import anime from '../../../../lib/anime';
 import { GET_PHOTOS } from '../../../../redux/actions/actions';
-import motion from '../../../../lib/motion';
+// import motion from '../../../../lib/motion';
 // import { CHANGE_BACKGROUND } from '../../../../redux/actions/actions';
 
 const SCROLL_MAX = 300;
@@ -104,11 +104,11 @@ class Switcher extends Component {
         );
     }
     handleItemClick(index) {
-        motion.hide(SELECTOR_ITEM_PREVIEW);
+        // motion.hide(SELECTOR_ITEM_PREVIEW);
         this.setState({ opened: index });
     }
     handleItemClose() {
-        motion.show(SELECTOR_ITEM_PREVIEW);
+        // motion.show(SELECTOR_ITEM_PREVIEW);
         this.setState({ opened: null });
     }
     handleNav(up) {

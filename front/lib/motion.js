@@ -9,9 +9,6 @@ const hide = (target, complete, delay) => {
         targets: `.${target}`,
         opacity: 0,
     });
-    animation.finished.then(() => {
-        complete();
-    });
 }
 const show = (target, complete, delay) => {
     setTimeout(() => {
@@ -37,11 +34,17 @@ const openPhotoMenu = (target) => {
         easing: 'easeOutQuart',
     })
 }
+const moveToTop = (target) => {
+    const element = document.getElementById(target);
+    console.log(element.classList);
+    element.classList.remove('hidden');
+}
 
 const motion = {
     hide,
     show,
     openPhotoMenu,
+    moveToTop,
     //
 }
 

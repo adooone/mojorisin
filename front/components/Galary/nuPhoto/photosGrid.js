@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import classnames from 'classnames';
+import classnames from 'classnames';
 // import { Scrollbars } from 'react-custom-scrollbars';
 import { Grid } from '@material-ui/core';
-import anime from '../../../lib/anime';
+// import anime from '../../../lib/anime';
 import Photo from './photo';
 import { GET_PHOTOS } from '../../../redux/actions/actions';
+import motion from '../../../lib/motion';
 
 class PhotosGrid extends Component {
     constructor(props) {
@@ -22,17 +23,15 @@ class PhotosGrid extends Component {
         PhotosGrid.PhotoAnimate(images);
         return { images };
     }
-    static PhotoAnimate() {
+    static PhotoAnimate(images) {
         setTimeout(() => {
-            anime({
-                targets: '.PhotoGridItem',
-                marginLeft: '0',
-                opacity: '1',
-                duration: 600,
-                easing: 'easeOutQuart',
-                delay: anime.stagger(150),
+            _.forEach(images, (item, i) => {
+                const target = `photo-${ i }`;
+                setTimeout(() => {
+                    motion.moveToTop(target);
+                }, 100 * i);
             });
-        }, 1000);
+        }, 500);
     }
     componentDidMount() {
         this.props.dispatch(GET_PHOTOS(this.props.data.name));
@@ -53,7 +52,7 @@ class PhotosGrid extends Component {
                     return (
                         <Grid
                             id={ targetId }
-                            className='PhotoGridItem'
+                            className={ classnames('PhotoGridItem', 'hidden') }
                             key={ i }
                             item
                             // xs={ 6 }
