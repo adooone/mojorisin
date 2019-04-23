@@ -33,7 +33,12 @@ class Photo extends Component {
                 <div className='deleteBtn'>
                     <IconButton onClick={ this.deletePhoto }><Icon>delete</Icon></IconButton>
                 </div>
-                <img className='image' src={ obj.src } alt={ obj.name } />
+                <img
+                    className='image'
+                    src={ obj.src }
+                    alt={ obj.name }
+                    onLoad={ () => this.props.onLoad(obj) }
+                />
                 <Button className='photoBtn' onClick={ this.handleOpen }>{ ' ' }</Button>
             </div>
         );
@@ -47,6 +52,7 @@ class Photo extends Component {
 Photo.propTypes = {
     obj: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
+    onLoad: PropTypes.func.isRequired,
     //
 };
 

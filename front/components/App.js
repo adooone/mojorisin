@@ -21,6 +21,7 @@ class App extends Component {
         if (isMobile) console.log('using MOBILE version');
         else console.log('using DESKTOP version');
         window.onload = () => {
+            console.log('loaded');
             _.delay(() => {
                 this.props.dispatch(OPEN({ isMobile }));
             }, 1000);

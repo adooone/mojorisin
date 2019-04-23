@@ -17,8 +17,6 @@ import PhotoView from './PhotoView';
 class Photos extends Component {
     render() {
         const { match, mobileVersion, openedPhoto } = this.props;
-        console.log(openedPhoto);
-        // console.log(`${ match.url }/${ openedPhoto.name }`);
         return (
             <>
                 <Switch>
@@ -43,7 +41,7 @@ class Photos extends Component {
 Photos.propTypes = {
     match: PropTypes.object.isRequired,
     mobileVersion: PropTypes.bool.isRequired,
-    openedPhoto: PropTypes.object.isRequired,
+    openedPhoto: PropTypes.any.isRequired,
     //
 };
 

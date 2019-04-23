@@ -134,10 +134,6 @@ class Switcher extends Component {
             easing: 'easeInQuad',
         });
         this.props.onChange(next);
-        // motion.hide(SELECTOR_ITEM_PREVIEW, () => {
-        //     this.props.dispatch(GET_PHOTOS(items[next].name));
-        //     motion.show(SELECTOR_ITEM_PREVIEW);
-        // });
         this.setState({ active: next });
     }
     onWheel(e) {

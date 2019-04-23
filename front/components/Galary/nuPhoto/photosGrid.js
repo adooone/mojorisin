@@ -14,18 +14,20 @@ class PhotosGrid extends Component {
         super(props);
         this.state = {
             images: [],
+            loadedImages: 0,
             // loaded: false,
             //
         };
+        this.photoAnimate = this.photoAnimate.bind(this);
     }
     static getDerivedStateFromProps(nextProps/* , prevState */) {
         const images = nextProps.photoData;
-        PhotosGrid.PhotoAnimate(images);
+        // PhotosGrid.PhotoAnimate(images);
         return { images };
     }
-    static PhotoAnimate(images) {
+    photoAnimate() {
         setTimeout(() => {
-            _.forEach(images, (item, i) => {
+            _.forEach(this.state.images, (item, i) => {
                 const target = `photo-${ i }`;
                 setTimeout(() => {
                     motion.moveToTop(target);
@@ -34,7 +36,15 @@ class PhotosGrid extends Component {
         }, 500);
     }
     componentDidMount() {
+        console.log('mounted');
         this.props.dispatch(GET_PHOTOS(this.props.data.name));
+    }
+    onImageLoad = () => {
+        let count = this.state.loadedImages;
+        this.setState({ loadedImages: ++count });
+        console.log(count === this.state.images.length);
+
+        if (count === this.state.images.length) this.photoAnimate();
     }
     render() {
         return (
@@ -44,7 +54,6 @@ class PhotosGrid extends Component {
                 className='PhotoGridContainer'
                 container
                 direction='column'
-                // alignContent='flex-start'
                 spacing={ 0 }
             >
                 {_.map(this.state.images, (obj, i) => {
@@ -60,7 +69,10 @@ class PhotosGrid extends Component {
                             // md={ 6 }
                             lg={ 4 }
                         >
-                            <Photo obj={ { ...obj, album: this.props.data.name } } />
+                            <Photo
+                                obj={ { ...obj, album: this.props.data.name } }
+                                onLoad={ this.onImageLoad }
+                            />
                         </Grid>
                     );
                 })}

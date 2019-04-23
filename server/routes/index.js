@@ -19,7 +19,9 @@ const Users = bookshelf.Model.extend({
     //
 });
 
-
+//
+// LOGIN
+//
 router.get('/api/login', (req, res) => {
     Users
         .where({ name: req.query.name })
@@ -37,6 +39,9 @@ router.get('/api/login', (req, res) => {
             } else res.status(401).send({ msg: 'No such user' });
         });
 });
+//
+// GET PHOTOS
+//
 router.get('/api/photo/getPhotos', (req, res) => {
     const tableName = req.query.album;
     if (tableName) {
@@ -52,6 +57,9 @@ router.get('/api/photo/getPhotos', (req, res) => {
             .catch(error => res.status(404).send({ msg: error }));
     } else res.status(404).send({ msg: 'empty album name value' });
 });
+//
+// GET COVERS
+//
 router.get('/api/photo/getCovers', (req, res) => {
     const covers = bookshelf.Model.extend({ tableName: 'covers' });
     covers
@@ -64,6 +72,9 @@ router.get('/api/photo/getCovers', (req, res) => {
         })
         .catch(error => res.status(404).send({ msg: error }));
 });
+//
+// UPLOAD PHOTOS
+//
 router.post('/api/photo/upload', (req, res, next) => {
     upload(req, res, err => {
         if (err) res.status(401).send({ msg: err });
