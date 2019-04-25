@@ -10,13 +10,13 @@ import {
 
 import photos from '../../../description/photos';
 // import Album from './album';
-import Switcher from './Switcher/switcher';
-import PhotosGrid from './photosGrid';
-import PhotoView from './PhotoView';
+// import AlbumSelector from './Selector/albumSelector';
+// import PhotoView from './toRemove/PhotoView';
+import Selector from './views/selector';
 
 class Photos extends Component {
     render() {
-        const { match, mobileVersion, openedPhoto } = this.props;
+        const { match, mobileVersion } = this.props;
         return (
             <>
                 <Switch>
@@ -24,15 +24,14 @@ class Photos extends Component {
                         exact
                         path={ match.url }
                         render={ () => (
-                            <Switcher
+                            <Selector
                                 items={ photos.albums }
                                 isMobile={ mobileVersion }
-                                ContentComponent={ (data) => <PhotosGrid data={ data } /> }
                             />
                         ) }
                     />
                 </Switch>
-                { openedPhoto && <PhotoView obj={ openedPhoto } /> }
+                {/* { openedPhoto && <PhotoView obj={ openedPhoto } /> } */}
             </>
         );
     }
@@ -41,7 +40,7 @@ class Photos extends Component {
 Photos.propTypes = {
     match: PropTypes.object.isRequired,
     mobileVersion: PropTypes.bool.isRequired,
-    openedPhoto: PropTypes.any.isRequired,
+    // openedPhoto: PropTypes.any.isRequired,
     //
 };
 

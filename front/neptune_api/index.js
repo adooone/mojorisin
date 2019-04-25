@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
 
-const NEPTUNE_DEV_HOST = 'http://localhost:8081'; // LOCAL
-// const NEPTUNE_DEV_HOST = 'https://neptunews.com'; // PROD
+// const NEPTUNE_DEV_HOST = 'http://localhost:8081'; // LOCAL
+const NEPTUNE_DEV_HOST = 'https://risinproduction.appspot.com'; // PROD
 const NEPTUNE_PROD_HOST = '';
 const NEPTUNE_HOST = process.env.NODE_ENV === 'DEVELOPMENT' ? NEPTUNE_DEV_HOST : NEPTUNE_PROD_HOST;
 

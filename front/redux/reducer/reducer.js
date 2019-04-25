@@ -3,11 +3,17 @@ import { createReducer } from 'redux-create-reducer';
 import Immutable from 'seamless-immutable';
 import * as ActionTypes from '../../consts/actionTypes';
 import { getDict } from '../../dictionary';
-import { LANG_EN } from '../../consts/generalConsts';
+import {
+    PHOTOS_MODE_SELECTOR,
+    LANG_EN,
+    PHOTOS_MODE_ALBUM,
+    PHOTOS_MODE_PHOTO,
+} from '../../consts/generalConsts';
 // import Modules from '../../description/modules';
 // import photos from '../../description/photos';
 
 const initialState = Immutable({
+    photosMode: PHOTOS_MODE_SELECTOR,
     isMenuOpened: false,
     selectedModule: {},
     selectedAlbum: null,
@@ -52,16 +58,34 @@ const viewReducer = createReducer(initialState, {
         return state.set('selectedModule', action.module);
     },
     [ActionTypes.OPEN_ALBUM](state, action) {
-        return state.set('selectedAlbum', action.album);
+        return state.merge({
+            selectedAlbum: action.album,
+            photosMode: PHOTOS_MODE_ALBUM,
+        });
+    },
+    [ActionTypes.CLOSE_ALBUMS](state) {
+        return state.merge({
+            selectedAlbum: null,
+            photosMode: PHOTOS_MODE_SELECTOR,
+        });
+    },
+    [ActionTypes.OPEN_PHOTO](state, action) {
+        return state.merge({
+            openedPhoto: action.obj,
+            photosMode: PHOTOS_MODE_PHOTO,
+        });
+    },
+    [ActionTypes.CLOSE_PHOTO](state) {
+        return state.merge({
+            openedPhoto: null,
+            photosMode: PHOTOS_MODE_ALBUM,
+        });
     },
     [ActionTypes.SET_PHOTO_DATA](state, action) {
         return state.set('photoData', action.photoData);
     },
     [ActionTypes.SET_PREVIEW_DATA](state, action) {
         return state.set('previewData', action.previewData);
-    },
-    [ActionTypes.CLOSE_ALBUMS](state) {
-        return state.set('selectedAlbum', null);
     },
     [ActionTypes.LOGIN_ADMIN](state) {
         return state.set('admin', true);
@@ -87,12 +111,6 @@ const viewReducer = createReducer(initialState, {
     },
     [ActionTypes.CLOSE_LOADER](state) {
         return state.merge({ loading: false });
-    },
-    [ActionTypes.OPEN_PHOTO](state, action) {
-        return state.merge({ openedPhoto: action.obj });
-    },
-    [ActionTypes.CLOSE_PHOTO](state) {
-        return state.merge({ openedPhoto: false });
     },
 });
 

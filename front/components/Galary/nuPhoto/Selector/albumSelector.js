@@ -42,7 +42,7 @@ class Switcher extends Component {
         this.props.dispatch(GET_PHOTOS(this.props.items[0].name));
     }
     render() {
-        const { items, ContentComponent } = this.props;
+        const { items } = this.props;
         const { active, scrolling, opened } = this.state;
         return (
             <div className='Corousel'>
@@ -91,9 +91,7 @@ class Switcher extends Component {
                                 active={ active === i }
                                 data={ item }
                                 cover={ false }
-                                ContentComponent={ ContentComponent }
                                 onClick={ this.handleItemClick }
-                                onClose={ this.handleItemClose }
                             />
                             // </Link>
                         );
@@ -183,7 +181,6 @@ class Switcher extends Component {
 
 Switcher.propTypes = {
     dispatch: PropTypes.func.isRequired,
-    ContentComponent: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
     photoData: PropTypes.array.isRequired,
     onChange: PropTypes.func,

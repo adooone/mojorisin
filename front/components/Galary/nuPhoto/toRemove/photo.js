@@ -9,7 +9,7 @@ import {
     Icon,
 } from '@material-ui/core';
 // import neptune from '../../../neptune_api';
-import { DELETE_FILE, OPEN_PHOTO } from '../../../redux/actions/actions';
+import { DELETE_FILE, OPEN_PHOTO } from '../../../../redux/actions/actions';
 
 class Photo extends Component {
     constructor(props) {
@@ -37,7 +37,7 @@ class Photo extends Component {
                     className='image'
                     src={ obj.src }
                     alt={ obj.name }
-                    onLoad={ () => this.props.onLoad(obj) }
+                    onLoad={ () => console.log(`${ obj.name } loaded`) }
                 />
                 <Button className='photoBtn' onClick={ this.handleOpen }>{ ' ' }</Button>
             </div>
@@ -52,7 +52,7 @@ class Photo extends Component {
 Photo.propTypes = {
     obj: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
-    onLoad: PropTypes.func.isRequired,
+    // onLoad: PropTypes.func.isRequired,
     //
 };
 

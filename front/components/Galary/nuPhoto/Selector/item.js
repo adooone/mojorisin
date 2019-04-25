@@ -7,7 +7,7 @@ import {
     // Route,
 } from 'react-router-dom';
 // import { Scrollbars } from 'react-custom-scrollbars';
-import { Button, IconButton, Icon } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 // import Photo from '../../Photos/photo';
 // import PhotosGrid from '../photosGrid';
 // import anime from '../../../../lib/anime';
@@ -21,7 +21,7 @@ class Item extends Component {
         };
     }
     render() {
-        const { index, active, scrolling, data, cover, onClick, onClose, ContentComponent } = this.props;
+        const { index, active, scrolling, data, cover, onClick } = this.props;
         const { opened } = this.state;
         const coverId = `itemCover_${ data.name }`;
         return (
@@ -34,21 +34,6 @@ class Item extends Component {
                 ) }
             >
                 <div className='CorouselItemContent'>
-                    { opened && (
-                        <>
-                            <IconButton
-                                className='CloseButton'
-                                onClick={ () => {
-                                    onClose(index);
-                                    this.setState({ opened: false });
-                                } }
-                            >
-                                <Icon>close</Icon>
-                            </IconButton>
-                            {ContentComponent(data)}
-                        </>
-                    ) }
-                    { !opened && (
                     <>
                         {/* <p>{ data.name }</p> */}
                         <Button
@@ -63,7 +48,6 @@ class Item extends Component {
                         </Button>
                         {/* <div className='coverDarker' /> */}
                     </>
-                    )}
                     <img className='albumCover' id={ coverId } src={ cover || data.background } alt='cover' />
                 </div>
             </div>
@@ -73,13 +57,11 @@ class Item extends Component {
 
 Item.propTypes = {
     index: PropTypes.number.isRequired,
-    ContentComponent: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
     cover: PropTypes.any.isRequired,
     active: PropTypes.bool.isRequired,
     scrolling: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,
-    onClose: PropTypes.func.isRequired,
     //
 };
 

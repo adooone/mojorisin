@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { CLOSE_PHOTO } from '../../../redux/actions/actions';
+import { CLOSE_PHOTO } from '../../../../redux/actions/actions';
 // import classnames from 'classnames';
 class PhotoView extends Component {
     constructor(props) {
