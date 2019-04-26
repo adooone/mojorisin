@@ -8,28 +8,29 @@ import {
 } from 'react-router-dom';
 // import classnames from 'classnames';
 
-import photos from '../../../description/photos';
-// import Album from './album';
-// import AlbumSelector from './Selector/albumSelector';
-// import PhotoView from './toRemove/PhotoView';
+import photoDescription from '../../../description/photos';
 import Selector from './views/selector';
+import PhotoView from './views/photo';
+import AlbumView from './views/album';
 
 class Photos extends Component {
     render() {
-        const { match, mobileVersion } = this.props;
+        const { selectedAlbum, mobileVersion/* , openedPhoto */ } = this.props;
         return (
             <>
                 <Switch>
                     <Route
                         exact
-                        path={ match.url }
+                        path='/'
                         render={ () => (
                             <Selector
-                                items={ photos.albums }
+                                items={ photoDescription.albums }
                                 isMobile={ mobileVersion }
                             />
                         ) }
                     />
+                    <Route path={ `/${ selectedAlbum.path }` } render={ () => <AlbumView data={ selectedAlbum } /> } />
+                    <Route path={ `/${ selectedAlbum.path }/:photoId` } render={ () => <PhotoView /> } />
                 </Switch>
                 {/* { openedPhoto && <PhotoView obj={ openedPhoto } /> } */}
             </>
@@ -38,8 +39,9 @@ class Photos extends Component {
 }
 
 Photos.propTypes = {
-    match: PropTypes.object.isRequired,
+    // match: PropTypes.object.isRequired,
     mobileVersion: PropTypes.bool.isRequired,
+    selectedAlbum: PropTypes.object.isRequired,
     // openedPhoto: PropTypes.any.isRequired,
     //
 };
@@ -53,6 +55,7 @@ function select(store) {
         photoData: store.viewReducer.photoData,
         openedPhoto: store.viewReducer.openedPhoto,
         mobileVersion: store.viewReducer.mobileVersion,
+        selectedAlbum: store.viewReducer.selectedAlbum,
         //
     };
 }

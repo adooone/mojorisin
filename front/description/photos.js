@@ -7,22 +7,22 @@
 const photos = {
     albums: [
         {
+            name: 'sessions',
+            caption: 'Sessions',
+            background: 'https://storage.googleapis.com/risin_media/photo_2019-03-29_12-00-49.jpg',
+            path: '/sessions',
+        },
+        {
             name: 'objects',
             caption: 'Objects',
             background: 'https://storage.googleapis.com/risin_media/IMG_20190204_113838.jpg',
-            routePath: '/test',
+            path: '/objects',
         },
         {
             name: 'advertising',
             caption: 'Advertising',
             background: 'https://storage.googleapis.com/risin_media/20181230202305_IMG_9370-01.jpeg',
-            routePath: '/test',
-        },
-        {
-            name: 'sessions',
-            caption: 'Sessions',
-            background: 'https://storage.googleapis.com/risin_media/photo_2019-03-29_12-00-49.jpg',
-            routePath: '/test',
+            path: '/advertising',
         },
     ],
 };

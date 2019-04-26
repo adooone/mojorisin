@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import {
+    Link,
+    //
+} from 'react-router-dom';
 import { OPEN_ALBUM } from '../../../../redux/actions/actions';
 // import classnames from 'classnames';
 class Selector extends Component {
@@ -11,14 +15,15 @@ class Selector extends Component {
                 <div>
                     {_.map(items, (item, i) => {
                         return (
-                            <div
-                                key={ i }
-                                className='Album'
-                                onClick={ () => this.handleClick(item.name) }
-                                role='presentation'
-                            >
-                                <img src={ item.background } alt={ item.name } />
-                            </div>
+                            <Link key={ i } to={ item.path }>
+                                <div
+                                    className='Album'
+                                    onClick={ () => this.handleClick(item.name) }
+                                    role='presentation'
+                                >
+                                    <img src={ item.background } alt={ item.name } />
+                                </div>
+                            </Link>
                         );
                     })}
                 </div>
@@ -40,8 +45,11 @@ Selector.propTypes = {
 //
 //};
 
-function select(/* store */) {
-    return { };
+function select(store) {
+    return {
+        selectedAlbum: store.viewReducer.selectedAlbum,
+        //
+    };
 }
 
 export default connect(select)(Selector);
