@@ -3,7 +3,7 @@ const path = require('path');
 
 const router = express.Router();
 
-router.get('/:album', (req, res) => {
+router.get('*', (req, res) => {
     console.log(req.params.album);
     res.sendFile('index.html', { root: path.join(__dirname, '../../../docs') });
     // res.render('index');
