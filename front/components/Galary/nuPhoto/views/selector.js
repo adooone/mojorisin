@@ -5,22 +5,19 @@ import {
     Link,
     //
 } from 'react-router-dom';
-import { OPEN_ALBUM } from '../../../../redux/actions/actions';
+// import { OPEN_ALBUM } from '../../../../redux/actions/actions';
 // import classnames from 'classnames';
 class Selector extends Component {
     render() {
-        const { items } = this.props;
+        const { items, match } = this.props;
+        console.log(match);
         return (
             <div className='Selector'>
                 <div>
                     {_.map(items, (item, i) => {
                         return (
-                            <Link key={ i } to={ item.path }>
-                                <div
-                                    className='Album'
-                                    onClick={ () => this.handleClick(item.name) }
-                                    role='presentation'
-                                >
+                            <Link key={ i } to={ `${ match.path }/${ item.path }` }>
+                                <div className='Album'>
                                     <img src={ item.background } alt={ item.name } />
                                 </div>
                             </Link>
@@ -30,14 +27,12 @@ class Selector extends Component {
             </div>
         );
     }
-    handleClick(name) {
-        this.props.dispatch(OPEN_ALBUM(name));
-    }
 }
 
 Selector.propTypes = {
     items: PropTypes.array.isRequired,
-    dispatch: PropTypes.func.isRequired,
+    // dispatch: PropTypes.func.isRequired,
+    match: PropTypes.object.isRequired,
     //
 };
 

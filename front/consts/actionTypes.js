@@ -23,7 +23,7 @@ export const CLOSE_LOADER = 'CLOSE_LOADER';
 
 ///SAGAS
 export const TEST_FETCH = 'TEST_FETCH';
-export const GET_PHOTOS = 'GET_PHOTOS';
+export const GET_ALBUM = 'GET_ALBUM';
 export const GET_PHOTOS_PREVIEW = 'GET_PHOTOS_PREVIEW';
 export const UPLOAD_FILE = 'UPLOAD_FILE';
 export const DELETE_FILE = 'DELETE_FILE';

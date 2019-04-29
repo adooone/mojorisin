@@ -4,27 +4,27 @@
 // const path = 'https://www.wonderplugin.com/videos/demo-image0.jpg';
 // const path = 'https://cdn.mos.cms.futurecdn.net/gvQ9NhQP8wbbM32jXy4V3j-320-80.jpg';
 
-const photos = {
+const photosDescription = {
     albums: [
         {
             name: 'sessions',
             caption: 'Sessions',
             background: 'https://storage.googleapis.com/risin_media/photo_2019-03-29_12-00-49.jpg',
-            path: '/sessions',
+            path: 'sessions',
         },
         {
             name: 'objects',
             caption: 'Objects',
             background: 'https://storage.googleapis.com/risin_media/IMG_20190204_113838.jpg',
-            path: '/objects',
+            path: 'objects',
         },
         {
             name: 'advertising',
             caption: 'Advertising',
             background: 'https://storage.googleapis.com/risin_media/20181230202305_IMG_9370-01.jpeg',
-            path: '/advertising',
+            path: 'advertising',
         },
     ],
 };
 
-export default photos;
+export default photosDescription;

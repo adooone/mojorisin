@@ -10,30 +10,31 @@ import {
 
 import photoDescription from '../../../description/photos';
 import Selector from './views/selector';
-import PhotoView from './views/photo';
+// import PhotoView from './views/photo';
 import AlbumView from './views/album';
+import Notation from './views/notation';
 
 class Photos extends Component {
     render() {
-        const { selectedAlbum, mobileVersion/* , openedPhoto */ } = this.props;
+        const { mobileVersion/* , openedPhoto */ } = this.props;
         return (
-            <>
+            <div className='photos'>
                 <Switch>
                     <Route
                         exact
-                        path='/'
-                        render={ () => (
+                        path='/photos'
+                        render={ ({ match }) => (
                             <Selector
                                 items={ photoDescription.albums }
                                 isMobile={ mobileVersion }
+                                match={ match }
                             />
                         ) }
                     />
-                    <Route path={ `/${ selectedAlbum.path }` } render={ () => <AlbumView data={ selectedAlbum } /> } />
-                    <Route path={ `/${ selectedAlbum.path }/:photoId` } render={ () => <PhotoView /> } />
+                    <Route path='/photos/:selectedAlbum' render={ ({ match }) => <AlbumView match={ match } /> } />
                 </Switch>
-                {/* { openedPhoto && <PhotoView obj={ openedPhoto } /> } */}
-            </>
+                <Notation />
+            </div>
         );
     }
 }
@@ -41,7 +42,7 @@ class Photos extends Component {
 Photos.propTypes = {
     // match: PropTypes.object.isRequired,
     mobileVersion: PropTypes.bool.isRequired,
-    selectedAlbum: PropTypes.object.isRequired,
+    // selectedAlbum: PropTypes.object.isRequired,
     // openedPhoto: PropTypes.any.isRequired,
     //
 };

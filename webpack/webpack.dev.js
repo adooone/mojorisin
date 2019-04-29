@@ -11,11 +11,6 @@ module.exports = {
     devtool: 'inline-source-map',
     mode: 'development',
     devServer: {
-        // before(app) {
-        //     app.get('*', (req, res) => {
-        //         res.send('index');
-        //     });
-        // },
         contentBase: path.resolve(__dirname, '../docs'),
         hot: true,
         historyApiFallback: true,
@@ -23,6 +18,7 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, '../docs'),
+        publicPath: '/',
     },
     resolve: { extensions: ['.tsx', '.ts', '.js'] },
     module: {
@@ -66,7 +62,13 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                use: { loader: 'html-loader' },
+                use: {
+                    loader: 'html-loader',
+                    options: {
+                        minimize: false,
+                        //
+                    },
+                },
             },
             {
                 test: /\.(png|jpg|gif|ttf)$/i,

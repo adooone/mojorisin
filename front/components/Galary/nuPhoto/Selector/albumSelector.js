@@ -11,7 +11,7 @@ import { Icon, IconButton, Grid } from '@material-ui/core';
 import { SELECTOR_ITEM_PREVIEW } from '../../../../consts/generalConsts';
 import Item from './item';
 import anime from '../../../../lib/anime';
-import { GET_PHOTOS } from '../../../../redux/actions/actions';
+import { GET_ALBUM } from '../../../../redux/actions/actions';
 // import motion from '../../../../lib/motion';
 // import { CHANGE_BACKGROUND } from '../../../../redux/actions/actions';
 
@@ -39,7 +39,7 @@ class Switcher extends Component {
         return { albumPreview };
     }
     componentDidMount() {
-        this.props.dispatch(GET_PHOTOS(this.props.items[0].name));
+        this.props.dispatch(GET_ALBUM(this.props.items[0].name));
     }
     render() {
         const { items } = this.props;

@@ -16,7 +16,7 @@ const initialState = Immutable({
     photosMode: PHOTOS_MODE_SELECTOR,
     isMenuOpened: false,
     selectedModule: {},
-    selectedAlbum: null,
+    selectedAlbum: {},
     loading: true,
     admin: false,
     complexBackground: false,
@@ -65,7 +65,7 @@ const viewReducer = createReducer(initialState, {
     },
     [ActionTypes.CLOSE_ALBUMS](state) {
         return state.merge({
-            selectedAlbum: null,
+            selectedAlbum: {},
             photosMode: PHOTOS_MODE_SELECTOR,
         });
     },

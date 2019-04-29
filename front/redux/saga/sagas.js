@@ -12,8 +12,10 @@ import {
     CLOSE_LOADER,
     LOGIN_ADMIN,
     SET_PHOTO_DATA,
-    GET_PHOTOS,
+    GET_ALBUM,
+    OPEN_ALBUM,
 } from '../actions/actions';
+import photosDescription from '../../description/photos';
 
 const sagas = {
     * [ActionTypes.TEST_FETCH]() {
@@ -37,12 +39,16 @@ const sagas = {
         yield put(SHOW_SNACKBAR(resp));
         // yield put(CLOSE_LOADER());
     },
-    * [ActionTypes.GET_PHOTOS](action) {
+    * [ActionTypes.GET_ALBUM](action) {
         // yield put(SHOW_LOADER());
         // yield delay(2000);
         let resp = null;
         try {
             resp = yield call(neptune.getPhotos, action.album);
+            const album = _.find(photosDescription.albums, (o) => {
+                return o.name === action.album;
+            });
+            yield put(OPEN_ALBUM(album));
             yield put(SET_PHOTO_DATA(resp.data.photos));
             // yield put(SHOW_SNACKBAR(resp));
         } catch (error) {
@@ -65,7 +71,7 @@ const sagas = {
         yield put(SHOW_LOADER());
         // yield delay(2000);
         const resp = yield call(neptune.deletePhoto, action.data);
-        yield put(GET_PHOTOS(action.data.album));
+        yield put(GET_ALBUM(action.data.album));
         yield put(SHOW_SNACKBAR(resp));
         yield put(CLOSE_LOADER());
     },

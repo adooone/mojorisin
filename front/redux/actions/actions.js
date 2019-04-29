@@ -92,9 +92,9 @@ export const CLOSE_PHOTO = () => {
         //
     };
 };
-export const GET_PHOTOS = (album) => {
+export const GET_ALBUM = (album) => {
     return {
-        type: ActionTypes.GET_PHOTOS,
+        type: ActionTypes.GET_ALBUM,
         album,
     };
 };

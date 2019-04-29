@@ -152,9 +152,9 @@ router.get('/media/risin', (req, res) => {
 router.get('/', (req, res) => {
     res.sendFile('index.html', { root: path.join(__dirname, '../../docs') });
 });
-router.get('*', (req, res) => {
-    console.log('res');
-    res.sendFile('index.html', { root: path.join(__dirname, '../../docs') });
-});
+// router.get('*', (req, res) => {
+//     console.log('res');
+//     res.sendFile('index.html', { root: path.join(__dirname, '../../docs') });
+// });
 
 module.exports = router;

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 // import { Scrollbars } from 'react-custom-scrollbars';
 import { Grid } from '@material-ui/core';
 import Photo from './photo';
-import { GET_PHOTOS } from '../../../../redux/actions/actions';
+import { GET_ALBUM } from '../../../../redux/actions/actions';
 
 class PhotosGrid extends Component {
     constructor(props) {
@@ -40,7 +40,7 @@ class PhotosGrid extends Component {
     }
     componentDidMount() {
         // console.log('mounted');
-        this.props.dispatch(GET_PHOTOS(this.props.data.name));
+        this.props.dispatch(GET_ALBUM(this.props.data.name));
     }
     render() {
         return (

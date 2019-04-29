@@ -2,15 +2,20 @@
     width: 100%
     height: 100px
     position: fixed
-    bottom: 10vh
-    padding: 0 16vh
+    height: $gutter
+    bottom: 0
+    // padding: 0 16vh
     display: flex
-    align-items: flex-end
+    align-items: flex-start
+    .info_container.album
+        margin-left: 50%
+        padding: 0
     .info_container
         display: flex
         align-items: center
-        height: 12px
         width: 100%
+        height: 12px
+        padding: 0 $gutter
         p
             font-size: 8px
             font-weight: 900

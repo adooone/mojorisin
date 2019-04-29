@@ -18,10 +18,9 @@ import Footer from './Footer/index';
 class App extends Component {
     componentDidMount() {
         const isMobile = window.screen.width < 600;
-        if (isMobile) console.log('using MOBILE version');
-        else console.log('using DESKTOP version');
+        if (isMobile) console.log('Using MOBILE version!');
+        else console.log('Using DESKTOP version!');
         window.onload = () => {
-            console.log('loaded');
             _.delay(() => {
                 this.props.dispatch(OPEN({ isMobile }));
             }, 1000);

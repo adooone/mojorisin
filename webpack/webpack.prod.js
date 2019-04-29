@@ -23,6 +23,7 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, '../docs'),
+        publicPath: '/',
     },
     resolve: { extensions: ['.tsx', '.ts', '.js'] },
     module: {
@@ -66,7 +67,13 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                use: { loader: 'html-loader' },
+                use: {
+                    loader: 'html-loader',
+                    options: {
+                        minimize: false,
+                        //
+                    },
+                },
             },
             {
                 test: /\.(png|jpg|gif|ttf)$/i,
