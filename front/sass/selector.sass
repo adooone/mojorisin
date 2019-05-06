@@ -1,10 +1,10 @@
-.Selector
+.selector
     display: flex
     justify-content: flex-start
     align-items: flex-start
     height: 100vh
     width: 100vw
-    .Album
+    .album
         position: relative
         display: flex
         justify-content: center
@@ -12,8 +12,15 @@
         height: 100vh
         width: 60vw
         background-color: $colorDark
+        animation: album .4s ease
         img
             position: absolute
             height: 100%
             width: 100%
             object-fit: cover
+
+@keyframes album
+    0%
+        margin-left: -60vw
+    100%
+        margin-left: 0

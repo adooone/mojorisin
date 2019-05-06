@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+// import classnames from 'classnames';
 import {
     Icon, IconButton,
     // TextField,
@@ -42,17 +43,25 @@ class Snackbar extends Component {
     render() {
         const { msg } = this.props;
         let icon = 'report';
+        let color = 'error';
         const isMsgString = typeof msg === 'string';
         if (!isMsgString) {
             switch (msg.status) {
-            case 200: { icon = 'done'; break; }
-            default: icon = 'report';
+            case 200: {
+                icon = 'done';
+                color = 'success';
+                break;
+            }
+            default: {
+                icon = 'report';
+                color = 'error';
+            }
             }
         }
         return (
             <div id='Snackbar' className='Snackbar'>
                 <div>
-                    <Icon className='resIcon'>{icon}</Icon>
+                    <Icon fontSize='large' className={ color }>{icon}</Icon>
                     <p>{isMsgString ? msg : msg.data.message || 'Done'}</p>
                 </div>
                 <IconButton className='closeBtn' onClick={ this.close }>

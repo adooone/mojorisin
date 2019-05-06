@@ -29,6 +29,7 @@
             align-items: center
             z-index: 100
             padding: 5vh
+            animation: open_photo .3s ease
             .closeBtn
                 font-size: 14px
                 padding: 5px 10px
@@ -54,6 +55,8 @@
                 margin: 1vh 2vh 1vh 0
                 overflow: hidden
                 box-sizing: border-box
+                opacity: 1
+                transition: all 1s ease
                 a
                     height: 100%
                     width: 100%
@@ -62,19 +65,27 @@
                         height: 100%
                         width: 100%
                         object-fit: cover
+            .hidden
+                opacity: 0
+                transform: translateX(200px)
     .notation.left_side
         left: 0
         align-items: flex-end
         width: 50%
-        h3, p
-            text-align: end
-            width: 65%
+        .text
+            align-items: flex-end
+            animation: notation_left .7s ease
+            h3, p
+                text-align: end
+                width: 65%
     .notation.right_side
         right: 0
         align-items: flex-start
         width: 40%
-        h3, p
-            text-align: start
+        .text
+            animation: notation_right .7s ease
+            h3, p
+                text-align: start
     .notation
         position: absolute
         display: flex
@@ -82,20 +93,50 @@
         height: 100%
         flex-direction: column
         justify-content: center
-        h3
-            font-size: 3.5vw
-            font-weight: 900
-            margin: 0
-            transition: all .4s ease
-        p
-            margin-top: 2vh
-            font-size: 1vw
-            font-weight: 300
-            opacity: 0.3
-            text-align: end
-            transition: all .4s ease
+        .text
+            display: flex
+            flex-direction: column
+            // height: 100%
+            width: 100%
+            h3
+                font-size: 3.5vw
+                font-weight: 900
+                margin: 0
+                transition: all .4s ease
+            p
+                margin-top: 2vh
+                font-size: 1vw
+                font-weight: 300
+                opacity: 0.3
+                text-align: end
+                transition: all .4s ease
+                // animation: notation_h .5s ease
         .close_btn
             font-size: 1vw
             position: absolute
             right: 0
             transform: rotate(-90deg)
+
+@keyframes notation_right
+    0%
+        opacity: 0
+        margin-left: 100px
+    100%
+        // opacity: 1
+        margin-left: 0
+@keyframes notation_left
+    0%
+        opacity: 0
+        margin-right: 100px
+    100%
+        // opacity: 1
+        margin-right: 0
+@keyframes open_photo
+    0%
+        // transform: scale(0.5)
+        transform: translateY(-100%)
+        // opacity: 0
+    100%
+        // transform: scale(1)
+        // opacity: 1
+        translateY(0)

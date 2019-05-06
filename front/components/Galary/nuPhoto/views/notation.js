@@ -15,8 +15,10 @@ class Notation extends Component {
         const left = photosMode === PHOTOS_MODE_ALBUM;
         return (
             <div className={ classnames('notation', { 'left_side': left, 'right_side': !left }) }>
-                <h3>{ selectedAlbum.caption || 'Sessions' }</h3>
-                <p>We offer object and advertizing photo sessions and anything you want.</p>
+                <div className='text'>
+                    <h3>{selectedAlbum.caption || 'Sessions'}</h3>
+                    <p>We offer object and advertizing photo sessions and anything you want.</p>
+                </div>
                 <Link
                     to='/photos'
                     className='close_btn'

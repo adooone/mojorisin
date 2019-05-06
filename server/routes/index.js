@@ -55,7 +55,7 @@ router.get('/api/photo/getPhotos', (req, res) => {
                     .set({ 'Cahce-Control': 'public, max-age=31536000' })
                     .send({ msg: 'success', photos: album.toJSON() });
             })
-            .catch(error => res.status(404).send({ msg: error }));
+            .catch(error => res.status(401).send({ msg: error }));
     } else res.status(404).send({ msg: 'empty album name value' });
 });
 //

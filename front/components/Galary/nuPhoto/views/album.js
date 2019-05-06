@@ -12,6 +12,7 @@ import classnames from 'classnames';
 import { Grid } from '@material-ui/core';
 import { GET_ALBUM } from '../../../../redux/actions/actions';
 import PhotoView from './photo';
+import Notation from './notation';
 
 class AlbumView extends Component {
     constructor(props) {
@@ -21,6 +22,7 @@ class AlbumView extends Component {
             path: null,
         };
         this.renderAlbum = this.renderAlbum.bind(this);
+        this.photosRefs = [];
     }
     static getDerivedStateFromProps(nextProps, prevState) {
         const { data, match } = nextProps;
@@ -43,35 +45,41 @@ class AlbumView extends Component {
         );
     }
     renderAlbum() {
-        console.log('renderAlbum');
-        console.log(this.state.path);
         return (
-            <div className='album_view'>
-                <Grid
-                    container
-                    direction='column'
-                    spacing={ 0 }
-                    className='photo_grid'
-                >
-                    {_.map(this.state.data, (item, i) => {
-                        return (
-                            <Grid
-                                item
-                                lg={ 4 }
-                                key={ i }
-                                className={ classnames('photo', 'hidden') }
-                            >
-                                <Link
-                                    to={ `/photos/${ this.state.path }/${ i }` }
+            <>
+                <div className='album_view'>
+                    <Grid
+                        container
+                        direction='column'
+                        spacing={ 0 }
+                        className='photo_grid'
+                    >
+                        {_.map(this.state.data, (item, i) => {
+                            return (
+                                <Grid
+                                    item
+                                    ref={ element => this.photosRefs[i] = element }
+                                    lg={ 4 }
+                                    key={ i }
+                                    id={ `photo${ i }` }
+                                    className={ classnames('photo', 'hidden') }
                                 >
-                                    <img src={ item.src } alt={ item.name } />
-                                </Link>
-                            </Grid>
-                        );
-                    })}
-                </Grid>
-            </div>
+                                    <Link
+                                        to={ `/photos/${ this.state.path }/${ i }` }
+                                    >
+                                        <img src={ item.src } alt={ item.name } onLoad={ this.onImageLoad(i) } />
+                                    </Link>
+                                </Grid>
+                            );
+                        })}
+                    </Grid>
+                </div>
+                <Notation />
+            </>
         );
+    }
+    onImageLoad(i) {
+        console.log(`${ i } photo loaded`);
     }
 }
 

@@ -5,26 +5,29 @@ import {
     Link,
     //
 } from 'react-router-dom';
+import Notation from './notation';
 // import { OPEN_ALBUM } from '../../../../redux/actions/actions';
 // import classnames from 'classnames';
 class Selector extends Component {
     render() {
         const { items, match } = this.props;
-        console.log(match);
         return (
-            <div className='Selector'>
-                <div>
-                    {_.map(items, (item, i) => {
-                        return (
-                            <Link key={ i } to={ `${ match.path }/${ item.path }` }>
-                                <div className='Album'>
-                                    <img src={ item.background } alt={ item.name } />
-                                </div>
-                            </Link>
-                        );
-                    })}
+            <>
+                <div className='selector'>
+                    <div>
+                        {_.map(items, (item, i) => {
+                            return (
+                                <Link key={ i } to={ `${ match.path }/${ item.path }` }>
+                                    <div className='album'>
+                                        <img src={ item.background } alt={ item.name } />
+                                    </div>
+                                </Link>
+                            );
+                        })}
+                    </div>
                 </div>
-            </div>
+                <Notation />
+            </>
         );
     }
 }

@@ -16,7 +16,6 @@ class PhotoView extends Component {
     static getDerivedStateFromProps(nextProps, prevState) {
         const { data, match: { params: { photoId } } } = nextProps;
         if (!_.isEmpty(data) && !_.isEqual(data[photoId], prevState.image)) {
-            console.log(data);
             return { image: data[photoId] };
         }
         return null;
@@ -24,7 +23,6 @@ class PhotoView extends Component {
     render() {
         // const { data, match } = this.props;
         const obj = this.state.image;
-        console.log(this.state);
         if (this.state.image) {
             return (
                 <div className='photo_view'>
