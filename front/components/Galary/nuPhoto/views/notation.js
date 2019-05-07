@@ -25,7 +25,7 @@ class Notation extends Component {
                     onClick={ () => this.props.dispatch(CLOSE_ALBUMS()) }
                     role='presentation'
                 >
-                    close
+                    {'close'}
                 </Link>
             </div>
         );
