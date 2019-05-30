@@ -24,23 +24,40 @@ class Home extends Component {
         this.state = {
             getAlbumName: 'photos',
             albumName: 'photos',
+            viewingModuleIndex: 2,
             //
         };
         this.getPhotos = this.getPhotos.bind(this);
         this.createAlbum = this.createAlbum.bind(this);
     }
     render() {
+        const { dict } = this.props;
+        const { viewingModuleIndex } = this.state;
         return (
-            <div className='homePage'>
+            <div className='home'>
                 {/* <LogoSVG width='20%' />
                 <p className='homeCaptionName'>RISIN PRODUCTION</p> */}
-                <Link to='photos'>
-                    <Button
-                        onClick={ () => { this.props.dispatch(OPEN_MODULE(Modules[2])); } }
-                    >
-                        {'photos'}
-                    </Button>
-                </Link>
+                <div className='home_item'>
+                    <div className='we_are'>
+                        <h1>WE</h1>
+                        <h1>ARE</h1>
+                    </div>
+                    <div className='button_link'>
+                        <div className='label'>{ dict.translate(Modules[viewingModuleIndex].captionHome) }</div>
+                        <div className='info'>
+                            We o!er object and advertizing photo sessions
+                            and anything you want.
+                        </div>
+                        <Link to='photos'>
+                            <Button
+                                className='buttton'
+                                onClick={ () => { this.props.dispatch(OPEN_MODULE(Modules[viewingModuleIndex])); } }
+                            >
+                                {'Open'}
+                            </Button>
+                        </Link>
+                    </div>
+                </div>
             </div>
         );
     }
@@ -53,12 +70,16 @@ class Home extends Component {
 }
 
 Home.propTypes = {
+    dict: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
     //
 };
 
-function select(/* store */) {
-    return { };
+function select(store) {
+    return {
+        dict: store.viewReducer.dict,
+        //
+    };
 }
 
 export default withRouter(connect(select)(Home));

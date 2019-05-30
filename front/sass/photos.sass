@@ -44,6 +44,12 @@
         justify-content: flex-end
         width: 50%
         padding: $gutter 0
+        .indicator
+            position: absolute
+            width: 50px
+            height: 50px
+            border-radius: 25px
+            border: 5px solid white
         .photo_grid
             height: 72vh
             align-content: flex-start
@@ -55,6 +61,7 @@
                 margin: 1vh 2vh 1vh 0
                 overflow: hidden
                 box-sizing: border-box
+                background: lighten($colorDark, 5)
                 opacity: 1
                 transition: all 1s ease
                 a

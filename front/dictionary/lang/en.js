@@ -7,4 +7,8 @@ export default {
         'contacts': 'Contacts',
         'about': 'About',
     },
+    'home': {
+        'photos': 'Photography',
+        'videos': 'Video Production',
+    },
 };

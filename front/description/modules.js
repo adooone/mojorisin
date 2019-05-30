@@ -16,6 +16,7 @@ const Modules = [
         path: '',
         icon: 'home',
         caption: 'modules.home',
+        captionHome: 'home.home',
     },
     {
         name: MODULE_ADMIN,
@@ -23,6 +24,7 @@ const Modules = [
         path: 'admin',
         icon: 'settings',
         caption: 'modules.settings',
+        captionHome: 'home.settings',
     },
     {
         name: MODULE_PHOTOS,
@@ -30,6 +32,7 @@ const Modules = [
         path: 'photos',
         icon: 'change_history',
         caption: 'modules.photos',
+        captionHome: 'home.photos',
     },
     {
         name: MODULE_VIDEOS,
@@ -37,6 +40,7 @@ const Modules = [
         path: 'videos',
         icon: 'change_history',
         caption: 'modules.videos',
+        captionHome: 'home.videos',
     },
     // {
     //     name: MODULE_CONTACTS,

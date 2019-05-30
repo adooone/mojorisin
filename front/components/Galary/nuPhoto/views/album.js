@@ -12,7 +12,6 @@ import classnames from 'classnames';
 import { Grid } from '@material-ui/core';
 import { GET_ALBUM } from '../../../../redux/actions/actions';
 import PhotoView from './photo';
-import Notation from './notation';
 
 class AlbumView extends Component {
     constructor(props) {
@@ -34,6 +33,7 @@ class AlbumView extends Component {
     componentDidMount() {
         const { match: { params: { selectedAlbum } } } = this.props;
         this.props.dispatch(GET_ALBUM(selectedAlbum));
+        setTimeout(() => { }, 1000);
     }
     render() {
         const { match } = this.props;
@@ -46,36 +46,34 @@ class AlbumView extends Component {
     }
     renderAlbum() {
         return (
-            <>
-                <div className='album_view'>
-                    <Grid
-                        container
-                        direction='column'
-                        spacing={ 0 }
-                        className='photo_grid'
-                    >
-                        {_.map(this.state.data, (item, i) => {
-                            return (
-                                <Grid
-                                    item
-                                    ref={ element => this.photosRefs[i] = element }
-                                    lg={ 4 }
-                                    key={ i }
-                                    id={ `photo${ i }` }
-                                    className={ classnames('photo', 'hidden') }
+            <div className='album_view'>
+                <div className='indicator' />
+                <Grid
+                    container
+                    direction='column'
+                    spacing={ 0 }
+                    className='photo_grid'
+                >
+                    {_.map(this.state.data, (item, i) => {
+                        return (
+                            <Grid
+                                item
+                                ref={ element => this.photosRefs[i] = element }
+                                lg={ 4 }
+                                key={ i }
+                                id={ `photo${ i }` }
+                                className={ classnames('photo') }
+                            >
+                                <Link
+                                    to={ `/photos/${ this.state.path }/${ i }` }
                                 >
-                                    <Link
-                                        to={ `/photos/${ this.state.path }/${ i }` }
-                                    >
-                                        <img src={ item.src } alt={ item.name } onLoad={ this.onImageLoad(i) } />
-                                    </Link>
-                                </Grid>
-                            );
-                        })}
-                    </Grid>
-                </div>
-                <Notation />
-            </>
+                                    <img src={ item.src } alt={ item.name } onLoad={ this.onImageLoad(i) } />
+                                </Link>
+                            </Grid>
+                        );
+                    })}
+                </Grid>
+            </div>
         );
     }
     onImageLoad(i) {

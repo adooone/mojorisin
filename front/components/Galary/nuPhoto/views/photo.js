@@ -30,13 +30,6 @@ class PhotoView extends Component {
                     <div className='image'>
                         <img src={ obj.src } alt={ obj.name } />
                         <Link to='./' className='closeBtn'>close</Link>
-                        {/* <div
-                            role='presentation'
-                            className='closeBtn'
-                            onClick={ this.handleClose }
-                        >
-                            {'close'}
-                        </div> */}
                     </div>
                 </div>
             );

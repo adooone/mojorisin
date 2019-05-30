@@ -12,6 +12,7 @@ import photoDescription from '../../../description/photos';
 import Selector from './views/selector';
 // import PhotoView from './views/photo';
 import AlbumView from './views/album';
+import Notation from './views/notation';
 
 class Photos extends Component {
     render() {
@@ -32,6 +33,7 @@ class Photos extends Component {
                     />
                     <Route path='/photos/:selectedAlbum' render={ ({ match }) => <AlbumView match={ match } /> } />
                 </Switch>
+                <Notation />
             </div>
         );
     }
